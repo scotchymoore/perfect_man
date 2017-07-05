@@ -27,10 +27,8 @@ ActiveRecord::Schema.define(version: 20170705212620) do
   create_table "date_activities", force: :cascade do |t|
     t.string "location"
     t.string "activity"
-    t.bigint "relationship_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["relationship_id"], name: "index_date_activities_on_relationship_id"
   end
 
   create_table "foods", force: :cascade do |t|
@@ -46,10 +44,10 @@ ActiveRecord::Schema.define(version: 20170705212620) do
   create_table "relationships", force: :cascade do |t|
     t.string "name"
     t.date "dob"
-    t.string "place_of_birth"
+    t.string "pob"
     t.text "misc"
     t.string "flower"
-    t.date "anniversary"
+    t.date "annv"
     t.date "first_date"
     t.string "street"
     t.string "city"
@@ -96,7 +94,6 @@ ActiveRecord::Schema.define(version: 20170705212620) do
   end
 
   add_foreign_key "bucket_lists", "relationships"
-  add_foreign_key "date_activities", "relationships"
   add_foreign_key "foods", "relationships"
   add_foreign_key "relationships", "users"
 end
