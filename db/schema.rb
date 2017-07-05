@@ -10,10 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705195436) do
+ActiveRecord::Schema.define(version: 20170705212620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bucket_lists", force: :cascade do |t|
+    t.string "bucket_list_item"
+    t.string "location"
+    t.bigint "relationship_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["relationship_id"], name: "index_bucket_lists_on_relationship_id"
+  end
+
+  create_table "date_activities", force: :cascade do |t|
+    t.string "location"
+    t.string "activity"
+    t.bigint "relationship_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["relationship_id"], name: "index_date_activities_on_relationship_id"
+  end
+
+  create_table "foods", force: :cascade do |t|
+    t.text "restaurant"
+    t.string "type", null: false
+    t.text "location"
+    t.bigint "relationship_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["relationship_id"], name: "index_foods_on_relationship_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.string "name"
+    t.date "dob"
+    t.string "place_of_birth"
+    t.text "misc"
+    t.string "flower"
+    t.date "anniversary"
+    t.date "first_date"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "top_size"
+    t.string "bottom_size"
+    t.string "shoe_size"
+    t.string "bust_size"
+    t.string "height"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -44,4 +95,8 @@ ActiveRecord::Schema.define(version: 20170705195436) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "bucket_lists", "relationships"
+  add_foreign_key "date_activities", "relationships"
+  add_foreign_key "foods", "relationships"
+  add_foreign_key "relationships", "users"
 end
