@@ -3,10 +3,10 @@ class CreateRelationships < ActiveRecord::Migration[5.1]
     create_table :relationships do |t|
       t.string :name
       t.date :dob
-      t.string :pob
+      t.string :place_of_birth
       t.text :misc
       t.string :flower
-      t.date :annv
+      t.date :anniversary
       t.date :first_date
       t.string :street
       t.string :city
@@ -18,6 +18,7 @@ class CreateRelationships < ActiveRecord::Migration[5.1]
       t.string :bust_size
       t.string :height
       t.belongs_to :user, foreign_key: true
+
 
       t.timestamps
     end
