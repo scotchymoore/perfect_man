@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
           :omniauthable
   include DeviseTokenAuth::Concerns::User
 
-  has_many :foods, dependant: :destroy
+  has_many :relationships, dependant: :destroy
+
 end
