@@ -1,9 +1,9 @@
 class Api::BucketListsController < ApplicationController
-  before_action :set_relationship only: [:show, :update, :destroy]
-
+  before_action :set_bucket_list only: [:show, :update, :destroy]
+  before_action :set_relationship
 
   def index
-    render json: BucketList.all
+    render json: relationship.bucket_list
   end
 
   def show
@@ -11,7 +11,7 @@ class Api::BucketListsController < ApplicationController
   end
 
   def create
-    bucket_list = BucketList.create(relationship_params)
+    bucket_list = relationship.bucket_list.create(bucket_list_params)
       if bucket_list.save
         render json: bucket_list
       else
@@ -20,7 +20,7 @@ class Api::BucketListsController < ApplicationController
   end
 
   def update
-    if @bucket_list.update(relationship_params)
+    if @bucket_list.update(bucket_list_params)
         render json: @bucket_list
       else
         render json: { errors: @bucket_list.errors.full_messages.join(',') }, status: 422
@@ -35,10 +35,14 @@ class Api::BucketListsController < ApplicationController
   private
 
     def set_relationship
-      @bucket_list = BucketList.find(params[:id])
+
+    end
+
+    def set_bucket_list
+      @bucket_list = relationship.bucket_list.find(params[:id])
     end
 
     def bucket_list_params
-      params.require(:relationship).permit(:bucket_list_item, :location)
+      params.require(:bucket_list).permit(:bucket_list_item, :location)
     end
 end
