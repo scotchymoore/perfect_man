@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Button, Dropdown } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
@@ -12,6 +12,13 @@ class NavBar extends Component {
     if(user.id) {
       return(
         <Menu.Menu position='right'>
+        <Dropdown item text='Categories'>
+            <Dropdown.Menu>
+              <Dropdown.Item>Foods</Dropdown.Item>
+              <Dropdown.Item>Bucket Lists</Dropdown.Item>
+              <Dropdown.Item>Activities</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
           <Menu.Item
             name='Logout'
             onClick={() => dispatch(handleLogout(history))}
