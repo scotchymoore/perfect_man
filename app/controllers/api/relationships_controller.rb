@@ -3,7 +3,7 @@ class Api::RelationshipsController < ApplicationController
   before_action :set_relationship only: [:show, :update, :destroy]
   
   def index
-    render json: Relationship.all
+    render json: current_user.relationships
   end
 
   def show
@@ -11,8 +11,8 @@ class Api::RelationshipsController < ApplicationController
   end
 
   def create
-    relationship = Relationship.create(relationship_params)
-      if relationship.save
+    relationship = current_user.relationships.create(relationship_params)
+      if current_user.relationships.save
         render json: relationship
       else
         render json: { errors: relationship.errors.full_messages.join(',') }, status: 422
