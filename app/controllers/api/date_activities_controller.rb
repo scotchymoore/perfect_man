@@ -12,7 +12,7 @@ class Api::DateActivitiesController < ApplicationController
   end
 
   def create
-    food = @relationship.date_activity.create(date_activity_params)
+    date_activity = @relationship.date_activity.create(date_activity_params)
     if date_activity.save
       render json: date_activitiy
     else
@@ -20,14 +20,22 @@ class Api::DateActivitiesController < ApplicationController
     end
   end
 
-  def update
-    if @date_activity.update(complete: !@date_activity.complete)
-      render json: @date_activity
-    else
-      render_errors(@date_activity)
-    end
+def update
+    if @date_activity.update(date_activity_params)
+        render json: @date_activity
+      else
+        render json: { errors: @date_activity.errors.full_messages.join(',') }, status: 422
+      end
   end
 
+  # def update
+  #   if @date_activity.update(complete: !@date_activity.complete)
+  #     render json: @date_activity
+  #   else
+  #     render_errors(@date_activity)
+  #   end
+  # end
+  
   def destroy
     @date_activity.destroy
     render json: { message: 'Date_activity Deleted' }
