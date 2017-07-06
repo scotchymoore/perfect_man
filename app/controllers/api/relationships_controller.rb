@@ -34,7 +34,7 @@ class Api::RelationshipsController < ApplicationController
 private
 
   def relationship_params
-    params.require(:relationship).permit(:name, :dob, :place_of_birth, :misc, :flower, :anniversary,
+    params.require(:relationship).permit(:name, :dob, :pob, :misc, :flower, :annv,
     :first_date, :street, :city, :state, :zip, :top_size, :bottom_size, :shoe_size, :bust_size, :height)
   end
 
@@ -42,3 +42,4 @@ private
     @relationship = Relationship.find(params[:id])
   end
 end
+

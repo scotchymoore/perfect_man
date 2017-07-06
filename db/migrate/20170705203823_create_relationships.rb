@@ -3,10 +3,10 @@ class CreateRelationships < ActiveRecord::Migration[5.1]
     create_table :relationships do |t|
       t.string :name
       t.date :dob
-      t.string :place_of_birth
+      t.string :pob
       t.text :misc
       t.string :flower
-      t.date :anniversary
+      t.date :annv
       t.date :first_date
       t.string :street
       t.string :city
