@@ -11,6 +11,7 @@ import FetchUser from './FetchUser';
 import Food from './Food';
 import BucketList from './BucketList';
 import DateActivity from './DateActivity';
+import Relationship from './Relationship';
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route exact path='/food' component={Food} />
             <Route exact path='/bucketList' component={BucketList} />
             <Route exact path='/dateActivity' component={DateActivity} />
+            <Route exact path='/relationship' component={Relationship} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
