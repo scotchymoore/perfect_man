@@ -29,9 +29,9 @@ class DateActivityForm extends React.Component {
           name = "activity"
           placeholder = "date activity"
           value = {this.state.activity}
-          onChange ={this.handleInputChange}
+          onChange ={this.handleChange}
           />
-        
+        <button type="submit">Add Activity</button>
       </form>
     );
   }
