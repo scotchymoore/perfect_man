@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addFood? } from '../actions/foodActions?';
+import { addFood } from '../actions/food';
 
 class FoodForm extends React.Component {
-    state = { location: '', activity: '' }
+    state = { location: '', type: '', restaurant: '' }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const dateActivity= this.state;
-        this.props.dispatch(addDateActivity?(dateActivity));
+        const foodInfo= this.state;
+        this.props.dispatch(addFood(foodInfo));
     }
 
     handleChange = (e) => {
@@ -21,14 +21,20 @@ class FoodForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <input 
           name = "location"
-          placeholder="date location"
+          placeholder="location"
           value = {this.state.location}
           onChange ={this.handleChange}
           />
         <input
-          name = "activity"
-          placeholder = "date activity"
-          value = {this.state.activity}
+          name = "type"
+          placeholder = "food type"
+          value = {this.state.type}
+          onChange ={this.handleChange}
+          />
+          <input
+          name = "restaurant"
+          placeholder = "name of restaurant"
+          value = {this.state.restaurant}
           onChange ={this.handleChange}
           />
         <button type="submit">Add Activity</button>
@@ -36,4 +42,4 @@ class FoodForm extends React.Component {
     );
   }
 }
-export default connect()(FormForm);
+export default connect()(FoodForm);
