@@ -14,7 +14,7 @@ class NavBar extends Component {
         <Menu.Menu position='right'>
         <Dropdown item text='Categories'>
             <Dropdown.Menu>
-              <Dropdown.Item>Foods</Dropdown.Item>
+              <Link to="/Food"><Dropdown.Item>Foods</Dropdown.Item></Link>
               <Dropdown.Item>Bucket Lists</Dropdown.Item>
               <Dropdown.Item>Activities</Dropdown.Item>
             </Dropdown.Menu>
