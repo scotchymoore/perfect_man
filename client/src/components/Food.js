@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Header, Button, Segment, Form } from 'semantic-ui-react';
 
 class Food extends Component {
+  state = { restaurant: '', type: '', location: ''}
+
   render() {
     return(
       <Segment basic>

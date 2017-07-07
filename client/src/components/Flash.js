@@ -17,10 +17,10 @@ const Flash = ({ flash, dispatch }) => {
         id='alert'
         className={`alert alert-${flash.msgType}`}
         style={{ width: '90%', margin: '0 auto'}}
+        onClick={() => dispatch(clearFlash())}
       >
         { flash.message }
         { fadeFlash(dispatch) }
-        <Button onClick={ () => dispatch(clearFlash()) }> X </Button>
       </div>
     )
   } else {
