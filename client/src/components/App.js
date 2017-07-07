@@ -9,6 +9,8 @@ import ProtectedRoute from './ProtectedRoute';
 import { Switch, Route } from 'react-router-dom';
 import FetchUser from './FetchUser';
 import Food from './Food';
+import BucketList from './BucketList';
+import DateActivity from './DateActivity';
 
 class App extends Component {
   render() {
@@ -22,6 +24,8 @@ class App extends Component {
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/food' component={Food} />
+            <Route exact path='/bucketList' component={BucketList} />
+            <Route exact path='/dateActivity' component={DateActivity} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>

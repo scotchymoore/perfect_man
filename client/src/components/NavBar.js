@@ -15,8 +15,8 @@ class NavBar extends Component {
         <Dropdown item text='Categories'>
             <Dropdown.Menu>
               <Link to="/Food"><Dropdown.Item>Foods</Dropdown.Item></Link>
-              <Dropdown.Item>Bucket Lists</Dropdown.Item>
-              <Dropdown.Item>Activities</Dropdown.Item>
+              <Link to="/BucketList"><Dropdown.Item>Bucket Lists</Dropdown.Item></Link>
+              <Link to="/DateActivity"><Dropdown.Item>Date Activities</Dropdown.Item></Link>
             </Dropdown.Menu>
           </Dropdown>
           <Menu.Item
