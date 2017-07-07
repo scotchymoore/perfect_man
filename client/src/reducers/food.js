@@ -11,11 +11,11 @@ const foods = ( state = [], action ) => {
         else
           return language
       })
-    case 'DELETE_LANGUAGE':
+    case 'DELETE_FOOD':
       return state.filter( language => language.id !== action.id)
     default:
       return state;
   }
 }
 
-export default photos;
+export default foods;
