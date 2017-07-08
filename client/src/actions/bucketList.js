@@ -3,7 +3,7 @@ import { setFlash } from './flash';
 
 export const addBucketList = (bucketActivity) => {
   return(dispatch) => {
-    axios.post('/api/bucketList', { bucketActivity })
+    axios.post('/api/relationships/Rel ID ?/bucketList', { bucketActivity })
       .then( res => {
         dispatch({ type: 'ADD_BUCKETLIST', bucketList: res.data });
         dispatch(setFlash('Bucket List Item Created!', 'success'));
