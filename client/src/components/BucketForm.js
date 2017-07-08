@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addBucketActivity? } from '../actions/bucketActions?';
+import {  addBucketList } from '../actions/bucketList';
 
 class BucketActivityForm extends React.Component {
     state = { location: '', bucket_list_item: '' }
@@ -8,7 +8,7 @@ class BucketActivityForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const bucketActivity= this.state;
-        this.props.dispatch(addBucketActivity?(bucketActivity));
+        this.props.dispatch(addBucketList(bucketActivity));
     }
 
     handleChange = (e) => {

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Header, Button, Segment, Form } from 'semantic-ui-react';
-import { getBucketList } from '../actions/bucketList'
+import { getBucketList } from '../actions/bucketList';
+import BucketForm from './BucketForm';
 
 
 
@@ -21,7 +22,7 @@ componentDidMount() {
       <Segment basic>
         <Header as='h1' textAlign='center'>Bucket List</Header>
         <Segment basic textAlign='center'>
-        <
+        <BucketForm />
         </Segment>
       </Segment>
     )
