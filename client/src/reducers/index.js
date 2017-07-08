@@ -5,6 +5,7 @@ import flash from './flash'
 const rootReducer = combineReducers({
   user,
   flash,
+  food,
 })
 
 export default rootReducer
