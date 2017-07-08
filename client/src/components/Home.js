@@ -60,9 +60,10 @@ class Home extends Component {
           <Menu vertical
             style={style.menubox}
           >
-            <Menu.Item onClick={this.handleClick}>Javascript Link</Menu.Item>
-            <Menu.Item onClick={this.handleClick}>Javascript Link</Menu.Item>
-            <Menu.Item onClick={this.handleClick}>Javascript Link</Menu.Item>
+            <Link to="/Relationship"><Menu.Item onClick={this.handleClick}>Relationship Info</Menu.Item></Link>
+            <Link to="/Food"><Menu.Item onClick={this.handleClick}>Foods</Menu.Item></Link>
+            <Link to="/BucketList"><Menu.Item onClick={this.handleClick}>Bucket Lists</Menu.Item></Link>
+            <Link to="/DateActivity"><Menu.Item onClick={this.handleClick}>Date Activities</Menu.Item></Link>
           </Menu>
           </Segment>
           </Grid.Column>

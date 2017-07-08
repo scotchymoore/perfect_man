@@ -19,7 +19,7 @@ class DateActivityForm extends React.Component {
   render(){
     return(
       <form onSubmit={this.handleSubmit}>
-        <input 
+        <input
           name = "location"
           placeholder="date location"
           value = {this.state.location}
