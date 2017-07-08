@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { setFlash } from './flash';
 
-export const addBucketList = ({ bucket_list_item, location}) => {
+export const addBucketList = (bucketActivity) => {
   return(dispatch) => {
-    axios.post('/api/bucketList', { bucketList: { bucket_list_item, location } })
+    axios.post('/api/bucketList', { bucketActivity })
       .then( res => {
         dispatch({ type: 'ADD_BUCKETLIST', bucketList: res.data });
         dispatch(setFlash('Bucket List Item Created!', 'success'));
