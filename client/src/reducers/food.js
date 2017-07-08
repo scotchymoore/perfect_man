@@ -12,11 +12,7 @@ const foods = ( state = [], action ) => {
           return food
       })
     case 'DELETE_FOOD':
-<<<<<<< HEAD
-      return state.filter( language => language.id !== action.id)
-=======
       return state.filter( food => food.id !== action.id)
->>>>>>> actions and reducers
     default:
       return state;
   }
