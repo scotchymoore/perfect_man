@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 20170708155220) do
   create_table "date_activities", force: :cascade do |t|
     t.string "location"
     t.string "activity"
+    t.bigint "relationship_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["relationship_id"], name: "index_date_activities_on_relationship_id"
   end
 
   create_table "foods", force: :cascade do |t|
@@ -100,6 +102,7 @@ ActiveRecord::Schema.define(version: 20170708155220) do
   end
 
   add_foreign_key "bucket_lists", "relationships"
+  add_foreign_key "date_activities", "relationships"
   add_foreign_key "foods", "relationships"
   add_foreign_key "relationships", "users"
 end

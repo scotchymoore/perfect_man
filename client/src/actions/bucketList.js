@@ -40,7 +40,7 @@ export const deleteBucketList = (id) => {
   }
 }
 
-export const getBucketList = () => {
+export const getBucketList = (id) => {
   return(dispatch) => {
     axios.get('/api/bucketLists')
       .then( res => {
