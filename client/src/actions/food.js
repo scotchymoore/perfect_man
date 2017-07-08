@@ -5,8 +5,7 @@ export const addFood = ({ restaurant, type, location}) => {
   return(dispatch) => {
     axios.post('/api/food', { food: { restaurant, type, location } })
       .then( res => {
-        const { data: food, headers } = res;
-        dispatch({ type: 'ADD_FOOD', food, headers });
+        dispatch({ type: 'ADD_FOOD', food: res.data});
         dispatch(setFlash('Food Created!', 'success'));
       })
       .catch( res => {
@@ -15,12 +14,11 @@ export const addFood = ({ restaurant, type, location}) => {
   }
 }
 
-export const editFood = (id, food) => {
+export const editFood = (food) => {
   return(dispatch) => {
     axios.put(`/api/foods/${id}`, { food } )
       .then( res => {
-        const { data: food, headers } = res;
-        dispatch({ type: 'EDIT_FOOD', food, headers });
+        dispatch({ type: 'EDIT_FOOD', food: res.data });
         dispatch(setFlash('Food Edited!', 'success'));
       })
       .catch( res => {
@@ -33,7 +31,7 @@ export const deleteFood = (id) => {
   return(dispatch) => {
     axios.delete(`/api/foods/${id}`)
       .then( res => {
-        dispatch({ type: 'DELETE_FOOD', id, headers: res.headers });
+        dispatch({ type: 'DELETE_FOOD', id });
         dispatch(setFlash('Food Deleted!', 'success'));
       })
       .catch( res => {
@@ -46,8 +44,7 @@ export const getFood = () => {
   return(dispatch) => {
     axios.get('/api/foods')
       .then( res => {
-        const { data: foods, headers } = res;
-        dispatch({ type: 'SET_FOODS', languages, headers });
+        dispatch({ type: 'SET_FOODS', languages: res.data });
       })
       .catch( res => {
         dispatch(setFlash('Failed To Get Foods.', 'error'));
