@@ -10,7 +10,7 @@ export const registerUser = (email, password, passwordConfirmation, history) => 
         history.push('/');
       })
       .catch( res => {
-        const message = res.response.data.errors.join(',');
+        const message = res.response.data.errors.full_messages.join(',');
         dispatch(setFlash(message, 'error'));
     });
   }
@@ -40,9 +40,8 @@ export const handleLogin = (email, password, history) => {
         history.push('/');
       })
       .catch( res => {
-        console.log(res);
         // const message = res.response.data.errors.full_messages.join(',');
-        dispatch(setFlash('Failed to log in. Please try again.', 'error'));
+        dispatch(setFlash('failed to login. please try again', 'error'));
       })
   }
 }
@@ -52,7 +51,7 @@ export const validateToken = (cb = f => f) => {
     dispatch({ type: 'VALIDATE_TOKEN' })
     let headers = axios.defaults.headers.common
     axios.get('/api/auth/validate_token', headers)
-      .then( res => dispatch({ type: 'LOGIN', user: res.data}) )
+      .then( res => dispatch({ type: 'LOGIN', user: res.data.data }) )
       .catch(() => cb())
   }
 }

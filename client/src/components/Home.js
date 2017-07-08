@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Header, Image, Divider, Segment, Grid, Menu, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { handleUpload, fetchPhotos } from '../actions/photos';
+import { handleUpload } from '../actions/photos';
 import Dropzone from 'react-dropzone';
 
 const styles = {
@@ -26,10 +26,6 @@ const style = {
 
 class Home extends Component {
 
-  componentDidMount() {
-    this.props.dispatch(fetchPhotos());
-  }
-
   onDrop = (photos) => {
     this.props.dispatch(handleUpload(photos[0]));
   }
@@ -49,8 +45,8 @@ class Home extends Component {
                 style={styles.dropzone}
                 onDrop={this.onDrop}
               >
-               { this.props.photos[0] ?
-                 <Image src={this.props.photos[0].url} alt='wingman' /> :
+               { this.props.user.image ?
+                 <Image src={this.props.user.image} alt='wingman' /> :
                  <Header as='h4'> Click or Drop Photo</Header>
                }
               </Dropzone>
@@ -79,7 +75,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { photos: state.photos };
+  return { user: state.user };
 }
 
 export default connect(mapStateToProps)(Home);

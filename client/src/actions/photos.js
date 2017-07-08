@@ -15,16 +15,3 @@ export const handleUpload = (photo) => {
     });
   }
 }
-
-export const fetchPhotos = () => {
-  return(dispatch) => {
-    axios.get('/api/photos')
-      .then( res => {
-        dispatch({ type: 'SET_PHOTOS', photos: res.data });
-        dispatch(setFlash('Photos Loaded!', 'success'));
-      })
-      .catch( res => {
-        dispatch(setFlash('Error Loading Photos!', 'error'));
-    });
-  }
-}
