@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resources :bucket_lists
     end
 
+      resources :photos
+
   end
 
   #Do not place any routes below this one

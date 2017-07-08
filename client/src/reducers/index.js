@@ -3,12 +3,14 @@ import user from './user'
 import flash from './flash'
 import bucketLists from './bucketList'
 import food from './food'
+import photos from './photos'
 
 const rootReducer = combineReducers({
   user,
   flash,
   bucketLists,
   food,
+  photos,
 })
 
 export default rootReducer
