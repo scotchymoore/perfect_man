@@ -1,4 +1,4 @@
-onst relationships = ( state = [], action ) => {
+const relationships = ( state = [], action ) => {
   switch(action.type) {
     case 'ADD_RELATIONSHIP':
       return [action.relationship, ...state];

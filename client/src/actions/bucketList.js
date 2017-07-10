@@ -42,11 +42,7 @@ export const deleteBucketList = (id) => {
   }
 }
 
-<<<<<<< HEAD
 export const getBucketList = (relationship_id) => {
-=======
-export const getBucketList = (id) => {
->>>>>>> cdc58877321e66f3814cf1905e2040e6d7b27225
   return(dispatch) => {
     axios.get(`/api/relationships/${relationship_id}/bucket_lists`)
       .then( res => {

@@ -7,7 +7,7 @@ import activeRelationship from './activeRelationship';
 import relationship from './relationship';
 
 
-import photos from './photos'
+
 import dateActivity from './dateActivity'
 
 
@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
   food,
   activeRelationship,
   relationship,
-  photos,
+
   dateActivity
 })
 

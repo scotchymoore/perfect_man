@@ -5,23 +5,23 @@ import { setFlash } from './flash';
 //   return (dispatch) => {
 //     axios.get(`/api/relationships/${id}/date_activities`)
 //       .then( res => dispatch({ type: 'DATE_ACTIVITIES', dateActivities: res.data }) )
-  
+
 //   }
 // }
 // me and spence
 export const addDateActivities = (dateActivities) => {
   return(dispatch) => {
-    axios.post(`/api/relationship/${relationship.id}/dateActivities`, { dateActivity })
+    axios.post(`/api/dateActivities`, { dateActivities })
       .then( res => {
         dispatch({ type: 'ADD_DATEACTIVITY', dateActivity: res.data})
         dispatch(setFlash('Date Activity Item Created!', 'success'));
       })
       .catch( res => {
-        dispatch(setFlash('Date Activity Item Failed to Create!', 'error')); 
+        dispatch(setFlash('Date Activity Item Failed to Create!', 'error'));
     });
   }
 }
-// state never changes and you can never change state in component 
+// state never changes and you can never change state in component
 // action object
 // reducer puts in function to make a change in AudioContextState
 // prop comes down
@@ -29,7 +29,7 @@ export const addDateActivities = (dateActivities) => {
 export const editDateActivity = ( dateActivity ) => {
   return(dispatch) => {
     axios.put(`/api/dateActivities/${dateActivity.id}`, { dateActivity } )
-                                // interpolation 
+                                // interpolation
       .then( res => {
         dispatch({ type: 'EDIT_DATEACTIVITY', dateActivity: res.data });
         dispatch(setFlash('Date Activity List Item Edited!', 'success'));
@@ -56,16 +56,15 @@ export const deleteDateActivity = (id) => {
   }
 }
 
-export const setDateActivities = () => {
+export const setDateActivities = (relationship_id) => {
         //  or get
   return(dispatch) => {
-    axios.get(`/api/relationship/${relationship.id}/dateActivities`)
+    axios.get(`/api/relationships/${relationship_id}/dateActivities`)
       .then( res => {
         dispatch({ type: 'SET_DATEACTIVITY', dateActivities: res.data });
       })
       .catch( res => {
-        dipatch(setFlash('Failed To Get Date Activity Items.', 'error'));
-    });  
+        dispatch(setFlash('Failed To Get Date Activity Items.', 'error'));
+    });
   }
 }
-

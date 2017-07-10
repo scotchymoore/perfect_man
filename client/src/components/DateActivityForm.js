@@ -37,4 +37,4 @@ class DateActivityForm extends React.Component {
     );
   }
 }
-export default connect()(DateForm);
+export default connect()(DateActivityForm);

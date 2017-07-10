@@ -8,23 +8,23 @@ import { getFood } from '../actions/food';
 
 class Relationship extends Component {
 
-<<<<<<< HEAD
+
   componentDidMount=() => {
     this.props.dispatch(getBucketList(this.props.match.params.id))
     this.props.dispatch(getFood(this.props.match.params.id))
     // this.props.dispatch()
-=======
-  componentDidMount() {
-    //TODO dispatch action to get all users relationship
-    this.props.dispatch(getRelationships())
-
   }
+
+  // componentDidMount() {
+  //   //TODO dispatch action to get all users relationship
+  //   this.props.dispatch(getRelationships())
+  //
+  // }
 
   setRelationship = (id) => {
     let { relationships, dispatch } = this.props;
     let relationship = relationships.find( r => r.id === id )
     dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship })
->>>>>>> cdc58877321e66f3814cf1905e2040e6d7b27225
   }
 
   render() {
@@ -46,11 +46,4 @@ const mapStateToProps = (state, props) => {
   }
 }
 
-<<<<<<< HEAD
-=======
-const mapStateToProps = (state) => {
-  return { relationships: state.relationships}
-}
-
->>>>>>> cdc58877321e66f3814cf1905e2040e6d7b27225
 export default connect(mapStateToProps)(Relationship);
