@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addDateActivity? } from '../actions/dateActions?';
+import { addDateActivities } from '../actions/dateActivity';
+
 
 class DateActivityForm extends React.Component {
     state = { location: '', activity: '' }
@@ -8,7 +9,7 @@ class DateActivityForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const dateActivity= this.state;
-        this.props.dispatch(addDateActivity?(dateActivity));
+        this.props.dispatch(addDateActivities(dateActivity));
     }
 
     handleChange = (e) => {

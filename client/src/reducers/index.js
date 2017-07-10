@@ -7,6 +7,10 @@ import activeRelationship from './activeRelationship';
 import relationship from './relationship';
 
 
+import photos from './photos'
+import dateActivity from './dateActivity'
+
+
 const rootReducer = combineReducers({
   user,
   flash,
@@ -14,7 +18,8 @@ const rootReducer = combineReducers({
   food,
   activeRelationship,
   relationship,
-
+  photos,
+  dateActivity
 })
 
 export default rootReducer
