@@ -11,7 +11,7 @@ import { setFlash } from './flash';
 // me and spence
 export const addDateActivities = (dateActivities) => {
   return(dispatch) => {
-    axios.post('/api/relationships/Rel ID ?/dateActivities', { dateActivity })
+    axios.post(`/api/relationship/${relationship.id}/dateActivities`, { dateActivity })
       .then( res => {
         dispatch({ type: 'ADD_DATEACTIVITY', dateActivity: res.data})
         dispatch(setFlash('Date Activity Item Created!', 'success'));
@@ -59,7 +59,7 @@ export const deleteDateActivity = (id) => {
 export const setDateActivities = () => {
         //  or get
   return(dispatch) => {
-    axios.get('/api/dateActivities')
+    axios.get(`/api/relationship/${relationship.id}/dateActivities`)
       .then( res => {
         dispatch({ type: 'SET_DATEACTIVITY', dateActivities: res.data });
       })
