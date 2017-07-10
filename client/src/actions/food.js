@@ -16,7 +16,7 @@ export const addFood = ({ restaurant, type, location}) => {
 
 export const editFood = (food) => {
   return(dispatch) => {
-    axios.put(`/api/foods/${id}`, { food } )
+    axios.put(`/api//foods/${food.id}`, { food } )
       .then( res => {
         dispatch({ type: 'EDIT_FOOD', food: res.data });
         dispatch(setFlash('Food Edited!', 'success'));
@@ -40,11 +40,13 @@ export const deleteFood = (id) => {
   }
 }
 
-export const getFood = () => {
+
+export const getFood = (relationship_id) => {
   return(dispatch) => {
-    axios.get('/api/foods')
+    axios.get(`/api/relationships/${relationship_id}/foods`)
       .then( res => {
-        dispatch({ type: 'SET_FOODS', languages: res.data });
+        console.log(res.data)
+        dispatch({ type: 'SET_FOODS', foods: res.data });
       })
       .catch( res => {
         dispatch(setFlash('Failed To Get Foods.', 'error'));

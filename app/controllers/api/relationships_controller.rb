@@ -1,7 +1,7 @@
 class Api::RelationshipsController < ApplicationController
 
   before_action :set_relationship only: [:show, :update, :destroy]
-  
+
   def index
     render json: current_user.relationships
   end
@@ -42,4 +42,3 @@ private
     @relationship = Relationship.find(params[:id])
   end
 end
-
