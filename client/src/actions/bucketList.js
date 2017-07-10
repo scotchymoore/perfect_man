@@ -5,7 +5,9 @@ export const addBucketList = (bucketActivity) => {
   return(dispatch) => {
     axios.post('/api/relationships/Rel ID ?/bucketList', { bucketActivity })
       .then( res => {
+        // an ajax call to serverside
         dispatch({ type: 'ADD_BUCKETLIST', bucketList: res.data });
+        // dispatch(action) the action is an object. redux function
         dispatch(setFlash('Bucket List Item Created!', 'success'));
       })
       .catch( res => {

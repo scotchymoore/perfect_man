@@ -2,6 +2,7 @@ const bucketLists = ( state = [], action ) => {
   switch(action.type) {
     case 'ADD_BUCKETLIST':
       return [action.bucketList, ...state];
+      // setting the state. same as this.setState
     case 'SET_BUCKETLIST':
       return action.bucketLists;
     case 'EDIT_BUCKETLIST':
@@ -19,3 +20,8 @@ const bucketLists = ( state = [], action ) => {
 }
 
 export default bucketLists;
+
+// dispatch the action. It has a type and data(information)
+// type is mandatory.
+// second parameter is more information and it's optional.
+
