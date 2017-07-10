@@ -1,9 +1,9 @@
 class Api::BucketListsController < ApplicationController
-  before_action :set_bucket_list only: [ :show, :update, :destroy]
+  before_action :set_bucket_list, only: [ :show, :update, :destroy]
   before_action :set_relationship
 
   def index
-    render json: @relationship.bucket_list.all
+    render json: @relationship.bucket_lists.all
   end
 
   def show
@@ -35,7 +35,7 @@ class Api::BucketListsController < ApplicationController
   private
 
     def set_relationship
-
+      @relationship = Relationship.find(params[:relationship_id])
     end
 
     def set_bucket_list

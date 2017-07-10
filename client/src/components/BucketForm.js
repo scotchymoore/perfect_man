@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {  addBucketList } from '../actions/bucketList';
+import { addBucketList } from '../actions/bucketList';
+import { Button, Form } from 'semantic-ui-react';
 
 class BucketActivityForm extends React.Component {
     state = { location: '', bucket_list_item: '' }
@@ -18,21 +19,28 @@ class BucketActivityForm extends React.Component {
 
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
-        <input 
-          name = "location"
-          placeholder="location"
-          value = {this.state.location}
-          onChange ={this.handleChange}
-          />
-        <input
-          name = "bucket_list_item"
-          placeholder = "bucket list activity"
-          value = {this.state.bucket_list_item}
-          onChange ={this.handleChange}
-          />
-        <button type="submit">Add to the Bucket List!</button>
-      </form>
+      <Form>
+          <Form.Field>
+            <label>Bucket List Wish</label>
+            <input
+              placeholder='The Wish'
+              name='bucket_list_item'
+              value={this.state.bucketList}
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Location</label>
+            <input
+              placeholder='The Location'
+              name='location'
+              value={this.state.location}
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
+      </Form>
+
     );
   }
 }

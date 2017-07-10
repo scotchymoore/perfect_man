@@ -6,8 +6,11 @@ Rails.application.routes.draw do
       resources :date_activities
       resources :bucket_lists
     end
+    resources :date_activities
+    resources :bucket_lists
+    resources :foods
+    resources :photos
 
-      resources :photos
 
   end
 
