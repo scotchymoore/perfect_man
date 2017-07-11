@@ -13,6 +13,7 @@ import BucketList from './BucketList';
 import DateActivity from './DateActivity';
 import Relationship from './Relationship';
 import Relationships from './Relationships';
+import HomeIndex from './HomeIndex';
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
         <FetchUser>
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/homeIndex' component={HomeIndex} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/food' component={Food} />
