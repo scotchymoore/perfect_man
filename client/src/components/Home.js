@@ -4,6 +4,7 @@ import { Header, Image, Divider, Segment, Grid, Menu, Message } from 'semantic-u
 import { Link } from 'react-router-dom';
 import { handleUpload } from '../actions/photos';
 import Dropzone from 'react-dropzone';
+import HomeIndex from './HomeIndex';
 
 const styles = {
   dropzone: {
@@ -35,7 +36,9 @@ class Home extends Component {
   }
 
   render() {
-    return(
+
+    if(this.props.user.id) {
+      return(
     <div>
       <Segment basic textAlign='center'>
           <Header as='h2'>Wingman</Header>
@@ -70,9 +73,15 @@ class Home extends Component {
         </Grid>
       </Segment>
     </div>
-
-    );
+    )
+  } else {
+    return(
+      <div>
+        <HomeIndex />
+      </div>
+    )
   }
+}
 }
 
 const mapStateToProps = (state) => {

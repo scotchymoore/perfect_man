@@ -6,34 +6,40 @@ import { handleLogout } from '../actions/auth';
 import { withRouter } from 'react-router-dom';
 
 class NavBar extends Component {
+
   rightNavs = () => {
     const { user, dispatch, history } = this.props;
 
     if(user.id) {
       return(
-        <Menu.Menu position='right'>
-        <Dropdown item text='Categories'>
-            <Dropdown.Menu>
-              <Link to="/Relationship"><Dropdown.Item>Relationship Info</Dropdown.Item></Link>
-              <Link to="/Food"><Dropdown.Item>Foods</Dropdown.Item></Link>
-              <Link to="/BucketList"><Dropdown.Item>Bucket Lists</Dropdown.Item></Link>
-              <Link to="/DateActivity"><Dropdown.Item>Date Activities</Dropdown.Item></Link>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Menu.Item
-            name='Logout'
-            onClick={() => dispatch(handleLogout(history))}
-          />
+        <Menu>
+        <Menu.Menu position='left'>
+          <Link to='/'>
+            <Menu.Item name='home' />
+          </Link>
         </Menu.Menu>
+          <Menu.Menu position='right'>
+            <Dropdown item text='Categories'>
+              <Dropdown.Menu>
+                <Link to="/Relationship"><Dropdown.Item>Relationship Info</Dropdown.Item></Link>
+                <Link to="/Food"><Dropdown.Item>Foods</Dropdown.Item></Link>
+                <Link to="/BucketList"><Dropdown.Item>Bucket Lists</Dropdown.Item></Link>
+                <Link to="/DateActivity"><Dropdown.Item>Date Activities</Dropdown.Item></Link>
+              </Dropdown.Menu>
+            </Dropdown>
+            <Menu.Item
+              name='Logout'
+              onClick={() => dispatch(handleLogout(history))}
+            />
+          </Menu.Menu>
+
+        </Menu>
       );
     } else {
       return(
-        <Menu.Menu position='right'>
-          <Link to='/register'>
-            <Menu.Item name='Register' />
-          </Link>
-          <Link to='/login'>
-            <Menu.Item name='Login' />
+        <Menu.Menu position='left'>
+          <Link to='/HomeIndex'>
+            <Menu.Item name='home' />
           </Link>
         </Menu.Menu>
       );
@@ -44,9 +50,6 @@ class NavBar extends Component {
     return (
       <div>
         <Menu pointing secondary>
-          <Link to='/homeIndex'>
-            <Menu.Item name='home' />
-          </Link>
           { this.rightNavs() }
         </Menu>
       </div>
