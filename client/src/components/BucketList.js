@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Header, Button, Segment, Form } from 'semantic-ui-react';
-import { getBucketList } from '../actions/bucketList';
 import BucketForm from './BucketForm';
 
 
@@ -25,10 +24,10 @@ class BucketList extends Component {
         <Segment basic textAlign='center'>
         <BucketForm />
         <ul>
-          return(
+         
         {this.props.bucketLists.map((activity, i) => (
-              <li key={i} >{bucketList.bucket_list_item} </li>
-              ))})
+              <li key={i} >{activity.bucket_list_item} </li>
+              ))}
         </ul>
         </Segment>
       </Segment>

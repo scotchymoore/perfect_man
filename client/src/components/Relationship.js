@@ -5,15 +5,17 @@ import { Header, Button, Segment, Form } from 'semantic-ui-react';
 import RelationForm from './RelationForm'
 import { getBucketList } from '../actions/bucketList';
 import { getFood } from '../actions/food';
+import { getDateActivities } from '../actions/dateActivity';
 
 class Relationship extends Component {
 
 
   componentDidMount=() => {
+    
     const id = this.props.match.params.id 
     this.props.dispatch(getBucketList(id))
     this.props.dispatch(getFood(id))
-    this.props.dispatch(setDateActivities(id))
+    this.props.dispatch(getDateActivities(id))
   }
 
 
