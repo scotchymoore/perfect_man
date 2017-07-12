@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setFlash } from './flash';
 
 export const getRelationships = () => {
   return(dispatch) => {
@@ -9,4 +10,5 @@ export const getRelationships = () => {
       .catch( error => {
         dispatch(setFlash('Failed To Get Relationships.', 'error'));
     });
-  }
+  }  
+}  

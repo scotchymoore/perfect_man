@@ -3,7 +3,7 @@ class Api::FoodsController < ApplicationController
   before_action :set_food, only: [:update, :destroy]
 
   def index
-    render json: @relationship.food.all
+    render json: @relationship.foods.all
   end
 
   def show
@@ -30,7 +30,7 @@ class Api::FoodsController < ApplicationController
   def destroy
     @food.destroy
     render json: { message: 'Food Deleted' }
-
+  end
   private
     def set_relationship
       @relationship = Relationship.find(params[:relationship_id])

@@ -43,6 +43,7 @@ export const deleteBucketList = (id) => {
 }
 
 export const getBucketList = (relationship_id) => {
+  // console.log(relationship_id)
   return(dispatch) => {
     axios.get(`/api/relationships/${relationship_id}/bucket_lists`)
       .then( res => {

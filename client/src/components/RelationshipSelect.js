@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import getRelationships from '../actions/relationActions'
-import Redirect from 'react-router-dom'
-ß
+import { getRelationships } from '../actions/relationActions'
+import { withRouter } from 'react-router-dom'
+
+
 
 class RelationshipSelect extends Component {
   state = { id: '' } 
@@ -10,15 +11,15 @@ class RelationshipSelect extends Component {
   componentDidMount() {
     this.props.dispatch(getRelationships());
   }
-   handleChange(event) {
+   handleChange = (event) => {
+     debugger
     this.setState({id: event.target.value});
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
-   <Redirect to={{
-        pathname: `/relationship/{this.state.id}`,
-      }}/>
+    this.props.history.push(`/relationship/${this.state.id}`)
+
   }
 
   render() {
@@ -29,8 +30,8 @@ class RelationshipSelect extends Component {
           <select value={this.state.id} onChange={this.handleChange}>
             return (
               {this.props.relationships.map((relationship, i) => (
-              <option key={i}> {relationship.id} </option>
-              ))}ß
+              <option key={i} value={relationship.id} >{relationship.name} </option>
+              ))}
             );
           </select>
         </label>
@@ -43,4 +44,4 @@ class RelationshipSelect extends Component {
 const mapStateToProps = (state) => {
   return { relationships: state.relationships }
 }
-export default RelationshipSelect;   
+export default withRouter(connect(mapStateToProps)(RelationshipSelect));   
