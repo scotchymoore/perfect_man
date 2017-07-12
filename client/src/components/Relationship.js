@@ -13,6 +13,7 @@ class Relationship extends Component {
     const id = this.props.match.params.id 
     this.props.dispatch(getBucketList(id))
     this.props.dispatch(getFood(id))
+    this.props.dispatch(setDateActivities(id))
   }
 
 

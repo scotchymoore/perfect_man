@@ -11,14 +11,14 @@ class DateActivity extends Component {
       <Segment basic>
         <Header as='h1' textAlign='center'>Date Activities</Header>
         <DateActivityForm /> 
-        {/*<TopPlayers />*/}
+       
       </Segment>
     )
   }
 }
 
 export default connect()(DateActivity);
-
+//todo: map over date activities that are in the redux store and display them
 // date location name for that activity
 // 
 // 

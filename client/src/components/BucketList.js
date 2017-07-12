@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Header, Button, Segment, Form } from 'semantic-ui-react';
 import { getBucketList } from '../actions/bucketList';
 import BucketForm from './BucketForm';
-import RelationshipSelect from './RelationshipSelect';
+
 
 
 
@@ -23,8 +23,13 @@ class BucketList extends Component {
       <Segment basic>
         <Header as='h1' textAlign='center'>Bucket List</Header>
         <Segment basic textAlign='center'>
-        <RelationshipSelect />
         <BucketForm />
+        <ul>
+          return(
+        {this.props.bucketLists.map((activity, i) => (
+              <li key={i} >{bucketList.bucket_list_item} </li>
+              ))})
+        </ul>
         </Segment>
       </Segment>
     )

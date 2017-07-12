@@ -57,7 +57,6 @@ export const deleteDateActivity = (id) => {
 }
 
 export const setDateActivities = (relationship_id) => {
-        //  or get
   return(dispatch) => {
     axios.get(`/api/relationships/${relationship_id}/dateActivities`)
       .then( res => {

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { handleUpload } from '../actions/photos';
 import Dropzone from 'react-dropzone';
 import HomeIndex from './HomeIndex';
+import RelationshipSelect from './RelationshipSelect';
 
 const styles = {
   dropzone: {
@@ -56,6 +57,8 @@ class Home extends Component {
             </Grid.Column>
           </Grid>
       </Segment>
+
+      <RelationshipSelect />
       <Segment textAlign='center'>
         <Grid centered width={30}>
           <Grid.Column streched>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getRelationships } from '../actions/relationActions'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 
 
@@ -12,7 +12,6 @@ class RelationshipSelect extends Component {
     this.props.dispatch(getRelationships());
   }
    handleChange = (event) => {
-     debugger
     this.setState({id: event.target.value});
   }
 
@@ -24,10 +23,12 @@ class RelationshipSelect extends Component {
 
   render() {
     return (
+      <div>
       <form onSubmit={this.handleSubmit}>
         <label>
-          Select a relationship:
-          <select value={this.state.id} onChange={this.handleChange}>
+          Relationship:
+          <select value={this.state.id} onChange={this.handleChange}> 
+            <option>Choose a Relationship</option>
             return (
               {this.props.relationships.map((relationship, i) => (
               <option key={i} value={relationship.id} >{relationship.name} </option>
@@ -37,6 +38,8 @@ class RelationshipSelect extends Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
+     <h4>Please select a relationship from the dropdown above or create a new one <Link to='/relationshipForm'>HERE</Link> </h4>
+     </div>
     );
   }
   
