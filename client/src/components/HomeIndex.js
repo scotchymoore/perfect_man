@@ -6,30 +6,6 @@ import backgroundImage from '../assets/black-diamond-plate.jpg';
 
 
 
-
-class HomeIndex extends Component {
-
-  handleClick = () => {
-    this.setState({ message: 'onClick handled' })
-  }
-
-  render() {
-    return(
-
-      <Segment basic style={styles.main}>
-        <Header as='h1' textAlign='center'>Wingman</Header>
-        <Button.Group size='large'>
-          <Link to="/Login"><Button>Login</Button></Link>
-            <Button.Or />
-          <Link to="/Register"><Button>Register</Button></Link>
-        </Button.Group>
-
-      </Segment>
-
-    )
-  }
-}
-
 const styles = {
   main: {
     height: 640,
@@ -45,6 +21,49 @@ const styles = {
     justifyContent: 'center'
   },
 }
+
+const style = {
+  loginMenu: {
+      height: 'auto',
+      borderWidth: '2px',
+      borderRadius: '5px',
+      margin: '0 auto',
+    }
+}
+
+class HomeIndex extends Component {
+
+  handleClick = () => {
+    this.setState({ message: 'onClick handled' })
+  }
+
+  render() {
+    return(
+
+      <Segment basic textAlign='center' style={styles.main}>
+      <Header as='h1' textAlign='center'>Wingman</Header>
+        <Grid centered width={30}>
+          <Grid.Column streched>
+            <Segment basic textAlign='center'>
+              <Menu vertical
+                style={style.loginMenu}
+                >
+
+              <Button.Group size='large'>
+                <Link to="/Login"><Button>Login</Button></Link>
+                  <Button.Or />
+                <Link to="/Register"><Button>Register</Button></Link>
+              </Button.Group>
+            </Menu>
+              </Segment>
+          </Grid.Column>
+        </Grid>
+      </Segment>
+
+    )
+  }
+}
+
 
 const mapStateToProps = (state) => {
   return { user: state.user };
