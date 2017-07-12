@@ -10,9 +10,9 @@ class Relationship extends Component {
 
 
   componentDidMount=() => {
-    this.props.dispatch(getBucketList(this.props.match.params.id))
-    this.props.dispatch(getFood(this.props.match.params.id))
-    
+    const id = this.props.match.params.id 
+    this.props.dispatch(getBucketList(id))
+    this.props.dispatch(getFood(id))
   }
 
 
