@@ -1,6 +1,6 @@
 class Api::RelationshipsController < ApplicationController
 
-  before_action :set_relationship only: [:show, :update, :destroy]
+  before_action :set_relationship, only: [:show, :update, :destroy]
 
   def index
     render json: current_user.relationships

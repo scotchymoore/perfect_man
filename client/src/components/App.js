@@ -12,7 +12,6 @@ import Food from './Food';
 import BucketList from './BucketList';
 import DateActivity from './DateActivity';
 import Relationship from './Relationship';
-import Relationships from './Relationships';
 import HomeIndex from './HomeIndex';
 
 class App extends Component {
@@ -30,7 +29,6 @@ class App extends Component {
             <Route exact path='/food' component={Food} />
             <Route exact path='/bucketList' component={BucketList} />
             <Route exact path='/dateActivity' component={DateActivity} />
-            <Route exact path='/relationships' component={Relationships} />
             <Route exact path='/relationship/:id' component={Relationship} />
             <Route component={NoMatch} />
           </Switch>

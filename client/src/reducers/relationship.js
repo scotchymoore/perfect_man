@@ -2,7 +2,7 @@ const relationships = ( state = [], action ) => {
   switch(action.type) {
     case 'ADD_RELATIONSHIP':
       return [action.relationship, ...state];
-    case 'SET_RELATIONSHIP':
+    case 'SET_RELATIONSHIPS':
       return action.relationships;
     case 'EDIT_RELATIONSHIP':
       return state.map(relationship => {
