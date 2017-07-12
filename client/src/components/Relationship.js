@@ -12,20 +12,10 @@ class Relationship extends Component {
   componentDidMount=() => {
     this.props.dispatch(getBucketList(this.props.match.params.id))
     this.props.dispatch(getFood(this.props.match.params.id))
-    // this.props.dispatch()
+    
   }
 
-  // componentDidMount() {
-  //   //TODO dispatch action to get all users relationship
-  //   this.props.dispatch(getRelationships())
-  //
-  // }
 
-  setRelationship = (id) => {
-    let { relationships, dispatch } = this.props;
-    let relationship = relationships.find( r => r.id === id )
-    dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship })
-  }
 
   render() {
     this.props.bucketLists
@@ -33,7 +23,6 @@ class Relationship extends Component {
     return(
       <Segment basic>
         <Header as='h1' textAlign='center'>Important Information</Header>
-        <RelationForm />
       </Segment>
     )
   }
