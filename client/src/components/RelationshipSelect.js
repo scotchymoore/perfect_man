@@ -17,6 +17,9 @@ class RelationshipSelect extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    let activeRelationship = this.props.relationships.find( (r) => r.id == this.state.id )
+  
+    this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: activeRelationship } );
     this.props.history.push(`/relationship/${this.state.id}`)
 
   }

@@ -26,7 +26,7 @@ class BucketList extends Component {
         <ul>
          
         {this.props.bucketLists.map((activity, i) => (
-              <li key={i} >{activity.bucket_list_item} </li>
+              <li key={i} >{activity.location}, {activity.bucket_list_item} </li>
               ))}
         </ul>
         </Segment>

@@ -4,6 +4,7 @@ import flash from './flash'
 import bucketLists from './bucketList'
 import food from './food'
 import relationships from './relationship';
+import activeRelationship from './activeRelationship';
 
 
 
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   bucketLists,
   food,
   relationships,
-  dateActivity
+  dateActivity,
+  activeRelationship,
 })
 
 export default rootReducer
