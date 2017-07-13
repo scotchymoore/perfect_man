@@ -7,7 +7,7 @@
                                                state: Faker::Address.state, zip: Faker::Address.zip_code, top_size: "Med",
                                                bottom_size: '6', shoe_size: '7', bust_size: "34-C", height: "5'6")
     3.times do
-      relationship.bucket_lists.create!(location: Faker::SlackEmoji.travel_and_places, bucket_list_item: Faker::SlackEmoji.activity)
+      relationship.bucket_lists.create!(location: Faker::LordOfTheRings.location, bucket_list_item: Faker::Lorem.sentence)
     end
   end
 end
