@@ -23,7 +23,6 @@ class BucketList extends Component {
       <Segment basic>
         <Header as='h1' textAlign='center'>Bucket List</Header>
         <Segment basic textAlign='center'>
-        <RelationshipSelect />
         <BucketForm />
         <ul>
          

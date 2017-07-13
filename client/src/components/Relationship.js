@@ -11,17 +11,11 @@ class Relationship extends Component {
 
 
   componentDidMount=() => {
-<<<<<<< HEAD
-    const id = this.props.match.params.id 
-    this.props.dispatch(getBucketList(id))
-    this.props.dispatch(getFood(id))
-=======
     
     const id = this.props.match.params.id 
     this.props.dispatch(getBucketList(id))
     this.props.dispatch(getFood(id))
     this.props.dispatch(getDateActivities(id))
->>>>>>> relationships
   }
 
 
