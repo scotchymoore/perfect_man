@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Menu, Button, Dropdown } from 'semantic-ui-react'
+import { Menu, Button, Dropdown, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
 import { withRouter } from 'react-router-dom';
+import '../styles/navbar.css'
 
 class NavBar extends Component {
 
@@ -12,7 +13,7 @@ class NavBar extends Component {
 
     if(user.id) {
       return(
-        <Menu>
+        <Menu inverted>
         <Menu.Menu position='left'>
           <Link to='/'>
             <Menu.Item name='home' />
@@ -21,10 +22,10 @@ class NavBar extends Component {
           <Menu.Menu position='right'>
             <Dropdown item text='Categories'>
               <Dropdown.Menu>
-                <Link to="/Relationship"><Dropdown.Item>Relationship Info</Dropdown.Item></Link>
-                <Link to="/Food"><Dropdown.Item>Foods</Dropdown.Item></Link>
-                <Link to="/BucketList"><Dropdown.Item>Bucket Lists</Dropdown.Item></Link>
-                <Link to="/DateActivity"><Dropdown.Item>Date Activities</Dropdown.Item></Link>
+                <Link to="/Relationship"><Dropdown.Item style={{color: 'black'}}>Relationship Info</Dropdown.Item></Link>
+                <Link to="/Food"><Dropdown.Item style={{color: 'black'}}>Foods</Dropdown.Item></Link>
+                <Link to="/BucketList"><Dropdown.Item style={{color: 'black'}}>Bucket Lists</Dropdown.Item></Link>
+                <Link to="/DateActivity"><Dropdown.Item style={{color: 'black'}}>Date Activities</Dropdown.Item></Link>
               </Dropdown.Menu>
             </Dropdown>
             <Menu.Item
@@ -48,11 +49,11 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div>
-        <Menu pointing secondary>
+      <Segment inverted className='zero-margin'>
+        <Menu inverted pointing secondary>
           { this.rightNavs() }
         </Menu>
-      </div>
+      </Segment>
     )
   }
 }

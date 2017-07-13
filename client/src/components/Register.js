@@ -1,7 +1,25 @@
 import React, { Component } from 'react';
-import { Header, Form, Button, Segment } from 'semantic-ui-react';
+import { Header, Form, Button, Segment, Card } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { registerUser } from '../actions/auth';
+import backgroundImage from '../assets/black-diamond-plate.jpg';
+
+const styles = {
+  main: {
+    height: '100vh',
+    width: null,
+    background: `url(${backgroundImage}) no-repeat center center fixed`,
+    webkitBackgroundSize: 'cover',
+    mozBackgroundSize: 'cover',
+    oBackgroundSize: 'cover',
+    backgroundSize: 'cover',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginTop: '0px',
+  },
+}
 
 class Register extends Component {
   state = { email: '', password: '', passwordConfirmation: '' };
@@ -28,11 +46,12 @@ class Register extends Component {
     const { email, password, passwordConfirmation } = this.state;
 
     return(
-      <Segment basic>
-        <Header as='h1' textAlign='center'>Register Component</Header>
+      <Segment basic style={styles.main}>
+      <Card style={{background:'grey', borderColor:'black'}}>
+        <Header style={{color:'black'}} as='h1' textAlign='center'>Register</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
-            <label>Email</label>
+            <label style={{color:'black'}}>Email</label>
             <input
               id='email'
               placeholder='Email'
@@ -42,7 +61,7 @@ class Register extends Component {
             />
           </Form.Field>
           <Form.Field>
-            <label>Password</label>
+            <label style={{color:'black'}}>Password</label>
             <input
               id='password'
               placeholder='Password'
@@ -53,7 +72,7 @@ class Register extends Component {
             />
           </Form.Field>
           <Form.Field>
-            <label>Password Confirmation</label>
+            <label style={{color:'black'}}>Password Confirmation</label>
             <input
               id='passwordConfirmation'
               placeholder='Password Confirmation'
@@ -64,9 +83,10 @@ class Register extends Component {
             />
           </Form.Field>
           <Segment basic textAlign='center'>
-            <Button type='submit'>Submit</Button>
+            <Button basic inverted color='orange' type='submit'>Submit</Button>
           </Segment>
         </Form>
+        </Card>
       </Segment>
     );
   }

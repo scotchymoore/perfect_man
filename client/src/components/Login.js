@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
-import { Header, Segment, Form, Button } from 'semantic-ui-react';
+import { Header, Segment, Form, Button, Card } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { handleLogin } from '../actions/auth';
+import backgroundImage from '../assets/black-diamond-plate.jpg';
+
+const styles = {
+  main: {
+    height: '100vh',
+    width: null,
+    background: `url(${backgroundImage}) no-repeat center center fixed`,
+    webkitBackgroundSize: 'cover',
+    mozBackgroundSize: 'cover',
+    oBackgroundSize: 'cover',
+    backgroundSize: 'cover',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginTop: '0px',
+  },
+}
+
 
 class Login extends Component {
   state = { email: '', password: '' };
@@ -19,15 +38,18 @@ class Login extends Component {
     dispatch(handleLogin(email, password, history));
   }
 
+
+
   render() {
     const { email, password } = this.state;
 
     return(
-      <Segment basic>
-        <Header as='h1' textAlign='center'>Login</Header>
+      <Segment basic style={styles.main}>
+        <Card style={{background:'grey', borderColor:'black'}}>
+        <Header as='h1' style={{color:'black'}} textAlign='center'>Login</Header>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Field>
-            <label>Email</label>
+          <Form.Field >
+            <label style={{color:'black'}}>Email</label>
             <input
               autoFocus
               required
@@ -38,7 +60,7 @@ class Login extends Component {
             />
           </Form.Field>
           <Form.Field>
-            <label>Password</label>
+            <label style={{color:'black'}}>Email</label>
             <input
               required
               id='password'
@@ -49,9 +71,10 @@ class Login extends Component {
             />
           </Form.Field>
           <Segment textAlign='center' basic>
-            <Button primary type='submit'>Submit</Button>
+            <Button basic inverted color='orange' type='submit'>Submit</Button>
           </Segment>
         </Form>
+        </Card>
       </Segment>
     );
   }

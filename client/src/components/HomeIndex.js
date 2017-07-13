@@ -3,12 +3,11 @@ import { connect } from 'react-redux'
 import { Header, Image, Divider, Segment, Grid, Menu, Message, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import backgroundImage from '../assets/black-diamond-plate.jpg';
-
-
+import logo from '../assets/dogdodgebrand.jpeg';
 
 const styles = {
   main: {
-    height: 640,
+    height: '100vh',
     width: null,
     background: `url(${backgroundImage}) no-repeat center center fixed`,
     webkitBackgroundSize: 'cover',
@@ -18,16 +17,14 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: '0px',
   },
 }
 
 const style = {
   loginMenu: {
-      height: 'auto',
-      borderWidth: '2px',
-      borderRadius: '5px',
-      margin: '0 auto',
+
     }
 }
 
@@ -39,17 +36,16 @@ class HomeIndex extends Component {
 
   render() {
     return(
-
       <Segment basic textAlign='center' style={styles.main}>
-      <Header as='h1' textAlign='center'>Wingman</Header>
+      <Image src={logo} size='medium' />
         <Grid centered width={30}>
-          <Grid.Column streched>
+          <Grid.Column >
             <Segment basic textAlign='center'>
               <Menu vertical
                 style={style.loginMenu}
                 >
 
-              <Button.Group size='large'>
+              <Button.Group inverted size='large'>
                 <Link to="/Login"><Button>Login</Button></Link>
                   <Button.Or />
                 <Link to="/Register"><Button>Register</Button></Link>
@@ -59,7 +55,6 @@ class HomeIndex extends Component {
           </Grid.Column>
         </Grid>
       </Segment>
-
     )
   }
 }
