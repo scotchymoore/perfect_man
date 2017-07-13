@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Header, Button, Segment, Form } from 'semantic-ui-react';
-import { getBucketList } from '../actions/bucketList';
 import BucketForm from './BucketForm';
 import RelationshipSelect from './RelationshipSelect';
+
 
 
 
@@ -25,6 +25,12 @@ class BucketList extends Component {
         <Segment basic textAlign='center'>
         <RelationshipSelect />
         <BucketForm />
+        <ul>
+         
+        {this.props.bucketLists.map((activity, i) => (
+              <li key={i} >{activity.location}, {activity.bucket_list_item} </li>
+              ))}
+        </ul>
         </Segment>
       </Segment>
     )

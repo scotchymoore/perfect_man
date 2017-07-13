@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { setFlash } from './flash';
 
-export const addBucketList = (bucketActivity) => {
+export const addBucketList = (bucket_list, id) => {
   return(dispatch) => {
-    axios.post('/api/relationships/Rel ID ?/bucketList', { bucketActivity })
+    axios.post(`/api/relationships/${id}/bucket_lists`, { bucket_list })
       .then( res => {
         // an ajax call to serverside
         dispatch({ type: 'ADD_BUCKETLIST', bucketList: res.data });

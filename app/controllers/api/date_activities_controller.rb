@@ -4,7 +4,8 @@ class Api::DateActivitiesController < ApplicationController
   before_action :set_date_activity, only: [:update, :destroy]
 
   def index
-    render json: @relationship.date_activity.all
+    
+    render json: @relationship.date_activities.all
   end
 
   def show
@@ -12,7 +13,7 @@ class Api::DateActivitiesController < ApplicationController
   end
 
   def create
-    date_activity = @relationship.date_activity.create(date_activity_params)
+    date_activity = @relationship.date_activies.create(date_activity_params)
     if date_activity.save
       render json: date_activitiy
     else
@@ -20,7 +21,7 @@ class Api::DateActivitiesController < ApplicationController
     end
   end
 
-def update
+  def update
     if @date_activity.update(date_activity_params)
         render json: @date_activity
       else
@@ -39,6 +40,7 @@ def update
   def destroy
     @date_activity.destroy
     render json: { message: 'Date_activity Deleted' }
+  end
 
   private
     def set_relationship

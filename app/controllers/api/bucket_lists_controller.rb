@@ -11,7 +11,7 @@ class Api::BucketListsController < ApplicationController
   end
 
   def create
-    bucket_list = @relationship.bucket_list.create(bucket_list_params)
+    bucket_list = @relationship.bucket_lists.create(bucket_list_params)
       if bucket_list.save
         render json: bucket_list
       else

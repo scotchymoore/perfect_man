@@ -1,13 +1,6 @@
 import axios from 'axios';
 import { setFlash } from './flash';
 
-// export const getDateActivities = (id) => {
-//   return (dispatch) => {
-//     axios.get(`/api/relationships/${id}/date_activities`)
-//       .then( res => dispatch({ type: 'DATE_ACTIVITIES', dateActivities: res.data }) )
-
-//   }
-// }
 // me and spence
 export const addDateActivities = (dateActivities) => {
   return(dispatch) => {
@@ -56,12 +49,11 @@ export const deleteDateActivity = (id) => {
   }
 }
 
-export const setDateActivities = (relationship_id) => {
-        //  or get
+export const getDateActivities = (relationship_id) => {
   return(dispatch) => {
-    axios.get(`/api/relationships/${relationship_id}/dateActivities`)
+    axios.get(`/api/relationships/${relationship_id}/date_activities`)
       .then( res => {
-        dispatch({ type: 'SET_DATEACTIVITY', dateActivities: res.data });
+        dispatch({ type: 'DATE_ACTIVITIES', dateActivities: res.data });
       })
       .catch( res => {
         dispatch(setFlash('Failed To Get Date Activity Items.', 'error'));

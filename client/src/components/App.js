@@ -13,6 +13,7 @@ import BucketList from './BucketList';
 import DateActivity from './DateActivity';
 import Relationship from './Relationship';
 import HomeIndex from './HomeIndex';
+import RelationForm from './RelationForm';
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
             <Route exact path='/bucketList' component={BucketList} />
             <Route exact path='/dateActivity' component={DateActivity} />
             <Route exact path='/relationship/:id' component={Relationship} />
+            <Route exact path='/relationshipForm' component={RelationForm} />
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>

@@ -8,8 +8,9 @@ class BucketActivityForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const bucketActivity= this.state;
-        this.props.dispatch(addBucketList(bucketActivity));
+        let bucketActivity= this.state;
+        let id = this.props.relationshipId;
+        this.props.dispatch(addBucketList(bucketActivity, id));
     }
 
     handleChange = (e) => {
@@ -44,4 +45,8 @@ class BucketActivityForm extends React.Component {
     );
   }
 }
-export default connect()(BucketActivityForm);
+
+const mapStateToProps = (state) => {
+  return { relationshipId: state.activeRelationship.id }
+}
+export default connect(mapStateToProps)(BucketActivityForm);
