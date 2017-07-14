@@ -1,6 +1,7 @@
 class Api::BucketListsController < ApplicationController
-  before_action :set_bucket_list, only: [ :show, :update, :destroy]
   before_action :set_relationship
+  before_action :set_bucket_list, only: [ :show, :update, :destroy]
+  
 
   def index
     render json: @relationship.bucket_lists.all
@@ -29,7 +30,6 @@ class Api::BucketListsController < ApplicationController
 
   def destroy
     @bucket_list.destroy
-    render json: {message: 'Item Deleted'}
   end
 
   private
@@ -39,7 +39,7 @@ class Api::BucketListsController < ApplicationController
     end
 
     def set_bucket_list
-      @bucket_list = relationship.bucket_list.find(params[:id])
+      @bucket_list = @relationship.bucket_lists.find(params[:id])
     end
 
     def bucket_list_params

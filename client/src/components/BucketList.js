@@ -4,19 +4,11 @@ import { connect } from 'react-redux';
 import { Header, Button, Segment, Form } from 'semantic-ui-react';
 import BucketForm from './BucketForm';
 import RelationshipSelect from './RelationshipSelect';
-
-
+import { deleteBucketList } from '../actions/bucketList';
+import { Card, Image } from 'semantic-ui-react'
 
 
 class BucketList extends Component {
-
-  // state that return or false
-  // function to run when button is clicked to update state
-  //
-// componentDidMount() {
-//   this.props.dispatch(getBucketList());
-// }
-
 
   render() {
     return(
@@ -24,20 +16,36 @@ class BucketList extends Component {
         <Header as='h1' textAlign='center'>Bucket List</Header>
         <Segment basic textAlign='center'>
         <BucketForm />
-        <ul>
+        <Card.Group>
          
         {this.props.bucketLists.map((activity, i) => (
-              <li key={i} >{activity.location}, {activity.bucket_list_item} </li>
+          <Card key={i}>
+            <Card.Content>
+              <Card.Header>
+                {activity.bucket_list_item}
+              </Card.Header>
+              <Card.Meta>
+                {activity.location}
+              </Card.Meta>
+              </Card.Content>
+              <Card.Content extra>
+                <div className='ui two buttons'>
+                  <Button onClick={ () => this.props.dispatch(deleteBucketList(this.props.relationshipID, activity.id))} basic color='red'>Delete</Button>
+                </div>
+            </Card.Content>
+          </Card>
               ))}
-        </ul>
+     </Card.Group>
+
         </Segment>
       </Segment>
     )
   }
 }
 const mapStateToProps = (state) => {
-  const bucketLists = state.bucketLists
-  return{ bucketLists }
+  return{ bucketLists: state.bucketLists,
+          relationshipID: state.activeRelationship.id
+  }
 }
 
 export default connect(mapStateToProps)(BucketList);

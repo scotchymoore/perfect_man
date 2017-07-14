@@ -5,12 +5,10 @@ export const addBucketList = (bucket_list, id) => {
   return(dispatch) => {
     axios.post(`/api/relationships/${id}/bucket_lists`, { bucket_list })
       .then( res => {
-        // an ajax call to serverside
-        dispatch({ type: 'ADD_BUCKETLIST', bucketList: res.data });
-        // dispatch(action) the action is an object. redux function
+       dispatch({ type: 'ADD_BUCKETLIST', bucketList: res.data });
         dispatch(setFlash('Bucket List Item Created!', 'success'));
       })
-      .catch( res => {
+      .catch( () => {
         dispatch(setFlash('Bucket List Item Failed To Create!', 'error'));
     });
   }
@@ -29,16 +27,15 @@ export const editBucketList = ( bucketList) => {
   }
 }
 
-export const deleteBucketList = (id) => {
+export const deleteBucketList = (relationship_id, id) => {
   return(dispatch) => {
-    axios.delete(`/api/bucketLists/${id}`)
-      .then( res => {
+    axios.delete(`/api/relationships/${relationship_id}/bucket_lists/${id}`)
+      .then( () => {
         dispatch({ type: 'DELETE_BUCKETLIST', id });
-        dispatch(setFlash('Bucket List Item Deleted!', 'success'));
       })
       .catch( res => {
-        dispatch(setFlash('Bucket List Item Failed To Delete!', 'error'));
-    });
+        dispatch(setFlash('Failed To Delete Bucket List Items.', 'error'))
+      });
   }
 }
 
@@ -47,7 +44,6 @@ export const getBucketList = (relationship_id) => {
   return(dispatch) => {
     axios.get(`/api/relationships/${relationship_id}/bucket_lists`)
       .then( res => {
-        console.log(res.data)
         dispatch({ type: 'SET_BUCKETLIST', bucketLists: res.data });
       })
       .catch( res => {

@@ -24,7 +24,7 @@ class RelationForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const relationInfo= this.state;
-//        this.props.dispatch(addRelationship(relationInfo));
+      //  this.props.dispatch(addRelationship(relationInfo));
     }
 
     handleChange = (e) => {

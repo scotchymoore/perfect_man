@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getRelationships } from '../actions/relationActions'
 import { withRouter, Link } from 'react-router-dom'
+import { getBucketList } from '../actions/bucketList';
+import { getFood } from '../actions/food';
+import { getDateActivities } from '../actions/dateActivity';
 
 
 
@@ -17,9 +20,11 @@ class RelationshipSelect extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let activeRelationship = this.props.relationships.find( (r) => r.id == this.state.id )
-  
+    let activeRelationship = this.props.relationships.find( (r) => r.id == this.state.id );
     this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: activeRelationship } );
+    this.props.dispatch(getBucketList(this.state.id))
+    this.props.dispatch(getFood(this.state.id))
+    this.props.dispatch(getDateActivities(this.state.id))
     this.props.history.push(`/relationship/${this.state.id}`)
 
   }
