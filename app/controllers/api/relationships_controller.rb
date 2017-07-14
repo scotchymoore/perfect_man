@@ -12,7 +12,7 @@ class Api::RelationshipsController < ApplicationController
 
   def create
     relationship = current_user.relationships.create(relationship_params)
-      if current_user.relationships.save
+      if relationship.save
         render json: relationship
       else
         render json: { errors: relationship.errors.full_messages.join(',') }, status: 422
