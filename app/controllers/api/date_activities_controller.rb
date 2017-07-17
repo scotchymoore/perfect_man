@@ -1,10 +1,8 @@
 class Api::DateActivitiesController < ApplicationController
-
   before_action :set_relationship
-  before_action :set_date_activity, only: [:update, :destroy]
+  before_action :set_date_activity, only: [:show, :update, :destroy]
 
   def index
-    
     render json: @relationship.date_activities.all
   end
 
@@ -13,11 +11,11 @@ class Api::DateActivitiesController < ApplicationController
   end
 
   def create
-    date_activity = @relationship.date_activies.create(date_activity_params)
+    date_activity = @relationship.date_activities.create(date_activity_params)
     if date_activity.save
-      render json: date_activitiy
+      render json: date_activity
     else
-      render_errors(date_activity)
+      render json: { errors: date_activity.errors.full_messages.join(',') }, status: 422
     end
   end
 
@@ -36,22 +34,21 @@ class Api::DateActivitiesController < ApplicationController
   #     render_errors(@date_activity)
   #   end
   # end
-  
+
   def destroy
     @date_activity.destroy
-    render json: { message: 'Date_activity Deleted' }
   end
 
   private
     def set_relationship
       @relationship = Relationship.find(params[:relationship_id])
     end
-    
+
     def set_date_activity
-      @date_activitiy = Date_activity.find(params[:id])
+      @date_activity = @relationship.date_activity.find(params[:id])
     end
 
     def date_activity_params
-      params.require(:date_activity).permit(:type, :complete)
+      params.require(:date_activity).permit(:activity, :location)
     end
 end
