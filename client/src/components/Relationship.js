@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Header, Button, Segment, Form, Grid, Icon } from 'semantic-ui-react';
+import { Header, Button, Segment, Form, Grid, Icon, List } from 'semantic-ui-react';
 import RelationForm from './RelationForm'
 
 class Relationship extends Component {
 
   render() {
+    let {name, dob, pob, misc, flower,
+         annv, first_date: firstDate, street, city, state,
+         zip, top_size: topSize, bottom_size: bottomSize, 
+         bust_size: bustSize, shoe_size: shoeSize, height }
+    = this.props.activeRelationship;
+
     return(
       <div>
       <Header as='h1' textAlign='center'>Relationship Info</Header>
@@ -14,20 +20,117 @@ class Relationship extends Component {
         <Grid.Row>
          <Grid.Column>
            <Segment>
-             Personal
-
+              <Header as='h2'>
+                <Icon name='id card outline' />
+                  <Header.Content>
+                    Personal
+                  </Header.Content>
+              </Header>
+               <List>
+                <List.Item>
+                  <List.Header>Name</List.Header>
+                  {name}
+                </List.Item>
+                <List.Item>
+                  <List.Header>Place of Birth</List.Header>
+                  {pob}
+                </List.Item>
+                <List.Item>
+                  <List.Header>Favorite Flower</List.Header>
+                  {flower}                  
+                </List.Item>
+                <List.Item>
+                  <List.Header>Misc important things</List.Header>
+                  {misc}                 
+                </List.Item>
+              </List>
            </Segment>
           </Grid.Column>
           <Grid.Column>
-            <Segment>Clothes</Segment>
+            <Segment>
+                <Header as='h2'>
+                <Icon name='female' />
+                  <Header.Content>
+                    Clothes
+                  </Header.Content>
+              </Header>
+              <List>
+                <List.Item>
+                  <List.Header>Top Size</List.Header>
+                  {topSize}
+                </List.Item>
+                <List.Item>
+                  <List.Header>Dress/Pant Size</List.Header>
+                  {bottomSize}
+                </List.Item>
+                <List.Item>
+                  <List.Header>Shoe Size</List.Header>
+                  {shoeSize}                  
+                </List.Item>
+                <List.Item>
+                  <List.Header>Bust Size</List.Header>
+                  {bustSize}                 
+                </List.Item>
+                <List.Item>
+                  <List.Header>Height</List.Header>
+                  {height}                 
+                </List.Item>
+              </List>
+            </Segment>
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
         <Grid.Column>
-          <Segment>Important Dates</Segment>
+          <Segment>
+              <Header as='h2'>
+                <Icon name='calendar' />
+                  <Header.Content>
+                    Important Dates
+                  </Header.Content>
+              </Header>
+              <List>
+                <List.Item>
+                  <List.Header>Birthday</List.Header>
+                  {dob}
+                </List.Item>
+                <List.Item>
+                  <List.Header>Anniversary</List.Header>
+                  {annv}
+                </List.Item>
+                <List.Item>
+                  <List.Header>First Date</List.Header>
+                  {firstDate}                  
+                </List.Item>
+              </List>
+          </Segment>
         </Grid.Column>
         <Grid.Column>
-          <Segment>Address</Segment>
+          <Segment>
+              <Header as='h2'>
+                <Icon name='home' />
+                  <Header.Content>
+                    Address
+                  </Header.Content>
+              </Header>
+              <List>
+                <List.Item>
+                  <List.Header>Street</List.Header>
+                  {street}
+                </List.Item>
+                <List.Item>
+                  <List.Header>City</List.Header>
+                  {city}
+                </List.Item>
+                <List.Item>
+                  <List.Header>State</List.Header>
+                  {state}                  
+                </List.Item>
+                <List.Item>
+                  <List.Header>Zip</List.Header>
+                  {zip}                  
+                </List.Item>
+              </List>  
+          </Segment>
         </Grid.Column>
       </Grid.Row>
      </Grid>
