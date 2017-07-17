@@ -66,10 +66,10 @@ class Home extends Component {
           <Menu vertical
             style={style.menubox}
           >
-            <Link to="/Relationship"><Menu.Item onClick={this.handleClick}>Relationship Info</Menu.Item></Link>
-            <Link to="/Food"><Menu.Item onClick={this.handleClick}>Foods</Menu.Item></Link>
-            <Link to="/BucketList"><Menu.Item onClick={this.handleClick}>Bucket Lists</Menu.Item></Link>
-            <Link to="/DateActivity"><Menu.Item onClick={this.handleClick}>Date Activities</Menu.Item></Link>
+            <Link to={`/relationship/${this.props.relationshipID}`}><Menu.Item onClick={this.handleClick}>Relationship Info</Menu.Item></Link>
+            <Link to="/food"><Menu.Item onClick={this.handleClick}>Foods</Menu.Item></Link>
+            <Link to="/bucketList"><Menu.Item onClick={this.handleClick}>Bucket Lists</Menu.Item></Link>
+            <Link to="/dateActivity"><Menu.Item onClick={this.handleClick}>Date Activities</Menu.Item></Link>
           </Menu>
           </Segment>
           </Grid.Column>
@@ -88,7 +88,9 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.user };
+  return { user: state.user,
+    relationshipID: state.activeRelationship.id
+  }
 }
 
 export default connect(mapStateToProps)(Home);
