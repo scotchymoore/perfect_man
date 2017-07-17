@@ -2,9 +2,9 @@ import axios from 'axios';
 import { setFlash } from './flash';
 
 // me and spence
-export const addDateActivities = (dateActivities) => {
+export const addDateActivities = (date_activity, id) => {
   return(dispatch) => {
-    axios.post(`/api/dateActivities`, { dateActivities })
+    axios.post(`/api/relationships/${id}/date_activities`, { date_activity })
       .then( res => {
         dispatch({ type: 'ADD_DATEACTIVITY', dateActivity: res.data})
         dispatch(setFlash('Date Activity Item Created!', 'success'));
@@ -21,7 +21,7 @@ export const addDateActivities = (dateActivities) => {
 
 export const editDateActivity = ( dateActivity ) => {
   return(dispatch) => {
-    axios.put(`/api/dateActivities/${dateActivity.id}`, { dateActivity } )
+    axios.put(`/api/date_activities/${dateActivity.id}`, { dateActivity } )
                                 // interpolation
       .then( res => {
         dispatch({ type: 'EDIT_DATEACTIVITY', dateActivity: res.data });
@@ -38,7 +38,7 @@ export const editDateActivity = ( dateActivity ) => {
 
 export const deleteDateActivity = (id) => {
   return(dispatch) => {
-    axios.delete(`/api/dateActivities/${id}`)
+    axios.delete(`/api/date_activities/${id}`)
       .then( res => {
         dispatch({ type: 'DELETE_DATEACTIVITY', id });
         dispatch(setFlash('Date Activity List Item Deleted!', 'success'));

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { setFlash } from './flash';
 
-export const addFood = ({ restaurant, type, location}) => {
+export const addFood = (food, id) => {
   return(dispatch) => {
-    axios.post('/api/food', { food: { restaurant, type, location } })
+    axios.post(`/api/relationships/${id}/foods`, { food })
       .then( res => {
         dispatch({ type: 'ADD_FOOD', food: res.data});
         dispatch(setFlash('Food Created!', 'success'));
@@ -27,9 +27,9 @@ export const editFood = (food) => {
   }
 }
 
-export const deleteFood = (id) => {
+export const deleteFood = (relationship_id, id) => {
   return(dispatch) => {
-    axios.delete(`/api/foods/${id}`)
+    axios.delete(`/api/relationships/${relationship_id}/foods/${id}`)
       .then( res => {
         dispatch({ type: 'DELETE_FOOD', id });
         dispatch(setFlash('Food Deleted!', 'success'));

@@ -1,6 +1,6 @@
 class Api::FoodsController < ApplicationController
   before_action :set_relationship
-  before_action :set_food, only: [:update, :show :destroy]
+  before_action :set_food, only: [:update, :show, :destroy]
 
   def index
     render json: @relationship.foods.all
@@ -40,6 +40,6 @@ class Api::FoodsController < ApplicationController
     end
 
     def food_params
-      params.require(:food).permit(:restaurant, :location, :type)
+      params.require(:food).permit(:restaurant, :location, :food_type)
     end
 end

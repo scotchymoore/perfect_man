@@ -40,12 +40,12 @@ class Api::DateActivitiesController < ApplicationController
   end
 
   private
-    def set_relationship
-      @relationship = Relationship.find(params[:relationship_id])
-    end
+  def set_relationship
+    @relationship = Relationship.find(params[:relationship_id])
+  end
 
     def set_date_activity
-      @date_activity = @relationship.date_activity.find(params[:id])
+      @date_activity = @relationship.date_activities.find(params[:id])
     end
 
     def date_activity_params

@@ -8,8 +8,9 @@ class DateActivityForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const dateActivity= this.state;
-        this.props.dispatch(addDateActivities(dateActivity));
+        let dateActivity= this.state;
+        let id = this.props.relationshipId;
+        this.props.dispatch(addDateActivities(dateActivity, id));
     }
 
     handleChange = (e) => {
@@ -37,4 +38,8 @@ class DateActivityForm extends React.Component {
     );
   }
 }
-export default connect()(DateActivityForm);
+
+const mapStateToProps = (state) => {
+  return { relationshipId: state.activeRelationship.id }
+}
+export default connect(mapStateToProps)(DateActivityForm);
