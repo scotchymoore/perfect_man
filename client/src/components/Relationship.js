@@ -3,9 +3,18 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Header, Button, Segment, Form, Grid, Icon, List } from 'semantic-ui-react';
 import RelationForm from './RelationForm'
+import { deleteRelationship } from '../actions/relationActions'
 
 class Relationship extends Component {
-
+  burnItWithFire =(id) => {
+    //deletefunction
+    this.props.dispatch(deleteRelationship(id));
+    //reset active relationship
+    let clearRelationship = {}
+    this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: clearRelationship } );
+    //push back to home.
+    this.props.history.push(`/`)
+  }
   render() {
     let {name, dob, pob, misc, flower,
          annv, first_date: firstDate, street, city, state,
@@ -134,6 +143,8 @@ class Relationship extends Component {
         </Grid.Column>
       </Grid.Row>
      </Grid>
+     <hr/>
+     <Button onClick={ () => this.burnItWithFire(this.props.activeRelationship.id)} basic color='red'>Delete</Button>
      </div>
     )
   }
