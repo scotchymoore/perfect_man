@@ -46,10 +46,10 @@ ActiveRecord::Schema.define(version: 20170710204947) do
   create_table "relationships", force: :cascade do |t|
     t.string "name"
     t.date "dob"
-    t.string "pob"
+    t.string "place_of_birth"
     t.text "misc"
     t.string "flower"
-    t.date "annv"
+    t.date "anniversary"
     t.date "first_date"
     t.string "street"
     t.string "city"
