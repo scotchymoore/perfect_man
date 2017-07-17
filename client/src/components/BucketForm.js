@@ -11,6 +11,7 @@ class BucketActivityForm extends React.Component {
         let bucketActivity= this.state;
         let id = this.props.relationshipId;
         this.props.dispatch(addBucketList(bucketActivity, id));
+        this.setState({ location: '', bucket_list_item: '' })
     }
 
     handleChange = (e) => {
@@ -26,7 +27,7 @@ class BucketActivityForm extends React.Component {
             <input
               placeholder='The Wish'
               name='bucket_list_item'
-              value={this.state.bucketList}
+              value={this.state.bucket_list_item}
               onChange={this.handleChange}
             />
           </Form.Field>

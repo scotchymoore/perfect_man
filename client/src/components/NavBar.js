@@ -22,10 +22,10 @@ class NavBar extends Component {
           <Menu.Menu position='right'>
             <Dropdown item text='Categories'>
               <Dropdown.Menu>
-                <Link to="/Relationship"><Dropdown.Item style={{color: 'black'}}>Relationship Info</Dropdown.Item></Link>
-                <Link to="/Food"><Dropdown.Item style={{color: 'black'}}>Foods</Dropdown.Item></Link>
-                <Link to="/BucketList"><Dropdown.Item style={{color: 'black'}}>Bucket Lists</Dropdown.Item></Link>
-                <Link to="/DateActivity"><Dropdown.Item style={{color: 'black'}}>Date Activities</Dropdown.Item></Link>
+                <Link to={`/relationship/${this.props.relationshipId}`}><Dropdown.Item style={{color: 'black'}}>Relationship Info</Dropdown.Item></Link>
+                <Link to="/food"><Dropdown.Item style={{color: 'black'}}>Foods</Dropdown.Item></Link>
+                <Link to="/bucketList"><Dropdown.Item style={{color: 'black'}}>Bucket Lists</Dropdown.Item></Link>
+                <Link to="/dateActivity"><Dropdown.Item style={{color: 'black'}}>Date Activities</Dropdown.Item></Link>
               </Dropdown.Menu>
             </Dropdown>
             <Menu.Item
@@ -59,7 +59,8 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.user }
+  return { user: state.user,
+           relationshipId: state.activeRelationship.id }
 }
 
 export default withRouter(connect(mapStateToProps)(NavBar));

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Header, Image, Divider, Segment, Grid, Menu, Message, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import backgroundImage from '../assets/black-diamond-plate.jpg';
-import logo from '../assets/dogdodgebrand.jpeg';
+import logo from '../assets/doghouselogo.jpg';
 
 const styles = {
   main: {

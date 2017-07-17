@@ -40,7 +40,7 @@ export const deleteDateActivity = (id) => {
   return(dispatch) => {
     axios.delete(`/api/date_activities/${id}`)
       .then( res => {
-        dispatch({ type: 'DELETE_DATEACTIVITY', id });
+        dispatch({ type: 'DELETE_DATEACTIVITY', id,  headers: res.headers });
         dispatch(setFlash('Date Activity List Item Deleted!', 'success'));
       })
       .catch( res => {
@@ -53,7 +53,7 @@ export const getDateActivities = (relationship_id) => {
   return(dispatch) => {
     axios.get(`/api/relationships/${relationship_id}/date_activities`)
       .then( res => {
-        dispatch({ type: 'DATE_ACTIVITIES', dateActivities: res.data });
+        dispatch({ type: 'DATE_ACTIVITIES', dateActivities: res.data,  headers: res.headers});
       })
       .catch( res => {
         dispatch(setFlash('Failed To Get Date Activity Items.', 'error'));
