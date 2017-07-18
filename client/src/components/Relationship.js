@@ -7,12 +7,15 @@ import { deleteRelationship } from '../actions/relationActions'
 
 class Relationship extends Component {
   burnItWithFire =(id) => {
-    //deletefunction
+  
     this.props.dispatch(deleteRelationship(id));
-    //reset active relationship
     let clearRelationship = {}
+    let clearRelationshipChildren = []
     this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: clearRelationship } );
-    //push back to home.
+    this.props.dispatch({ type: 'SET_FOODS', foods: clearRelationshipChildren } );
+    this.props.dispatch({ type: 'SET_DATEACTIVITIES', dateActivities: clearRelationshipChildren } );
+    this.props.dispatch({ type: 'SET_BUCKETLIST', bucketLists: clearRelationshipChildren } );
+   
     this.props.history.push(`/`)
   }
   render() {
