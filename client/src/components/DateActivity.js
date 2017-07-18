@@ -43,7 +43,7 @@ class DateActivity extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  return{ dateActivities: state.dateActivity,
+  return{ dateActivities: state.dateActivities,
           relationshipID: state.activeRelationship.id
   }
 }

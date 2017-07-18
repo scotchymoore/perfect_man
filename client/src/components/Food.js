@@ -51,7 +51,7 @@ class Food extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  return{ foods: state.food,
+  return{ foods: state.foods,
     //.food because it says food in the reducer
           relationshipID: state.activeRelationship.id
   }

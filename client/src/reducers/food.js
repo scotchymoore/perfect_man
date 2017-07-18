@@ -2,7 +2,7 @@ const foods = ( state = [], action ) => {
   switch(action.type) {
     case 'ADD_FOOD':
       return [action.food, ...state];
-    case 'SET_FOOD':
+    case 'SET_FOODS':
       return action.foods;
     case 'EDIT_FOOD':
       return state.map(food => {
