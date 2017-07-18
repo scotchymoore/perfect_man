@@ -20,13 +20,18 @@ class RelationshipSelect extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let activeRelationship = this.props.relationships.find( (r) => r.id == this.state.id );
-    this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: activeRelationship } );
-    this.props.dispatch(getBucketList(this.state.id))
-    this.props.dispatch(getFood(this.state.id))
-    this.props.dispatch(getDateActivities(this.state.id))
-    this.props.history.push(`/relationship/${this.state.id}`)
-
+      if (this.state.id !== '') {
+            let activeRelationship = this.props.relationships.find( (r) => r.id == this.state.id );
+            this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: activeRelationship } );
+            this.props.dispatch(getBucketList(this.state.id))
+            this.props.dispatch(getFood(this.state.id))
+            this.props.dispatch(getDateActivities(this.state.id))
+            this.props.history.push(`/relationship/${this.state.id}`)
+      } else {
+          return ( 
+            {} 
+          )
+      }
   }
 
   render() {
@@ -36,7 +41,7 @@ class RelationshipSelect extends Component {
         <label>
           Relationship:
           <select value={this.state.id} onChange={this.handleChange}> 
-            <option>Choose a Relationship</option>
+            <option disabled>Choose a Relationship</option>
             return (
               {this.props.relationships.map((relationship, i) => (
               <option key={i} value={relationship.id} >{relationship.name} </option>
