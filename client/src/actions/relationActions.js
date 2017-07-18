@@ -5,7 +5,6 @@ export const getRelationships = () => {
   return(dispatch) => {
     axios.get(`/api/relationships`)
       .then( res => {
-        console.log('got back relationships and headers')
         dispatch({ type: 'SET_RELATIONSHIPS', relationships: res.data, headers: res.headers});
       })
       .catch( error => {

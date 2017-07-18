@@ -45,7 +45,6 @@ export const getFood = (relationship_id) => {
   return(dispatch) => {
     axios.get(`/api/relationships/${relationship_id}/foods`)
       .then( res => {
-        console.log(res.data)
         dispatch({ type: 'SET_FOODS', foods: res.data,  headers: res.headers });
       })
       .catch( res => {

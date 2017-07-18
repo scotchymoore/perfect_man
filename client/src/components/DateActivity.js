@@ -3,7 +3,6 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Header, Button, Segment, Form } from 'semantic-ui-react';
 import DateActivityForm from './DateActivityForm'
-
 import RelationshipSelect from './RelationshipSelect';
 import { deleteDateActivity } from '../actions/dateActivity';
 import { Card, Image } from 'semantic-ui-react'
@@ -18,12 +17,12 @@ class DateActivity extends Component {
         <Segment basic textAlign='center'>
         <DateActivityForm />
         <Card.Group>
-         
+
         {this.props.dateActivities.map((activity, i) => (
           <Card key={i}>
             <Card.Content>
               <Card.Header>
-                {activity.date_activity_item}
+                {activity.activity}
               </Card.Header>
               <Card.Meta>
                 {activity.location}
@@ -58,8 +57,8 @@ export default connect(mapStateToProps)(DateActivity);
     return(
       <Segment basic>
         <Header as='h1' textAlign='center'>Date Activities</Header>
-        <DateActivityForm /> 
-       
+        <DateActivityForm />
+
       </Segment>
     )
   }
@@ -68,7 +67,7 @@ export default connect(mapStateToProps)(DateActivity);
 export default connect()(DateActivity);*/
 //todo: map over date activities that are in the redux store and display them
 // date location name for that activity
-// 
-// 
+//
+//
 
 // get dateactivity with relationship.id
