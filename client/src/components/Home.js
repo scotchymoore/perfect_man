@@ -42,7 +42,7 @@ class Home extends Component {
       return(
     <div>
       <Segment basic textAlign='center'>
-          <Header as='h2'>Wingman</Header>
+          <Header as='h2'>Doghouse Dodger</Header>
           <Grid centered width={16}>
             <Grid.Column stretched>
               <Dropzone
@@ -59,22 +59,7 @@ class Home extends Component {
       </Segment>
 
       <RelationshipSelect />
-      <Segment textAlign='center'>
-        <Grid centered width={30}>
-          <Grid.Column streched>
-          <Segment basic textAlign='center'>
-          <Menu vertical
-            style={style.menubox}
-          >
-            <Link to={`/relationship/${this.props.relationshipID}`}><Menu.Item onClick={this.handleClick}>Relationship Info</Menu.Item></Link>
-            <Link to="/food"><Menu.Item onClick={this.handleClick}>Foods</Menu.Item></Link>
-            <Link to="/bucketList"><Menu.Item onClick={this.handleClick}>Bucket Lists</Menu.Item></Link>
-            <Link to="/dateActivity"><Menu.Item onClick={this.handleClick}>Date Activities</Menu.Item></Link>
-          </Menu>
-          </Segment>
-          </Grid.Column>
-        </Grid>
-      </Segment>
+      
     </div>
     )
   } else {
