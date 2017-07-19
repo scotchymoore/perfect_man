@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addRelationship } from '../actions/relationActions';
+import { editRelationship } from '../actions/relationActions';
 import { Button, Form, Input, Radio, Select, TextArea, Label } from 'semantic-ui-react';
 
 const topOptions = [
@@ -90,8 +91,14 @@ class RelationForm extends React.Component {
     handleSubmit = (e) => {
       //add in code to dispatch update relationship path
       e.preventDefault();
+
+      if (this.state.id){
+        const updatedInfo = this.state
+        this.props.dispatch(editRelationship(updatedInfo, updatedInfo.id))
+      } else {
       const relationInfo= this.state;
       this.props.dispatch(addRelationship(relationInfo));
+      }
       this.props.history.push(`/`)
     }
 
