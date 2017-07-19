@@ -62,7 +62,6 @@ class RelationForm extends React.Component {
 
   checkState = () => {
       let activeRelationship = this.props.activeRelationship;
-      console.log(activeRelationship)
       const defaultState = {
               name: '',
               dob: '',
@@ -95,13 +94,14 @@ class RelationForm extends React.Component {
       if (this.state.id){
         const updatedInfo = this.state
         this.props.dispatch(editRelationship(updatedInfo, updatedInfo.id))
-        this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: updatedInfo } );
+        this.props.history.push(`/relationship/${this.props.activeRelationship.id}`)
       } else {
-      const relationInfo= this.state;
-      this.props.dispatch(addRelationship(relationInfo));
+        const relationInfo= this.state;
+        this.props.dispatch(addRelationship(relationInfo));
+        this.props.history.push(`/`)
       }
     
-      this.props.history.push(`/`)
+      
     }
 
     handleChange = (e) => {

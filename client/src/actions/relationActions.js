@@ -43,7 +43,8 @@ export const addRelationship = (relationship) => {
    return(dispatch) => {
      axios.put(`/api/relationships/${id}`, { relationship })
      .then( res => {
-       dispatch({type: 'EDIT_RELATIONSHIP', relationship: res.data,  headers: res.headers})
+       dispatch({ type: 'EDIT_RELATIONSHIP', relationship: res.data,  headers: res.headers });
+       dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: res.data });
        dispatch(setFlash('Relationship Edited!', 'success'));
      })
      .catch( res => {
