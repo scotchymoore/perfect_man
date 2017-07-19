@@ -11,6 +11,7 @@ class FoodForm extends React.Component {
         let foodInfo= this.state;
         let id = this.props.relationshipId;
         this.props.dispatch(addFood(foodInfo, id));
+        this.setState({ location: '', restaurant: '', food_type: ''})
     }
 
     handleChange = (e) => {

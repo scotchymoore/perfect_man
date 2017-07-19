@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addDateActivities } from '../actions/dateActivity';
-
+import { Button, Form } from 'semantic-ui-react';
 
 class DateActivityForm extends React.Component {
     state = { location: '', activity: '' }
@@ -11,6 +11,7 @@ class DateActivityForm extends React.Component {
         let dateActivity= this.state;
         let id = this.props.relationshipId;
         this.props.dispatch(addDateActivities(dateActivity, id));
+        this.setState({ location: '', activity: '' })
     }
 
     handleChange = (e) => {
