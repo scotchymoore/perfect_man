@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addRelationship } from '../actions/relationActions';
+import { editRelationship } from '../actions/relationActions';
 import { Button, Form, Input, Radio, Select, TextArea, Label } from 'semantic-ui-react';
 
 const topOptions = [
@@ -53,7 +54,17 @@ const shoeOptions = [
 ]
 
 class RelationForm extends React.Component {
-    state = { name: '',
+  state = { }
+
+  componentDidMount(){
+    this.checkState();
+  }
+
+  checkState = () => {
+      let activeRelationship = this.props.activeRelationship;
+      console.log(activeRelationship)
+      const defaultState = {
+              name: '',
               dob: '',
               pob: '',
               misc: '',
@@ -69,12 +80,27 @@ class RelationForm extends React.Component {
               shoe_size: '',
               bust_size: '',
               height: ''
-    }
+    };
 
+      if (activeRelationship.name !== '') {      
+        this.setState(activeRelationship)
+      } else {
+        this.setState( defaultState )
+      }
+    }   
     handleSubmit = (e) => {
+      //add in code to dispatch update relationship path
       e.preventDefault();
+
+      if (this.state.id){
+        const updatedInfo = this.state
+        this.props.dispatch(editRelationship(updatedInfo, updatedInfo.id))
+        this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: updatedInfo } );
+      } else {
       const relationInfo= this.state;
       this.props.dispatch(addRelationship(relationInfo));
+      }
+    
       this.props.history.push(`/`)
     }
 
@@ -83,9 +109,12 @@ class RelationForm extends React.Component {
       this.setState({ [name]: value });
     }
 
-  render(){
+    
+
+  render() { 
     return(
-      <Form>
+      <div>      
+       <Form>
           <Form.Field>
             <label>Name</label>
             <input
@@ -233,7 +262,12 @@ class RelationForm extends React.Component {
           
           <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
       </Form>
+      </div>
     );
   }
 }
-export default connect()(RelationForm);
+
+const mapStateToProps = (state) => {
+  return { activeRelationship: state.activeRelationship } 
+}
+export default connect(mapStateToProps)(RelationForm);

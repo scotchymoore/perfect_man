@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Header, Button, Segment, Form, Grid, Icon, List } from 'semantic-ui-react';
@@ -165,6 +166,7 @@ class Relationship extends Component {
      </Grid>
      <hr/>
      <Button onClick={ () => this.burnItWithFire(this.props.activeRelationship.id)} basic color='red'>Delete</Button>
+     <Link to='/relationshipForm'><Button>Edit Relationship</Button></Link>
      </div>
      </Segment>
     )

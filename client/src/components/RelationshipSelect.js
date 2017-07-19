@@ -70,7 +70,8 @@ class RelationshipSelect extends Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
-     <h4 style={{color: 'white'}}>Please select a relationship from the dropdown above or create a new one <Link to='/relationshipForm'>HERE</Link> </h4>
+     <h4>Please select a relationship from the dropdown above or create a new one <Link to='/relationshipForm'>
+     <strong style={{color: 'blue'}} onClick={ () => this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: {} }) }>HERE</strong></Link></h4>
      </div>
      </Segment>
     );

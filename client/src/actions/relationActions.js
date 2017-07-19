@@ -39,15 +39,15 @@ export const addRelationship = (relationship) => {
   }
  }
 
-//  export const editRelationship = (relationship, id) => {
-//    return(dispatch) => {
-//      axios.put(`/api/relationships/${id}`)
-//      .then( res => {
-//        dispatch({type: 'EDIT_RELATIONSHIP', relationships: res.data,  headers: res.headers})
-//        dispatch(setFlash('Relationship Edited!', 'success'));
-//      })
-//      .catch( res => {
-//        dispatch(setFlash('Relationship Failed To Update!', 'error'));
-//      })
-//    }
-//  }
+ export const editRelationship = (relationship, id) => {
+   return(dispatch) => {
+     axios.put(`/api/relationships/${id}`, { relationship })
+     .then( res => {
+       dispatch({type: 'EDIT_RELATIONSHIP', relationship: res.data,  headers: res.headers})
+       dispatch(setFlash('Relationship Edited!', 'success'));
+     })
+     .catch( res => {
+       dispatch(setFlash('Relationship Failed To Update!', 'error'));
+     })
+   }
+ }
