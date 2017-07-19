@@ -4,10 +4,27 @@ import { connect } from 'react-redux';
 import { Header, Button, Segment, Form, Grid, Icon, List } from 'semantic-ui-react';
 import RelationForm from './RelationForm'
 import { deleteRelationship } from '../actions/relationActions'
+import backgroundImage from '../assets/black-diamond-plate.jpg';
 
+const styles = {
+  main: {
+    height: '100vh',
+    width: null,
+    background: `url(${backgroundImage}) no-repeat center center fixed`,
+    webkitBackgroundSize: 'cover',
+    mozBackgroundSize: 'cover',
+    oBackgroundSize: 'cover',
+    backgroundSize: 'cover',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginTop: '0px',
+  },
+}
 class Relationship extends Component {
   burnItWithFire =(id) => {
-  
+
     this.props.dispatch(deleteRelationship(id));
     let clearRelationship = {}
     let clearRelationshipChildren = []
@@ -20,13 +37,14 @@ class Relationship extends Component {
   render() {
     let {name, dob, pob, misc, flower,
          annv, first_date: firstDate, street, city, state,
-         zip, top_size: topSize, bottom_size: bottomSize, 
+         zip, top_size: topSize, bottom_size: bottomSize,
          bust_size: bustSize, shoe_size: shoeSize, height }
     = this.props.activeRelationship;
 
     return(
+      <Segment basic style={styles.main}>
       <div>
-      <Header as='h1' textAlign='center'>Relationship Info</Header>
+      <Header as='h1' textAlign='center' style={{color: 'white'}}>Relationship Info</Header>
       <Grid columns='equal'>
         <Grid.Row>
          <Grid.Column>
@@ -48,11 +66,11 @@ class Relationship extends Component {
                 </List.Item>
                 <List.Item>
                   <List.Header>Favorite Flower</List.Header>
-                  {flower}                  
+                  {flower}
                 </List.Item>
                 <List.Item>
                   <List.Header>Misc important things</List.Header>
-                  {misc}                 
+                  {misc}
                 </List.Item>
               </List>
            </Segment>
@@ -76,15 +94,15 @@ class Relationship extends Component {
                 </List.Item>
                 <List.Item>
                   <List.Header>Shoe Size</List.Header>
-                  {shoeSize}                  
+                  {shoeSize}
                 </List.Item>
                 <List.Item>
                   <List.Header>Bust Size</List.Header>
-                  {bustSize}                 
+                  {bustSize}
                 </List.Item>
                 <List.Item>
                   <List.Header>Height</List.Header>
-                  {height}                 
+                  {height}
                 </List.Item>
               </List>
             </Segment>
@@ -110,7 +128,7 @@ class Relationship extends Component {
                 </List.Item>
                 <List.Item>
                   <List.Header>First Date</List.Header>
-                  {firstDate}                  
+                  {firstDate}
                 </List.Item>
               </List>
           </Segment>
@@ -134,13 +152,13 @@ class Relationship extends Component {
                 </List.Item>
                 <List.Item>
                   <List.Header>State</List.Header>
-                  {state}                  
+                  {state}
                 </List.Item>
                 <List.Item>
                   <List.Header>Zip</List.Header>
-                  {zip}                  
+                  {zip}
                 </List.Item>
-              </List>  
+              </List>
           </Segment>
         </Grid.Column>
       </Grid.Row>
@@ -148,6 +166,7 @@ class Relationship extends Component {
      <hr/>
      <Button onClick={ () => this.burnItWithFire(this.props.activeRelationship.id)} basic color='red'>Delete</Button>
      </div>
+     </Segment>
     )
   }
 }

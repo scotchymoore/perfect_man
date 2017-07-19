@@ -5,11 +5,29 @@ import { withRouter, Link } from 'react-router-dom'
 import { getBucketList } from '../actions/bucketList';
 import { getFood } from '../actions/food';
 import { getDateActivities } from '../actions/dateActivity';
+import { Header, Segment, Form, Button, Card } from 'semantic-ui-react';
+import backgroundImage from '../assets/black-diamond-plate.jpg';
 
+const styles = {
+  main: {
+    height: '100vh',
+    width: null,
+    background: `url(${backgroundImage}) no-repeat center center fixed`,
+    webkitBackgroundSize: 'cover',
+    mozBackgroundSize: 'cover',
+    oBackgroundSize: 'cover',
+    backgroundSize: 'cover',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginTop: '0px',
+  },
+}
 
 
 class RelationshipSelect extends Component {
-  state = { id: '' } 
+  state = { id: '' }
 
   componentDidMount() {
     this.props.dispatch(getRelationships());
@@ -28,19 +46,20 @@ class RelationshipSelect extends Component {
             this.props.dispatch(getDateActivities(this.state.id))
             this.props.history.push(`/relationship/${this.state.id}`)
       } else {
-          return ( 
-            {} 
+          return (
+            {}
           )
       }
   }
 
   render() {
     return (
+      <Segment basic style={styles.main}>
       <div>
       <form onSubmit={this.handleSubmit}>
-        <label>
+        <label style={{color: 'white'}}>
           Relationship:
-          <select value={this.state.id} onChange={this.handleChange}> 
+          <select value={this.state.id} onChange={this.handleChange}>
             <option disabled>Choose a Relationship</option>
             return (
               {this.props.relationships.map((relationship, i) => (
@@ -51,12 +70,13 @@ class RelationshipSelect extends Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
-     <h4>Please select a relationship from the dropdown above or create a new one <Link to='/relationshipForm'>HERE</Link> </h4>
+     <h4 style={{color: 'white'}}>Please select a relationship from the dropdown above or create a new one <Link to='/relationshipForm'>HERE</Link> </h4>
      </div>
+     </Segment>
     );
   }
-  
-}      
+
+}
 const mapStateToProps = (state) => {
   return { relationships: state.relationships }
 }
