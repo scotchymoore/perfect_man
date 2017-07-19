@@ -53,7 +53,17 @@ const shoeOptions = [
 ]
 
 class RelationForm extends React.Component {
-    state = { name: '',
+  state = { }
+
+  componentDidMount(){
+    this.checkState();
+  }
+
+  checkState = () => {
+      let activeRelationship = this.props.activeRelationship;
+      console.log(activeRelationship)
+      const defaultState = {
+              name: '',
               dob: '',
               pob: '',
               misc: '',
@@ -69,9 +79,16 @@ class RelationForm extends React.Component {
               shoe_size: '',
               bust_size: '',
               height: ''
-    }
+    };
 
+      if (activeRelationship.name !== '') {      
+        this.setState(activeRelationship)
+      } else {
+        this.setState( defaultState )
+      }
+    }   
     handleSubmit = (e) => {
+      //add in code to dispatch update relationship path
       e.preventDefault();
       const relationInfo= this.state;
       this.props.dispatch(addRelationship(relationInfo));
@@ -83,9 +100,12 @@ class RelationForm extends React.Component {
       this.setState({ [name]: value });
     }
 
-  render(){
+    
+
+  render() { 
     return(
-      <Form>
+      <div>      
+       <Form>
           <Form.Field>
             <label>Name</label>
             <input
@@ -233,7 +253,12 @@ class RelationForm extends React.Component {
           
           <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
       </Form>
+      </div>
     );
   }
 }
-export default connect()(RelationForm);
+
+const mapStateToProps = (state) => {
+  return { activeRelationship: state.activeRelationship } 
+}
+export default connect(mapStateToProps)(RelationForm);
