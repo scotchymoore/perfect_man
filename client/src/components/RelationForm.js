@@ -95,10 +95,12 @@ class RelationForm extends React.Component {
       if (this.state.id){
         const updatedInfo = this.state
         this.props.dispatch(editRelationship(updatedInfo, updatedInfo.id))
+        this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: updatedInfo } );
       } else {
       const relationInfo= this.state;
       this.props.dispatch(addRelationship(relationInfo));
       }
+    
       this.props.history.push(`/`)
     }
 
