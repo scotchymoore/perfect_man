@@ -15,7 +15,6 @@ class Relationship extends Component {
     this.props.dispatch({ type: 'SET_FOODS', foods: clearRelationshipChildren } );
     this.props.dispatch({ type: 'SET_DATEACTIVITIES', dateActivities: clearRelationshipChildren } );
     this.props.dispatch({ type: 'SET_BUCKETLIST', bucketLists: clearRelationshipChildren } );
-   
     this.props.history.push(`/`)
   }
   render() {

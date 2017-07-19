@@ -14,17 +14,17 @@ const topOptions = [
 ]
 
 const bottomOptions = [
-  { key: 'p4', text: '4', value: 'p4' },
-  { key: 'p6', text: '6', value: 'p6' },
-  { key: 'p8', text: '8', value: 'p8' },
-  { key: 'p10', text: '10', value: 'p10' },
-  { key: 'p12', text: '12', value: 'p12' },
-  { key: 'p14', text: '14', value: 'p14' },
-  { key: 'p16', text: '16', value: 'p16' },
-  { key: 'p18', text: '18', value: 'p18' },
-  { key: 'p20', text: '20', value: 'p20' },
-  { key: 'p22', text: '22', value: 'p22' },
-  { key: 'p24', text: '24', value: 'p24' }
+  { key: 'p4', text: '4', value: '4' },
+  { key: 'p6', text: '6', value: '6' },
+  { key: 'p8', text: '8', value: '8' },
+  { key: 'p10', text: '10', value: '10' },
+  { key: 'p12', text: '12', value: '12' },
+  { key: 'p14', text: '14', value: '14' },
+  { key: 'p16', text: '16', value: '16' },
+  { key: 'p18', text: '18', value: '18' },
+  { key: 'p20', text: '20', value: '20' },
+  { key: 'p22', text: '22', value: '22' },
+  { key: 'p24', text: '24', value: '24' }
 ]
 
 const braOptions = [
@@ -75,6 +75,7 @@ class RelationForm extends React.Component {
       e.preventDefault();
       const relationInfo= this.state;
       this.props.dispatch(addRelationship(relationInfo));
+      this.props.history.push(`/`)
     }
 
     handleChange = (e) => {
@@ -131,9 +132,9 @@ class RelationForm extends React.Component {
             />
           </Form.Field>
           <Form.Field>
-            <label>First Date</label>
+            <label>Day of First Date</label>
             <input
-              placeholder='Your First Date'
+              placeholder='Day/Mo/Year'
               name='first_date'
               value={this.state.first_date}
               onChange={this.handleChange}
@@ -180,15 +181,15 @@ class RelationForm extends React.Component {
             <input
               placeholder='Other'
               name='misc'
-              value={this.state.msc}
+              value={this.state.misc}
               onChange={this.handleChange}
             />
           </Form.Field>
-          <Form.Field >
+          <Form.Field>
             <label>Height</label>
             <input
               placeholder='Heigth'
-              name='Height'
+              name='height'
               value = {this.state.height}
               onChange ={this.handleChange}
             />
@@ -220,15 +221,16 @@ class RelationForm extends React.Component {
             value = {this.state.shoe_size}
             onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
           />
-          <Form.Field
-            control={Select}
-            label='Bra size'
-            name='bust_size'
-            options={braOptions}
-            placeholder='Bra size'
-            value = {this.state.bust_size}
-            onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
-          />
+          <Form.Field>
+            <label>Bust Size</label>
+            <input
+              placeholder='Bust Size'
+              name='bust_size'
+              value={this.state.bust_size}
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          
           <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
       </Form>
     );
