@@ -31,32 +31,32 @@ class BucketList extends Component {
     return(
       <Segment basic style={styles.main}>
         <Header as='h1' style={{color: 'white'}} textAlign='center'>Bucket List</Header>
-        <Segment basic textAlign='center'>
-        <BucketForm />
-        </Segment>
-        <Table celled inverted selectable>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Bucket List Activity</Table.HeaderCell>
-              <Table.HeaderCell>Location</Table.HeaderCell>
-              <Table.HeaderCell textAlign='right'>Remove</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
+         <Segment basic textAlign='center'>
+          <BucketForm />
+         </Segment>
 
-          <Table.Body>
-            {this.props.bucketLists.map((activity, i) => (
-                <Table.Row key={i}>
-                    <Table.Cell >{activity.bucket_list_item}</Table.Cell>
-                    <Table.Cell >{activity.location}</Table.Cell>
-                    <Table.Cell textAlign='right'>
-                        <Button onClick={ () => this.props.dispatch(deleteBucketList(this.props.relationshipID, activity.id))} basic color='red'>Delete</Button>
-                    </Table.Cell>
-                </Table.Row>
-          ))}
-          </Table.Body>
-        </Table>
+          <Table celled inverted selectable>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Bucket List Activity</Table.HeaderCell>
+                <Table.HeaderCell>Location</Table.HeaderCell>
+                <Table.HeaderCell textAlign='right'>Remove</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
 
-      </Segment>
+            <Table.Body>
+              {this.props.bucketLists.map((activity, i) => (
+                  <Table.Row key={i}>
+                      <Table.Cell >{activity.bucket_list_item}</Table.Cell>
+                      <Table.Cell >{activity.location}</Table.Cell>
+                      <Table.Cell textAlign='right'>
+                          <Button onClick={ () => this.props.dispatch(deleteBucketList(this.props.relationshipID, activity.id))} basic color='red'>Delete</Button>
+                      </Table.Cell>
+                  </Table.Row>
+               ))}
+             </Table.Body>
+           </Table>
+       </Segment>
     )
   }
 }
