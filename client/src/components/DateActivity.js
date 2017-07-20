@@ -29,6 +29,21 @@ const styles = {
 class DateActivity extends Component {
 
   render() {
+
+    const tableContent = this.props.dateActivities.map((activity, i) => {
+      let cleanedActivity = activity.activity.split().join('%20')
+      let cleanedLocation = activity.location.split().join('%20')
+      return(
+        <Table.Row key={i}>
+          <Table.Cell >< a href={`https://www.google.com/search?q=${cleanedActivity}+${cleanedLocation}`} target="_blank" rel="noreferrer noopener">{activity.activity}</a></Table.Cell>
+          <Table.Cell >{activity.location}</Table.Cell>
+          <Table.Cell textAlign='right'>
+            <Button onClick={ () => this.props.dispatch(deleteDateActivity(this.props.relationshipID, activity.id))} basic color='red'>Delete</Button>
+          </Table.Cell>
+        </Table.Row>
+      )
+    })
+
     return(
       <Segment basic style={styles.main}>
         <Header as='h1' style={{color: 'white'}} textAlign='center'>Date Activity</Header>
@@ -44,17 +59,8 @@ class DateActivity extends Component {
                   <Table.HeaderCell textAlign='right'>Remove</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
-
               <Table.Body>
-                {this.props.dateActivities.map((activity, i) => (
-                  <Table.Row key={i}>
-                    <Table.Cell >{activity.activity}</Table.Cell>
-                    <Table.Cell >{activity.location}</Table.Cell>
-                    <Table.Cell textAlign='right'>
-                      <Button onClick={ () => this.props.dispatch(deleteDateActivity(this.props.relationshipID, activity.id))} basic color='red'>Delete</Button>
-                    </Table.Cell>
-                  </Table.Row>
-                 ))}
+                {tableContent}
               </Table.Body>
             </Table>
           </Segment>

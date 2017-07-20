@@ -29,46 +29,51 @@ const styles = {
 
 
 class Food extends Component {
-  // state = { restaurant: '', food_type: '', location: ''}
 
   render() {
+
+  const tableContent = this.props.foods.map((activity, i) => {
+    let cleanedActivity = activity.restaurant.split().join('%20')
+    let cleanedLocation = activity.location.split().join('%20')
+    return(
+      <Table.Row key={i}>
+        <Table.Cell >< a href={`https://www.google.com/search?q=${cleanedActivity}+${cleanedLocation}`} target="_blank" rel="noreferrer noopener">{activity.restaurant}</a></Table.Cell>
+        <Table.Cell >{activity.location}</Table.Cell>
+        <Table.Cell >{activity.food_type}</Table.Cell>
+        <Table.Cell textAlign='right'>
+          <Button onClick={ () => this.props.dispatch(deleteFood(this.props.relationshipID, activity.id))} basic color='red'>Delete</Button>
+        </Table.Cell>
+      </Table.Row>
+    )
+  })
+
     return(
       <Segment basic style={styles.main}>
-
         <Header as='h1' style={{color: 'white'}} textAlign='center'>Food</Header>
-        <Segment basic textAlign='center'>
-        <FoodForm />
+         <Segment basic textAlign='center'>
+          <FoodForm />
+         </Segment>
+
+          <Table celled inverted selectable>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Restaurant</Table.HeaderCell>
+                <Table.HeaderCell>Location</Table.HeaderCell>
+                <Table.HeaderCell>Food Type</Table.HeaderCell>
+                <Table.HeaderCell textAlign='right'>Remove</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+
+            <Table.Body>
+              { tableContent }
+            </Table.Body>
+          </Table>
         </Segment>
-
-        <Table celled inverted selectable>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Restaurant</Table.HeaderCell>
-              <Table.HeaderCell>Location</Table.HeaderCell>
-              <Table.HeaderCell>Food Type</Table.HeaderCell>
-              <Table.HeaderCell textAlign='right'>Remove</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-
-          <Table.Body>
-            {this.props.foods.map((activity, i) => (
-                <Table.Row key={i}>
-                    <Table.Cell >{activity.restaurant}</Table.Cell>
-                    <Table.Cell >{activity.location}</Table.Cell>
-                    <Table.Cell >{activity.food_type}</Table.Cell>
-                    <Table.Cell textAlign='right'>
-                        <Button onClick={ () => this.props.dispatch(deleteFood(this.props.relationshipID, activity.id))} basic color='red'>Delete</Button>
-                    </Table.Cell>
-                </Table.Row>
-              ))}
-          </Table.Body>
-        </Table>
-
-
-        </Segment>
-    )
+      )
+    }
   }
-}
+
+
 const mapStateToProps = (state) => {
   return{ foods: state.foods,
     //.food because it says food in the reducer
