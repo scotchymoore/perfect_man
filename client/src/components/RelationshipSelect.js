@@ -57,7 +57,7 @@ class RelationshipSelect extends Component {
       <Segment basic style={styles.main}>
       <div>
       <form onSubmit={this.handleSubmit}>
-        <label style={{color: 'white'}}>
+        <label>
           Relationship:
           <select value={this.state.id} onChange={this.handleChange}>
             <option disabled>Choose a Relationship</option>

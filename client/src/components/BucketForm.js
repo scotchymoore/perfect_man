@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addBucketList } from '../actions/bucketList';
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Form, Segment } from 'semantic-ui-react';
 
 class BucketActivityForm extends React.Component {
     state = { location: '', bucket_list_item: '' }
@@ -21,27 +21,23 @@ class BucketActivityForm extends React.Component {
 
   render(){
     return(
-      <Form>
-          <Form.Field>
-            <label>Bucket List Wish</label>
-            <input
-              placeholder='The Wish'
-              name='bucket_list_item'
-              value={this.state.bucket_list_item}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Location</label>
-            <input
-              placeholder='The Location'
-              name='location'
-              value={this.state.location}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
+      <Segment inverted>
+        <Form inverted>
+          <Form.Group widths='equal'>
+            <Form.Input label='Bucket List Activity'
+            placeholder='Activity'
+            name='bucket_list_item'
+            value={this.state.bucket_list_item}
+            onChange={this.handleChange}/>
+            <Form.Input label='Location'
+            placeholder='Location'
+            name='location'
+            value={this.state.location}
+            onChange={this.handleChange} />
+          </Form.Group>
+        <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
       </Form>
+  </Segment>
 
     );
   }

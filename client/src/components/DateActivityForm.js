@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { addDateActivities } from '../actions/dateActivity';
 import { Button, Form , Segment} from 'semantic-ui-react';
 
+
+
+
 class DateActivityForm extends React.Component {
     state = { location: '', activity: '' }
 
@@ -22,21 +25,21 @@ class DateActivityForm extends React.Component {
   render(){
     return(
       <Segment inverted>
-    <Form inverted>
-      <Form.Group widths='equal'>
-        <Form.Input label='Date Activity'
-        placeholder='Activity'
-        name='activity'
-        value={this.state.activity}
-        onChange={this.handleChange}/>
-        <Form.Input label='Date Location'
-        placeholder='Location'
-        name='location'
-        value={this.state.location}
-        onChange={this.handleChange} />
-      </Form.Group>
-      <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
-    </Form>
+        <Form inverted>
+          <Form.Group widths='equal'>
+            <Form.Input label='Date Activity'
+            placeholder='Activity'
+            name='activity'
+            value={this.state.activity}
+            onChange={this.handleChange}/>
+            <Form.Input label='Date Location'
+            placeholder='Location'
+            name='location'
+            value={this.state.location}
+            onChange={this.handleChange} />
+          </Form.Group>
+        <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
+      </Form>
   </Segment>
 
       // <form onSubmit={this.handleSubmit}>

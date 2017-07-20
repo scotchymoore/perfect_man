@@ -1,11 +1,29 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Header, Button, Segment, Form } from 'semantic-ui-react';
+import { Header, Button, Segment, Form, Table } from 'semantic-ui-react';
 import FoodForm from './FoodForm';
 import RelationshipSelect from './RelationshipSelect';
 import { deleteFood } from '../actions/food';
 import { Card, Image } from 'semantic-ui-react'
+import backgroundImage from '../assets/black-diamond-plate.jpg';
+
+const styles = {
+  main: {
+    height: '100vh',
+    width: null,
+    background: `url(${backgroundImage}) no-repeat center center fixed`,
+    webkitBackgroundSize: 'cover',
+    mozBackgroundSize: 'cover',
+    oBackgroundSize: 'cover',
+    backgroundSize: 'cover',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginTop: '0px',
+  },
+}
 
 
 
@@ -15,38 +33,39 @@ class Food extends Component {
 
   render() {
     return(
-      <Segment basic>
+      <Segment basic style={styles.main}>
 
-        <Header as='h1' textAlign='center'>Food</Header>
+        <Header as='h1' style={{color: 'white'}} textAlign='center'>Food</Header>
         <Segment basic textAlign='center'>
         <FoodForm />
-        <Card.Group>
+        </Segment>
 
-        {this.props.foods.map((activity, i) => (
-          <Card key={i}>
-            <Card.Content>
-              <Card.Header>
-                {activity.restaurant}
-              </Card.Header>
-              <Card.Meta>
-                {activity.location}
-              </Card.Meta>
-               <Card.Meta>
-                {activity.food_type}
-              </Card.Meta>
-              </Card.Content>
-              <Card.Content extra>
-                <div className='ui two buttons'>
-                  <Button onClick={ () => this.props.dispatch(deleteFood(this.props.relationshipID, activity.id))} basic color='red'>Delete</Button>
-                </div>
-            </Card.Content>
-          </Card>
+        <Table celled inverted selectable>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Restaurant</Table.HeaderCell>
+              <Table.HeaderCell>Location</Table.HeaderCell>
+              <Table.HeaderCell>Food Type</Table.HeaderCell>
+              <Table.HeaderCell textAlign='right'>Remove</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            {this.props.foods.map((activity, i) => (
+                <Table.Row key={i}>
+                    <Table.Cell >{activity.restaurant}</Table.Cell>
+                    <Table.Cell >{activity.location}</Table.Cell>
+                    <Table.Cell >{activity.food_type}</Table.Cell>
+                    <Table.Cell textAlign='right'>
+                        <Button onClick={ () => this.props.dispatch(deleteFood(this.props.relationshipID, activity.id))} basic color='red'>Delete</Button>
+                    </Table.Cell>
+                </Table.Row>
               ))}
-     </Card.Group>
+          </Table.Body>
+        </Table>
+
 
         </Segment>
-      </Segment>
-
     )
   }
 }
