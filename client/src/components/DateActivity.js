@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Header, Button, Segment, Form, Table } from 'semantic-ui-react';
+import { setFlash } from '../actions/flash';
+import { Header, Modal, Button, Segment, Form, Table } from 'semantic-ui-react';
 import DateActivityForm from './DateActivityForm'
 import RelationshipSelect from './RelationshipSelect';
 import { deleteDateActivity } from '../actions/dateActivity';
@@ -27,6 +28,44 @@ const styles = {
 
 
 class DateActivity extends Component {
+  state = { randActivity: '', randFood: '' }
+
+  setRandom = () => {
+    this.setState({ randActivity: this.props.dateActivities[Math.floor(Math.random() * this.props.dateActivities.length)] })
+    this.setState({ randFood: this.props.foods[Math.floor(Math.random() * this.props.foods.length)] })
+  }
+  
+  randomDate = () => {
+    if (typeof(this.state.randActivity) !="undefined" && typeof(this.state.randFood) != "undefined") { 
+      return (
+        <Modal trigger={<Button content="Random Date" icon="random" labelPosition='left' onClick={this.setRandom} />}>
+          <Modal.Description>
+            <Header>Your Random Date!</Header>
+              <p>Location: {this.state.randActivity.location} </p>
+              <p>Activity: {this.state.randActivity.activity}</p>
+              <p>..and if you are hungry, try grabbing some {this.state.randFood.food_type} at {this.state.randFood.restaurant}</p>
+          </Modal.Description> 
+        </Modal>
+      )
+    } else {
+    return(
+      <Modal trigger={<Button content="Random Date" icon="random" labelPosition='left' />}>
+        <Modal.Description>
+          <Header>Your Random Date!</Header>
+                <p>To use the Random Date button, you must store the following:
+                  <ul>
+                    <li>Date Location</li>
+                    <li>Date Activity</li>
+                    <li>Favorite food at a restaurant</li>
+                  </ul>
+                </p>
+        </Modal.Description> 
+      </Modal>
+      )}   
+    }
+
+
+  
 
   render() {
     return(
@@ -34,6 +73,7 @@ class DateActivity extends Component {
         <Header as='h1' style={{color: 'white'}} textAlign='center'>Date Activity</Header>
           <Segment basic  textAlign='center'>
             <DateActivityForm />
+          {this.randomDate()}
           </Segment>
 
             <Table celled inverted selectable>
@@ -66,7 +106,8 @@ class DateActivity extends Component {
 
 const mapStateToProps = (state) => {
   return{ dateActivities: state.dateActivities,
-          relationshipID: state.activeRelationship.id
+          relationshipID: state.activeRelationship.id,
+          foods: state.foods
   }
 }
 
