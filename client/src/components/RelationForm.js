@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addRelationship } from '../actions/relationActions';
 import { editRelationship } from '../actions/relationActions';
-import { Button, Form, Input, Radio, Select, TextArea, Label } from 'semantic-ui-react';
+import { Button, Form, Input, Radio, Select, TextArea, Label, Segment, Grid } from 'semantic-ui-react';
 
 const topOptions = [
   { key: 'xxs', text: 'XXS', value: 'xxs' },
@@ -53,6 +53,17 @@ const shoeOptions = [
 
 ]
 
+const styles = {
+  foo: {
+    width: '50%',
+    height: 'auto',
+    borderWidth: '2px',
+    borderRadius: '5px',
+    margin: '0 auto',
+    textAlign: 'center'
+  }
+}
+
 class RelationForm extends React.Component {
   state = { }
 
@@ -81,12 +92,12 @@ class RelationForm extends React.Component {
               height: ''
     };
 
-      if (activeRelationship.name !== '') {      
+      if (activeRelationship.name !== '') {
         this.setState(activeRelationship)
       } else {
         this.setState( defaultState )
       }
-    }   
+    }
     handleSubmit = (e) => {
       //add in code to dispatch update relationship path
       e.preventDefault();
@@ -100,8 +111,8 @@ class RelationForm extends React.Component {
         this.props.dispatch(addRelationship(relationInfo));
         this.props.history.push(`/`)
       }
-    
-      
+
+
     }
 
     handleChange = (e) => {
@@ -109,165 +120,168 @@ class RelationForm extends React.Component {
       this.setState({ [name]: value });
     }
 
-    
 
-  render() { 
+
+  render() {
     return(
-      <div>      
-       <Form>
-          <Form.Field>
-            <label>Name</label>
-            <input
-              placeholder='Her Name'
-              name='name'
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Birthday</label>
-            <input
-              placeholder='Her Birthday'
-              name='dob'
-              value={this.state.dob}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Birth Location</label>
-            <input
-              placeholder='Birth Location'
-              name='pob'
-              value={this.state.pob}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Favorite Flowers</label>
-            <input
-              placeholder='Her Flowers'
-              name='flower'
-              value={this.state.flower}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Anniversary</label>
-            <input
-              placeholder='Your Anniversary'
-              name='annv'
-              value={this.state.annv}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Day of First Date</label>
-            <input
-              placeholder='Day/Mo/Year'
-              name='first_date'
-              value={this.state.first_date}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Street Address</label>
-            <input
-              placeholder='Street Address'
-              name='street'
-              value={this.state.street}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>City</label>
-            <input
-              placeholder='City'
-              name='city'
-              value={this.state.city}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>State</label>
-            <input
-              placeholder='State'
-              name='state'
-              value={this.state.state}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Zip Code</label>
-            <input
-              placeholder='Zip Code'
-              name='zip'
-              value={this.state.zip}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Other Information</label>
-            <input
-              placeholder='Other'
-              name='misc'
-              value={this.state.misc}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Height</label>
-            <input
-              placeholder='Heigth'
-              name='height'
-              value = {this.state.height}
-              onChange ={this.handleChange}
-            />
-          </Form.Field>
-          <Form.Field
-            control={Select}
-            label='Shirt Size'
-            name='top_size'
-            options={topOptions}
-            placeholder='Shirt Size'
-            value = {this.state.top_size}
-            onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
-          />
-          <Form.Field
-            control={Select}
-            label='Waist Size'
-            name='bottom_size'
-            options={bottomOptions}
-            placeholder='Waist Size'
-            value = {this.state.bottom_size}
-            onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
-          />
-          <Form.Field
-            control={Select}
-            label='Shoe Size'
-            name='shoe_size'
-            options={shoeOptions}
-            placeholder='Shoe Size'
-            value = {this.state.shoe_size}
-            onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
-          />
-          <Form.Field>
-            <label>Bust Size</label>
-            <input
-              placeholder='Bust Size'
-              name='bust_size'
-              value={this.state.bust_size}
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-          
-          <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
-      </Form>
-      </div>
+      <Segment width={5} inverted>
+      <Grid centered columns={2}>
+        <Grid.Column stretched>
+           <Form inverted>
+              <Form.Field>
+                <label style={{color: 'white'}}>Name</label>
+                <input
+                  placeholder='Her Name'
+                  name='name'
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label style={{color: 'white'}}>Birthday</label>
+                <input
+                  placeholder='Her Birthday'
+                  name='dob'
+                  value={this.state.dob}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label style={{color: 'white'}}>Birth Location</label>
+                <input
+                  placeholder='Birth Location'
+                  name='pob'
+                  value={this.state.pob}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label style={{color: 'white'}}>Favorite Flowers</label>
+                <input
+                  placeholder='Her Flowers'
+                  name='flower'
+                  value={this.state.flower}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label style={{color: 'white'}}>Anniversary</label>
+                <input
+                  placeholder='Your Anniversary'
+                  name='annv'
+                  value={this.state.annv}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label style={{color: 'white'}}>Day of First Date</label>
+                <input
+                  placeholder='Day/Mo/Year'
+                  name='first_date'
+                  value={this.state.first_date}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label style={{color: 'white'}}>Street Address</label>
+                <input
+                  placeholder='Street Address'
+                  name='street'
+                  value={this.state.street}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label style={{color: 'white'}}>City</label>
+                <input
+                  placeholder='City'
+                  name='city'
+                  value={this.state.city}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label style={{color: 'white'}}>State</label>
+                <input
+                  placeholder='State'
+                  name='state'
+                  value={this.state.state}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label style={{color: 'white'}}>Zip Code</label>
+                <input
+                  placeholder='Zip Code'
+                  name='zip'
+                  value={this.state.zip}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label style={{color: 'white'}}>Other Information</label>
+                <input
+                  placeholder='Other'
+                  name='misc'
+                  value={this.state.misc}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label style={{color: 'white'}}>Height</label>
+                <input
+                  placeholder='Heigth'
+                  name='height'
+                  value = {this.state.height}
+                  onChange ={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Bust Size</label>
+                <input
+                  placeholder='Bust Size'
+                  name='bust_size'
+                  value={this.state.bust_size}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
+              <Form.Field
+                control={Select}
+                label ='Shirt Size'
+                name='top_size'
+                options={topOptions}
+                placeholder='Shirt Size'
+                value = {this.state.top_size}
+                onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
+              />
+              <Form.Field
+                control={Select}
+                label='Waist Size'
+                name='bottom_size'
+                options={bottomOptions}
+                placeholder='Waist Size'
+                value = {this.state.bottom_size}
+                onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
+              />
+              <Form.Field
+                control={Select}
+                label='Shoe Size'
+                name='shoe_size'
+                options={shoeOptions}
+                placeholder='Shoe Size'
+                value = {this.state.shoe_size}
+                onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
+              />
+              <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
+            </Form>
+          </Grid.Column>
+        </Grid>
+      </Segment>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return { activeRelationship: state.activeRelationship } 
+  return { activeRelationship: state.activeRelationship }
 }
 export default connect(mapStateToProps)(RelationForm);

@@ -56,7 +56,7 @@ class RelationshipSelect extends Component {
     return (
       <Segment basic style={styles.main}>
       <div>
-      <form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <label>
           Relationship:
           <select value={this.state.id} onChange={this.handleChange}>
@@ -69,7 +69,7 @@ class RelationshipSelect extends Component {
           </select>
         </label>
         <input type="submit" value="Submit" />
-      </form>
+      </Form>
      <h4>Please select a relationship from the dropdown above or create a new one <Link to='/relationshipForm'>
      <strong style={{color: 'blue'}} onClick={ () => this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: {} }) }>HERE</strong></Link></h4>
      </div>
