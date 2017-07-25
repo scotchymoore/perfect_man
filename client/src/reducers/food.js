@@ -12,6 +12,7 @@ const foods = ( state = [], action ) => {
           return food
       })
     case 'DELETE_FOOD':
+      {debugger}
       return state.filter( food => food.id !== action.id)
     default:
       return state;
