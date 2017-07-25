@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addFood } from '../actions/food';
 import { Button, Form, Segment } from 'semantic-ui-react';
+import capitalize  from 'capitalize';
 
 class FoodForm extends React.Component {
     state = { location: '', food_type: '', restaurant: '' }
@@ -27,17 +28,17 @@ class FoodForm extends React.Component {
             <Form.Input label='Restaurant'
               placeholder='Restaurant'
               name='restaurant'
-              value={this.state.restaurant}
+              value={capitalize(this.state.restaurant)}
               onChange={this.handleChange}/>
             <Form.Input label='Location'
               placeholder='Location'
               name='location'
-              value={this.state.location}
+              value={capitalize(this.state.location)}
               onChange={this.handleChange} />
             <Form.Input label='Food Type'
               placeholder='Food Type'
               name='food_type'
-              value={this.state.food_type}
+              value={capitalize(this.state.food_type)}
               onChange={this.handleChange} />
           </Form.Group>
         <Button onClick={this.handleSubmit} type='submit'>Submit</Button>

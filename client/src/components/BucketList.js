@@ -8,6 +8,7 @@ import { deleteBucketList } from '../actions/bucketList';
 import { Card, Image } from 'semantic-ui-react'
 import backgroundImage from '../assets/black-diamond-plate.jpg';
 import _ from 'lodash';
+import capitalize  from 'capitalize';
 
 const styles = {
   main: {

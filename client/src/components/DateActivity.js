@@ -10,6 +10,7 @@ import { Card, Image } from 'semantic-ui-react'
 import backgroundImage from '../assets/black-diamond-plate.jpg';
 import _ from 'lodash';
 
+
 const styles = {
   main: {
     height: '100vh',
@@ -30,7 +31,7 @@ const styles = {
 
 class DateActivity extends Component {
   state = { randActivity: '',
-            randFood: '', 
+            randFood: '',
             column: null,
             data: [],
             direction: null, }
@@ -40,9 +41,9 @@ class DateActivity extends Component {
     this.setState({ randFood: this.props.foods[Math.floor(Math.random() * this.props.foods.length)] })
 
   }
-  
+
   randomDate = () => {
-    if (typeof(this.state.randActivity) !="undefined" && typeof(this.state.randFood) != "undefined") { 
+    if (typeof(this.state.randActivity) !="undefined" && typeof(this.state.randFood) != "undefined") {
       return (
         <Modal trigger={<Button content="Random Date" icon="random" labelPosition='left' onClick={this.setRandom} />}>
           <Modal.Description>
@@ -50,7 +51,7 @@ class DateActivity extends Component {
               <p>Location: {this.state.randActivity.location} </p>
               <p>Activity: {this.state.randActivity.activity}</p>
               <p>..and if you are hungry, try grabbing some {this.state.randFood.food_type} at {this.state.randFood.restaurant}</p>
-          </Modal.Description> 
+          </Modal.Description>
         </Modal>
       )
     } else {
@@ -58,16 +59,16 @@ class DateActivity extends Component {
       <Modal trigger={<Button content="Random Date" icon="random" labelPosition='left' onClick={this.setRandom}  />}>
         <Modal.Description>
           <Header>Your Random Date!</Header>
-          <p>To use the Random Date button, you must store the following:
-            <ul>
-              <li>Date Location</li>
-              <li>Date Activity</li>
-              <li>Favorite food at a restaurant</li>
-            </ul>
-          </p>
-        </Modal.Description> 
+                <p>To use the Random Date button, you must store the following:
+                  <ul>
+                    <li>Date Location</li>
+                    <li>Date Activity</li>
+                    <li>Favorite food at a restaurant</li>
+                  </ul>
+                </p>
+        </Modal.Description>
       </Modal>
-      )}   
+      )}
     }
 
   componentWillReceiveProps(nextProps) {

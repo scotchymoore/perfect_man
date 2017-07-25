@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addDateActivities } from '../actions/dateActivity';
 import { Button, Form , Segment} from 'semantic-ui-react';
-
+import capitalize  from 'capitalize';
 
 
 
@@ -30,12 +30,12 @@ class DateActivityForm extends React.Component {
             <Form.Input label='Date Activity'
             placeholder='Activity'
             name='activity'
-            value={this.state.activity}
+            value={capitalize(this.state.activity)}
             onChange={this.handleChange}/>
             <Form.Input label='Date Location'
             placeholder='Location'
             name='location'
-            value={this.state.location}
+            value={capitalize(this.state.location)}
             onChange={this.handleChange} />
           </Form.Group>
         <Button onClick={this.handleSubmit} type='submit'>Submit</Button>

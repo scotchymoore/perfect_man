@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addBucketList } from '../actions/bucketList';
 import { Button, Form, Segment } from 'semantic-ui-react';
+import capitalize  from 'capitalize';
 
 class BucketActivityForm extends React.Component {
     state = { location: '', bucket_list_item: '' }
@@ -27,12 +28,12 @@ class BucketActivityForm extends React.Component {
             <Form.Input label='Bucket List Activity'
             placeholder='Activity'
             name='bucket_list_item'
-            value={this.state.bucket_list_item}
+            value={capitalize(this.state.bucket_list_item)}
             onChange={this.handleChange}/>
             <Form.Input label='Location'
             placeholder='Location'
             name='location'
-            value={this.state.location}
+            value={capitalize(this.state.location)}
             onChange={this.handleChange} />
           </Form.Group>
         <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
