@@ -37,8 +37,11 @@ class Food extends Component {
     direction: null,
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ data: nextProps.foods})
+  }
+
   componentDidMount() {
-    console.log(this.props.foods)
     this.setState({ data: this.props.foods })
   }
 
@@ -68,7 +71,6 @@ class Food extends Component {
 
     const tableContent = _.map(data, ({ restaurant, location, food_type, id }, i) => {
     // const tableContent = this.props.foods.map((activity, i) => {
-    console.log(id)
       let cleanedActivity = restaurant.split().join('%20')
       let cleanedLocation = location.split().join('%20')
       return(
@@ -103,7 +105,7 @@ class Food extends Component {
           <FoodForm />
          </Segment>
 
-          <Table celled inverted selectable sortable={true}>
+          <Table celled inverted selectable sortable={true} CaseInsensitive>
             <Table.Header >
               <Table.Row>
                 <Table.HeaderCell sorted={column === 'restaurant' ? direction : null} onClick={this.handleSort('restaurant')}>Restaurant</Table.HeaderCell>

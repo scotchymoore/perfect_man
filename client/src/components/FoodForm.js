@@ -25,26 +25,26 @@ class FoodForm extends React.Component {
         <Form inverted>
           <Form.Group widths='equal'>
             <Form.Input label='Restaurant'
-            placeholder='Restaurant'
-            name='restaurant'
-            value={this.state.restaurant}
-            onChange={this.handleChange}/>
+              placeholder='Restaurant'
+              name='restaurant'
+              value={this.state.restaurant}
+              onChange={this.handleChange}/>
             <Form.Input label='Location'
-            placeholder='Location'
-            name='location'
-            value={this.state.location}
-            onChange={this.handleChange} />
+              placeholder='Location'
+              name='location'
+              value={this.state.location}
+              onChange={this.handleChange} />
             <Form.Input label='Food Type'
-            placeholder='Food Type'
-            name='food_type'
-            value={this.state.food_type}
-            onChange={this.handleChange} />
+              placeholder='Food Type'
+              name='food_type'
+              value={this.state.food_type}
+              onChange={this.handleChange} />
           </Form.Group>
         <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
       </Form>
     </Segment>
 
-        
+
     );
   }
 }
