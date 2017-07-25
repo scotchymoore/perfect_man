@@ -38,6 +38,7 @@ class DateActivity extends Component {
   setRandom = () => {
     this.setState({ randActivity: this.props.dateActivities[Math.floor(Math.random() * this.props.dateActivities.length)] })
     this.setState({ randFood: this.props.foods[Math.floor(Math.random() * this.props.foods.length)] })
+
   }
   
   randomDate = () => {
@@ -54,27 +55,27 @@ class DateActivity extends Component {
       )
     } else {
     return(
-      <Modal trigger={<Button content="Random Date" icon="random" labelPosition='left' />}>
+      <Modal trigger={<Button content="Random Date" icon="random" labelPosition='left' onClick={this.setRandom}  />}>
         <Modal.Description>
           <Header>Your Random Date!</Header>
-                <p>To use the Random Date button, you must store the following:
-                  <ul>
-                    <li>Date Location</li>
-                    <li>Date Activity</li>
-                    <li>Favorite food at a restaurant</li>
-                  </ul>
-                </p>
+          <p>To use the Random Date button, you must store the following:
+            <ul>
+              <li>Date Location</li>
+              <li>Date Activity</li>
+              <li>Favorite food at a restaurant</li>
+            </ul>
+          </p>
         </Modal.Description> 
       </Modal>
       )}   
     }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ data: nextProps.dateActivities})
+    this.setState({ data: nextProps.dateActivities })
   }
 
   componentDidMount() {
-    this.setState({ data: this.props.dateActivities})
+    this.setState({ data: this.props.dateActivities })
   }
 
   handleSort = clickedColumn => () => {
