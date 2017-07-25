@@ -29,7 +29,11 @@ const styles = {
 
 
 class DateActivity extends Component {
-  state = { randActivity: '', randFood: '' }
+  state = { randActivity: '',
+            randFood: '', 
+            column: null,
+            data: [],
+            direction: null, }
 
   setRandom = () => {
     this.setState({ randActivity: this.props.dateActivities[Math.floor(Math.random() * this.props.dateActivities.length)] })
@@ -64,15 +68,6 @@ class DateActivity extends Component {
       </Modal>
       )}   
     }
-
-
-  
-
-  state = {
-    column: null,
-    data: [],
-    direction: null,
-  }
 
   componentWillReceiveProps(nextProps) {
     this.setState({ data: nextProps.dateActivities})
