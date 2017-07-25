@@ -44,12 +44,13 @@ class Relationship extends Component {
 
     return(
       <Segment basic style={styles.main}>
-      <div>
-      <Header as='h1' textAlign='center' style={{color: 'white'}}>Relationship Info</Header>
+        <Segment inverted>
+          <Header as='h1' textAlign='center' style={{color: 'white'}}>Relationship Info</Header>
+        </Segment>
       <Grid columns='equal'>
         <Grid.Row>
          <Grid.Column>
-           <Segment>
+           <Segment inverted style={{color: 'white'}}>
               <Header as='h2'>
                 <Icon name='id card outline' />
                   <Header.Content>
@@ -58,26 +59,26 @@ class Relationship extends Component {
               </Header>
                <List>
                 <List.Item>
-                  <List.Header>Name</List.Header>
+                  <List.Header style={{color: 'white'}}>Name</List.Header>
                   {name}
                 </List.Item>
                 <List.Item>
-                  <List.Header>Place of Birth</List.Header>
+                  <List.Header style={{color: 'white'}}>Place of Birth</List.Header>
                   {pob}
                 </List.Item>
                 <List.Item>
-                  <List.Header>Favorite Flower</List.Header>
+                  <List.Header style={{color: 'white'}}>Favorite Flower</List.Header>
                   {flower}
                 </List.Item>
                 <List.Item>
-                  <List.Header>Misc important things</List.Header>
+                  <List.Header style={{color: 'white'}}>Misc important things</List.Header>
                   {misc}
                 </List.Item>
               </List>
            </Segment>
           </Grid.Column>
           <Grid.Column>
-            <Segment>
+            <Segment inverted style={{color: 'white'}}>
                 <Header as='h2'>
                 <Icon name='female' />
                   <Header.Content>
@@ -86,23 +87,23 @@ class Relationship extends Component {
               </Header>
               <List>
                 <List.Item>
-                  <List.Header>Top Size</List.Header>
+                  <List.Header style={{color: 'white'}}>Top Size</List.Header>
                   {topSize}
                 </List.Item>
                 <List.Item>
-                  <List.Header>Dress/Pant Size</List.Header>
+                  <List.Header style={{color: 'white'}}>Dress/Pant Size</List.Header>
                   {bottomSize}
                 </List.Item>
                 <List.Item>
-                  <List.Header>Shoe Size</List.Header>
+                  <List.Header style={{color: 'white'}}>Shoe Size</List.Header>
                   {shoeSize}
                 </List.Item>
                 <List.Item>
-                  <List.Header>Bust Size</List.Header>
+                  <List.Header style={{color: 'white'}}>Bust Size</List.Header>
                   {bustSize}
                 </List.Item>
                 <List.Item>
-                  <List.Header>Height</List.Header>
+                  <List.Header style={{color: 'white'}}>Height</List.Header>
                   {height}
                 </List.Item>
               </List>
@@ -111,7 +112,7 @@ class Relationship extends Component {
       </Grid.Row>
       <Grid.Row>
         <Grid.Column>
-          <Segment>
+          <Segment inverted style={{color: 'white'}}>
               <Header as='h2'>
                 <Icon name='calendar' />
                   <Header.Content>
@@ -120,22 +121,22 @@ class Relationship extends Component {
               </Header>
               <List>
                 <List.Item>
-                  <List.Header>Birthday</List.Header>
+                  <List.Header style={{color: 'white'}}>Birthday</List.Header>
                   {dob}
                 </List.Item>
                 <List.Item>
-                  <List.Header>Anniversary</List.Header>
+                  <List.Header style={{color: 'white'}}>Anniversary</List.Header>
                   {annv}
                 </List.Item>
                 <List.Item>
-                  <List.Header>First Date</List.Header>
+                  <List.Header style={{color: 'white'}}>First Date</List.Header>
                   {firstDate}
                 </List.Item>
               </List>
           </Segment>
         </Grid.Column>
         <Grid.Column>
-          <Segment>
+          <Segment inverted style={{color: 'white'}}>
               <Header as='h2'>
                 <Icon name='home' />
                   <Header.Content>
@@ -144,19 +145,19 @@ class Relationship extends Component {
               </Header>
               <List>
                 <List.Item>
-                  <List.Header>Street</List.Header>
+                  <List.Header style={{color: 'white'}}>Street</List.Header>
                   {street}
                 </List.Item>
                 <List.Item>
-                  <List.Header>City</List.Header>
+                  <List.Header style={{color: 'white'}}>City</List.Header>
                   {city}
                 </List.Item>
                 <List.Item>
-                  <List.Header>State</List.Header>
+                  <List.Header style={{color: 'white'}}>State</List.Header>
                   {state}
                 </List.Item>
                 <List.Item>
-                  <List.Header>Zip</List.Header>
+                  <List.Header style={{color: 'white'}}>Zip</List.Header>
                   {zip}
                 </List.Item>
               </List>
@@ -164,10 +165,11 @@ class Relationship extends Component {
         </Grid.Column>
       </Grid.Row>
      </Grid>
-     <hr/>
-     <Button onClick={ () => this.burnItWithFire(this.props.activeRelationship.id)} basic color='red'>Delete</Button>
+     <hr />
+     <Segment inverted>
+     <Button onClick={ () => this.burnItWithFire(this.props.activeRelationship.id)} color='red'>Delete</Button>
      <Link to='/relationshipForm'><Button>Edit Relationship</Button></Link>
-     </div>
+     </Segment>
      </Segment>
     )
   }

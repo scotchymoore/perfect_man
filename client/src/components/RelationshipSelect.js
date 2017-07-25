@@ -55,24 +55,25 @@ class RelationshipSelect extends Component {
   render() {
     return (
       <Segment basic style={styles.main}>
-      <div>
-      <Form onSubmit={this.handleSubmit}>
-        <label>
-          Relationship:
-          <select value={this.state.id} onChange={this.handleChange}>
-            <option disabled>Choose a Relationship</option>
-            return (
-              {this.props.relationships.map((relationship, i) => (
-              <option key={i} value={relationship.id} >{relationship.name} </option>
-              ))}
-            );
-          </select>
-        </label>
-        <input type="submit" value="Submit" />
-      </Form>
-     <h4>Please select a relationship from the dropdown above or create a new one <Link to='/relationshipForm'>
-     <strong style={{color: 'blue'}} onClick={ () => this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: {} }) }>HERE</strong></Link></h4>
-     </div>
+        <Segment inverted>
+          <Form onSubmit={this.handleSubmit}>
+            <label>
+              Relationship:
+            
+              <select value={this.state.id} onChange={this.handleChange}>
+                <option disabled>Choose a Relationship</option>
+                return (
+                  {this.props.relationships.map((relationship, i) => (
+                  <option key={i} value={relationship.id} >{relationship.name} </option>
+                  ))}
+                );
+              </select>
+            </label>
+            <input type="submit" value="Submit" />
+          </Form>
+        <h4>Please select a relationship from the dropdown above or create a new one <Link to='/relationshipForm'>
+        <strong style={{color: 'blue'}} onClick={ () => this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: {} }) }>HERE</strong></Link></h4>
+       </Segment>
      </Segment>
     );
   }

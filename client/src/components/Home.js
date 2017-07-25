@@ -41,7 +41,7 @@ class Home extends Component {
     if(this.props.user.id) {
       return(
     <div>
-      <Segment basic textAlign='center'>
+      {/* <Segment basic textAlign='center'>
           <Header as='h2'>Doghouse Dodger</Header>
           <Grid centered width={16}>
             <Grid.Column stretched>
@@ -56,7 +56,7 @@ class Home extends Component {
               </Dropzone>
             </Grid.Column>
           </Grid>
-      </Segment>
+      </Segment> */}
 
       <RelationshipSelect />
       
