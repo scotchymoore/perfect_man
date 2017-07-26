@@ -56,6 +56,10 @@ class RelationshipSelect extends Component {
     return (
       <Segment basic style={styles.main}>
         <Segment inverted>
+          <Header as='h1' textAlign='center'>Welcome to Dog House Dodger </Header>
+          <Header as='h2'> - remembering the important parts of your relationship so you don't have to!</Header>
+        </Segment>
+        <Segment inverted>
           <Form onSubmit={this.handleSubmit}>
             <label>
               Relationship:
