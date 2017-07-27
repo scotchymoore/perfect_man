@@ -5,8 +5,9 @@ import { withRouter, Link } from 'react-router-dom'
 import { getBucketList } from '../actions/bucketList';
 import { getFood } from '../actions/food';
 import { getDateActivities } from '../actions/dateActivity';
-import { Header, Segment, Form, Button, Card } from 'semantic-ui-react';
+import { Header, Segment, Form, Button, Card, Image } from 'semantic-ui-react';
 import backgroundImage from '../assets/black-diamond-plate.jpg';
+import logo from '../assets/logoandtag.jpg';
 
 const styles = {
   main: {
@@ -55,15 +56,14 @@ class RelationshipSelect extends Component {
   render() {
     return (
       <Segment basic style={styles.main}>
+        <Image src={logo} size='massive' />
         <Segment inverted>
-          <Header as='h1' textAlign='center'>Welcome to Doghouse Dodger </Header>
-          <Header as='h2'> - remembering the important parts of your relationship so you don't have to!</Header>
         </Segment>
         <Segment inverted>
           <Form onSubmit={this.handleSubmit}>
             <label>
               Relationship:
-            
+
               <select value={this.state.id} onChange={this.handleChange}>
                 <option disabled>Choose a Relationship</option>
                 return (
