@@ -71,7 +71,8 @@ class RelationshipSelect extends Component {
                 );
               </select>
             </label>
-            <input type="submit" value="Submit" />
+
+            <Form.Button content="Submit" type="submit" value="Submit" />
           </Form>
         <h4>Please select a relationship from the dropdown above or create a new one <Link to='/relationshipForm'>
         <strong style={{color: 'blue'}} onClick={ () => this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: {} }) }>HERE</strong></Link></h4>
