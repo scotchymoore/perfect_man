@@ -9,7 +9,7 @@ import backgroundImage from '../assets/black-diamond-plate.jpg';
 
 const styles = {
   main: {
-    height: '100vh',
+    minHeight: '100vh',
     width: null,
     background: `url(${backgroundImage}) no-repeat center center fixed`,
     webkitBackgroundSize: 'cover',
