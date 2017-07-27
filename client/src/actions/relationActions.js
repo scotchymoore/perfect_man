@@ -18,7 +18,6 @@ export const addRelationship = (relationship) => {
     axios.post(`/api/relationships`, { relationship })
     .then( res => {
       dispatch({ type: 'ADD_RELATIONSHIP', relationship: res.data, headers: res.headers});
-      dispatch(setFlash('Relationship Created!', 'success'));
     })
     .catch( res => {
       dispatch(setFlash('Relationship Failed To Create!', 'error'));
@@ -31,7 +30,6 @@ export const addRelationship = (relationship) => {
      axios.delete(`/api/relationships/${id}`)
      .then( res => {
        dispatch({ type: 'DELETE_RELATIONSHIP', id, headers: res.headers});
-       dispatch(setFlash('Relationship Deleted!', 'success'));
      })
      .catch( res => {
        dispatch(setFlash('Relationship Failed To Delete!', 'error'));
@@ -45,7 +43,6 @@ export const addRelationship = (relationship) => {
      .then( res => {
        dispatch({ type: 'EDIT_RELATIONSHIP', relationship: res.data,  headers: res.headers });
        dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: res.data });
-       dispatch(setFlash('Relationship Edited!', 'success'));
      })
      .catch( res => {
        dispatch(setFlash('Relationship Failed To Update!', 'error'));

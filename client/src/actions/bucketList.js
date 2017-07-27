@@ -6,7 +6,6 @@ export const addBucketList = (bucket_list, id) => {
     axios.post(`/api/relationships/${id}/bucket_lists`, { bucket_list })
       .then( res => {
        dispatch({ type: 'ADD_BUCKETLIST', bucketList: res.data, headers: res.headers });
-        dispatch(setFlash('Bucket List Item Created!', 'success'));
       })
       .catch( () => {
         dispatch(setFlash('Bucket List Item Failed To Create!', 'error'));

@@ -6,7 +6,6 @@ export const addDateActivities = (date_activity, id) => {
     axios.post(`/api/relationships/${id}/date_activities`, { date_activity })
       .then( res => {
         dispatch({ type: 'ADD_DATEACTIVITY', dateActivity: res.data, headers: res.headers})
-        dispatch(setFlash('Date Activity Item Created!', 'success'));
       })
       .catch( res => {
         dispatch(setFlash('Date Activity Item Failed to Create!', 'error'));
@@ -20,7 +19,6 @@ export const editDateActivity = ( dateActivity ) => {
                                 // interpolation
       .then( res => {
         dispatch({ type: 'EDIT_DATEACTIVITY', dateActivity: res.data });
-        dispatch(setFlash('Date Activity List Item Edited!', 'success'));
       })
       .catch( res => {
         dispatch(setFlash('Date Activity Item Failed To Update!', 'error'));
