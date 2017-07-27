@@ -101,7 +101,9 @@ class Food extends Component {
     })
     return(
       <Segment basic style={styles.main}>
-        <Header as='h1' style={{color: 'white'}} textAlign='center'>Food</Header>
+        <Segment inverted>
+          <Header as='h1' style={{color: 'orange'}} textAlign='center'>Food</Header>
+        </Segment>
          <Segment basic textAlign='center'>
           <FoodForm />
          </Segment>

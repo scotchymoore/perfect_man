@@ -272,7 +272,7 @@ class RelationForm extends React.Component {
                 value = {this.state.shoe_size}
                 onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
               />
-              <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
+              <Button inverted color='orange' onClick={this.handleSubmit} type='submit'>Submit</Button>
             </Form>
           </Grid.Column>
         </Grid>

@@ -45,14 +45,14 @@ class Relationship extends Component {
     return(
       <Segment basic style={styles.main}>
         <Segment inverted>
-          <Header as='h1' textAlign='center' style={{color: 'white'}}>Relationship Info</Header>
+          <Header as='h1' textAlign='center' style={{color: 'orange'}}>Relationship Info</Header>
         </Segment>
       <Grid columns='equal'>
         <Grid.Row>
          <Grid.Column>
-           <Segment inverted style={{color: 'white'}}>
+           <Segment inverted style={{color: 'orange'}}>
               <Header as='h2'>
-                <Icon name='id card outline' />
+                <Icon name='id card outline'/>
                   <Header.Content>
                     Personal
                   </Header.Content>
@@ -78,7 +78,7 @@ class Relationship extends Component {
            </Segment>
           </Grid.Column>
           <Grid.Column>
-            <Segment inverted style={{color: 'white'}}>
+            <Segment inverted style={{color: 'orange'}}>
                 <Header as='h2'>
                 <Icon name='female' />
                   <Header.Content>
@@ -112,7 +112,7 @@ class Relationship extends Component {
       </Grid.Row>
       <Grid.Row>
         <Grid.Column>
-          <Segment inverted style={{color: 'white'}}>
+          <Segment inverted style={{color: 'orange'}}>
               <Header as='h2'>
                 <Icon name='calendar' />
                   <Header.Content>
@@ -136,7 +136,7 @@ class Relationship extends Component {
           </Segment>
         </Grid.Column>
         <Grid.Column>
-          <Segment inverted style={{color: 'white'}}>
+          <Segment inverted style={{color: 'orange'}}>
               <Header as='h2'>
                 <Icon name='home' />
                   <Header.Content>
@@ -168,7 +168,7 @@ class Relationship extends Component {
      <Grid.Row centered>
      <Segment inverted>
      <Button onClick={ () => this.burnItWithFire(this.props.activeRelationship.id)} color='red'>Delete</Button>
-     <Link to='/relationshipForm'><Button>Edit Relationship</Button></Link>   
+     <Link to='/relationshipForm'><Button inverted color='orange'>Edit Relationship</Button></Link>   
     
      </Segment>
      </Grid.Row>

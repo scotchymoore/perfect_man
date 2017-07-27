@@ -24,6 +24,9 @@ const styles = {
     justifyContent: 'center',
     marginTop: '0px',
   },
+  button: {
+    marginTop: '10px'
+  }
 }
 
 
@@ -72,10 +75,10 @@ class RelationshipSelect extends Component {
               </select>
             </label>
 
-            <Form.Button content="Submit" type="submit" value="Submit" />
+            <Form.Button style={styles.button} inverted color='orange' content="Submit" type="submit" value="Submit" />
           </Form>
         <h4>Please select a relationship from the dropdown above or create a new one <Link to='/relationshipForm'>
-        <strong style={{color: 'blue'}} onClick={ () => this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: {} }) }>HERE</strong></Link></h4>
+        <strong style={{color: 'orange'}} onClick={ () => this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: {} }) }>HERE</strong></Link></h4>
        </Segment>
      </Segment>
     );
