@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Menu, Button, Dropdown, Segment } from 'semantic-ui-react'
+import { Menu, Button, Dropdown, Segment, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
 import { withRouter } from 'react-router-dom';
 import '../styles/navbar.css'
+import logo from '../assets/logo.jpg';
 
 class NavBar extends Component {
 
@@ -16,7 +17,7 @@ class NavBar extends Component {
         <Menu inverted>
         <Menu.Menu position='left'>
           <Link to='/'>
-            <Menu.Item name='home' />
+            <Image src={logo} size='small' />
           </Link>
         </Menu.Menu>
           <Menu.Menu position='right'>
@@ -40,7 +41,7 @@ class NavBar extends Component {
       return(
         <Menu.Menu position='left'>
           <Link to='/HomeIndex'>
-            <Menu.Item name='home' />
+            <Image src={logo} size='small' />
           </Link>
         </Menu.Menu>
       );
