@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Header, Image, Divider, Segment, Grid, Menu, Message, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import backgroundImage from '../assets/black-diamond-plate.jpg';
-import logo from '../assets/doghouselogo.jpg';
+import logo from '../assets/logo.jpg';
 
 const styles = {
   main: {
@@ -37,7 +37,7 @@ class HomeIndex extends Component {
   render() {
     return(
       <Segment basic textAlign='center' style={styles.main}>
-      <Image src={logo} size='medium' />
+      <Image src={logo} size='huge' />
         <Grid centered width={30}>
           <Grid.Column >
             <Segment basic textAlign='center'>
