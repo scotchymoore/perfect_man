@@ -58,8 +58,6 @@ class RelationshipSelect extends Component {
       <Segment basic style={styles.main}>
         <Image src={logo} size='massive' />
         <Segment inverted>
-        </Segment>
-        <Segment inverted>
           <Form onSubmit={this.handleSubmit}>
             <label>
               Relationship:
