@@ -164,13 +164,16 @@ class Relationship extends Component {
           </Segment>
         </Grid.Column>
       </Grid.Row>
-     </Grid>
-     <hr />
+     
+     <Grid.Row centered>
      <Segment inverted>
      <Button onClick={ () => this.burnItWithFire(this.props.activeRelationship.id)} color='red'>Delete</Button>
-     <Link to='/relationshipForm'><Button>Edit Relationship</Button></Link>
+     <Link to='/relationshipForm'><Button>Edit Relationship</Button></Link>   
+    
      </Segment>
-     </Segment>
+     </Grid.Row>
+     </Grid>
+    </Segment>
     )
   }
 }
