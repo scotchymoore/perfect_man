@@ -10,44 +10,49 @@ import logo from '../assets/logo.jpg';
 class NavBar extends Component {
 
   rightNavs = () => {
-    const { user, dispatch, history } = this.props;
+    const { user, dispatch, history, relationshipId } = this.props;
 
     if(user.id) {
       return(
         <Menu inverted fixed='top'>
-        <Menu.Menu position='left'>
-          <Link to='/'>
-            <Image src={logo} size='small' />
-          </Link>
-        </Menu.Menu>
-          <Menu.Menu position='right'>
-            <Menu.Item >
-              <Link to='/relationship/${this.props.relationshipId}' style={{color:'orange'}}>
-              Relationship Info
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to='/food' style={{color:'orange'}}>
-              Food
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to='/bucketList' style={{color:'orange'}}>
-              Bucket List
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to='/dateActivity' style={{color:'orange'}}>
-              Date Activities
-              </Link>
-            </Menu.Item>
-            <Menu.Item
-              name='Logout'
-              onClick={() => dispatch(handleLogout(history))}
-            />
-
+          <Menu.Menu position='left'>
+            <Link to='/'>
+              <Image src={logo} size='small' />
+            </Link>
           </Menu.Menu>
-
+          { relationshipId ?
+            <Menu.Menu position='right'>
+              <Menu.Item >
+                <Link to='/relationship/${this.props.relationshipId}' style={{color:'orange'}}>
+                Relationship Info
+                </Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link to='/food' style={{color:'orange'}}>
+                Food
+                </Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link to='/bucketList' style={{color:'orange'}}>
+                Bucket List
+                </Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link to='/dateActivity' style={{color:'orange'}}>
+                Date Activities
+                </Link>
+              </Menu.Item>
+              <Menu.Item
+                name='Logout'
+                onClick={() => dispatch(handleLogout(history))}
+              />
+            </Menu.Menu>
+          :
+          <Menu.Item
+            name='Logout'
+            onClick={() => dispatch(handleLogout(history))}
+          />
+          }
         </Menu>
       );
     } else {
