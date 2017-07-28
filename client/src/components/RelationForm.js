@@ -3,6 +3,32 @@ import { connect } from 'react-redux';
 import { addRelationship } from '../actions/relationActions';
 import { editRelationship } from '../actions/relationActions';
 import { Button, Form, Input, Radio, Select, TextArea, Label, Segment, Grid } from 'semantic-ui-react';
+import backgroundImage from '../assets/black-diamond-plate.jpg';
+
+
+const styles = {
+  main: {
+    height: '100vh',
+    width: null,
+    background: `url(${backgroundImage}) no-repeat center center fixed`,
+    webkitBackgroundSize: 'cover',
+    mozBackgroundSize: 'cover',
+    oBackgroundSize: 'cover',
+    backgroundSize: 'cover',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginTop: '0px',
+    overflow: 'auto',
+  },
+  mainForm: {
+    width: '50vw',
+    backgroundColor: 'black',
+    padding: '30px',
+  },
+}
+
 
 const topOptions = [
   { key: 'xxs', text: 'XXS', value: 'xxs' },
@@ -53,16 +79,6 @@ const shoeOptions = [
 
 ]
 
-const styles = {
-  foo: {
-    width: '50%',
-    height: 'auto',
-    borderWidth: '2px',
-    borderRadius: '5px',
-    margin: '0 auto',
-    textAlign: 'center'
-  }
-}
 
 class RelationForm extends React.Component {
   state = { }
@@ -124,10 +140,10 @@ class RelationForm extends React.Component {
 
   render() {
     return(
-      <Segment width={5} inverted>
-      <Grid centered columns={2}>
+      <Segment inverted style={styles.main}>
+      <Grid centered >
         <Grid.Column stretched>
-           <Form inverted>
+           <Form inverted style={styles.mainForm}>
               <Form.Field>
                 <label style={{color: 'white'}}>Name</label>
                 <input
@@ -140,7 +156,7 @@ class RelationForm extends React.Component {
               <Form.Field>
                 <label style={{color: 'white'}}>Birthday</label>
                 <input
-                  type='date' 
+                  type='date'
                   placeholder='Her Birthday'
                   name='dob'
                   value={this.state.dob}
@@ -168,7 +184,7 @@ class RelationForm extends React.Component {
               <Form.Field>
                 <label style={{color: 'white'}}>Anniversary</label>
                 <input
-                  type='date' 
+                  type='date'
                   placeholder='Your Anniversary'
                   name='annv'
                   value={this.state.annv}
