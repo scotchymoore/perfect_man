@@ -21,7 +21,6 @@ export const handleLogout = (history) => {
     axios.delete('/api/auth/sign_out')
       .then( res => {
         dispatch({ type: 'LOGOUT' });
-        dispatch(setFlash('Logged out successfully!', 'success'));
         history.push('/login');
       })
       .catch( res => {

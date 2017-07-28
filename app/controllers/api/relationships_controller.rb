@@ -21,10 +21,10 @@ class Api::RelationshipsController < ApplicationController
 
   def update
     if @relationship.update(relationship_params)
-        render json: @relationship
-      else
-        render json: { errors: @relationship.errors.full_messages.join(',') }, status: 422
-      end
+      render json: @relationship
+    else
+      render json: { errors: @relationship.errors.full_messages.join(',') }, status: 422
+    end
   end
 
   def destroy

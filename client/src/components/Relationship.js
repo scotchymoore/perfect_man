@@ -25,16 +25,17 @@ const styles = {
 }
 class Relationship extends Component {
   burnItWithFire =(id) => {
-
-    this.props.dispatch(deleteRelationship(id));
     let clearRelationship = {}
     let clearRelationshipChildren = []
-    this.props.dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: clearRelationship } );
-    this.props.dispatch({ type: 'SET_FOODS', foods: clearRelationshipChildren } );
-    this.props.dispatch({ type: 'SET_DATEACTIVITIES', dateActivities: clearRelationshipChildren } );
-    this.props.dispatch({ type: 'SET_BUCKETLIST', bucketLists: clearRelationshipChildren } );
-    this.props.history.push(`/`)
+    const { dispatch, history } = this.props;
+    
+    dispatch(deleteRelationship(id, history));
+    dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: clearRelationship } );
+    dispatch({ type: 'SET_FOODS', foods: clearRelationshipChildren } );
+    dispatch({ type: 'SET_DATEACTIVITIES', dateActivities: clearRelationshipChildren } );
+    dispatch({ type: 'SET_BUCKETLIST', bucketLists: clearRelationshipChildren } );
   }
+
   render() {
     let {name, dob, pob, misc, flower,
          annv, first_date: firstDate, street, city, state,

@@ -140,6 +140,7 @@ class RelationForm extends React.Component {
               <Form.Field>
                 <label style={{color: 'white'}}>Birthday</label>
                 <input
+                  type='date' 
                   placeholder='Her Birthday'
                   name='dob'
                   value={this.state.dob}
@@ -167,6 +168,7 @@ class RelationForm extends React.Component {
               <Form.Field>
                 <label style={{color: 'white'}}>Anniversary</label>
                 <input
+                  type='date' 
                   placeholder='Your Anniversary'
                   name='annv'
                   value={this.state.annv}
@@ -176,6 +178,7 @@ class RelationForm extends React.Component {
               <Form.Field>
                 <label style={{color: 'white'}}>Day of First Date</label>
                 <input
+                  type='date'
                   placeholder='Day/Mo/Year'
                   name='first_date'
                   value={this.state.first_date}

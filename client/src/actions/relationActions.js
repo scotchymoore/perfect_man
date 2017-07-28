@@ -25,11 +25,15 @@ export const addRelationship = (relationship) => {
    }
  }
 
- export const deleteRelationship = (id) => {
+ export const deleteRelationship = (id, history) => {
    return(dispatch) => {
      axios.delete(`/api/relationships/${id}`)
      .then( res => {
        dispatch({ type: 'DELETE_RELATIONSHIP', id, headers: res.headers});
+       
+     })
+     .then(() => {
+       history.push('/')
      })
      .catch( res => {
        dispatch(setFlash('Relationship Failed To Delete!', 'error'));
@@ -38,9 +42,10 @@ export const addRelationship = (relationship) => {
  }
 
  export const editRelationship = (relationship, id) => {
-   return(dispatch) => {
+   return(dispatch) => { 
      axios.put(`/api/relationships/${id}`, { relationship })
      .then( res => {
+       console.log(res.data)
        dispatch({ type: 'EDIT_RELATIONSHIP', relationship: res.data,  headers: res.headers });
        dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: res.data });
      })

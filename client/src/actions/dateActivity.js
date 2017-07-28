@@ -18,7 +18,7 @@ export const editDateActivity = ( dateActivity ) => {
     axios.put(`/api/date_activities/${dateActivity.id}`, { dateActivity } )
                                 // interpolation
       .then( res => {
-        dispatch({ type: 'EDIT_DATEACTIVITY', dateActivity: res.data });
+        dispatch({ type: 'EDIT_DATEACTIVITY', dateActivity: res.data, headers: res.headers });
       })
       .catch( res => {
         dispatch(setFlash('Date Activity Item Failed To Update!', 'error'));
