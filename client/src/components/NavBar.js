@@ -21,18 +21,31 @@ class NavBar extends Component {
           </Link>
         </Menu.Menu>
           <Menu.Menu position='right'>
-            <Dropdown item text='Categories'>
-              <Dropdown.Menu>
-                <Link to={`/relationship/${this.props.relationshipId}`}><Dropdown.Item style={{color: 'black'}}>Relationship Info</Dropdown.Item></Link>
-                <Link to="/food"><Dropdown.Item style={{color: 'black'}}>Foods</Dropdown.Item></Link>
-                <Link to="/bucketList"><Dropdown.Item style={{color: 'black'}}>Bucket Lists</Dropdown.Item></Link>
-                <Link to="/dateActivity"><Dropdown.Item style={{color: 'black'}}>Date Activities</Dropdown.Item></Link>
-              </Dropdown.Menu>
-            </Dropdown>
+            <Menu.Item >
+              <Link to='/relationship/${this.props.relationshipId}' style={{color:'orange'}}>
+              Relationship Info
+              </Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to='/food' style={{color:'orange'}}>
+              Food
+              </Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to='/bucketList' style={{color:'orange'}}>
+              Bucket List
+              </Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to='/dateActivity' style={{color:'orange'}}>
+              Date Activities
+              </Link>
+            </Menu.Item>
             <Menu.Item
               name='Logout'
               onClick={() => dispatch(handleLogout(history))}
             />
+
           </Menu.Menu>
 
         </Menu>
@@ -65,3 +78,12 @@ const mapStateToProps = (state) => {
 }
 
 export default withRouter(connect(mapStateToProps)(NavBar));
+
+// <Dropdown item text='Categories'>
+//   <Dropdown.Menu>
+//     <Link to={`/relationship/${this.props.relationshipId}`}><Dropdown.Item style={{color: 'black'}}>Relationship Info</Dropdown.Item></Link>
+//     <Link to="/food"><Dropdown.Item style={{color: 'black'}}>Foods</Dropdown.Item></Link>
+//     <Link to="/bucketList"><Dropdown.Item style={{color: 'black'}}>Bucket Lists</Dropdown.Item></Link>
+//     <Link to="/dateActivity"><Dropdown.Item style={{color: 'black'}}>Date Activities</Dropdown.Item></Link>
+//   </Dropdown.Menu>
+// </Dropdown>
