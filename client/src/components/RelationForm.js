@@ -31,13 +31,13 @@ const styles = {
 
 
 const topOptions = [
-  { key: 'xxs', text: 'XXS', value: 'xxs' },
-  { key: 'xs', text: 'XS', value: 'xs' },
-  { key: 's', text: 'Small', value: 's' },
-  { key: 'm', text: 'Medium', value: 'm' },
-  { key: 'l', text: 'Large', value: 'l' },
-  { key: 'xl', text: 'XL', value: 'xl' },
-  { key: 'xxl', text: 'XXL', value: 'xxl' }
+  { key: 'XXS', text: 'XXS', value: 'XXS' },
+  { key: 'XS', text: 'XS', value: 'XS' },
+  { key: 'S', text: 'Small', value: 'S' },
+  { key: 'M', text: 'Medium', value: 'M' },
+  { key: 'L', text: 'Large', value: 'L' },
+  { key: 'XL', text: 'XL', value: 'XL' },
+  { key: 'XXL', text: 'XXL', value: 'XXL' }
 ]
 
 const bottomOptions = [
