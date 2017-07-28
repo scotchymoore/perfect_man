@@ -15,7 +15,8 @@
     "redux-devise-axios": "^0.0.2",
     "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.2.10",
-    "semantic-ui-react": "^0.70.0"
+    "semantic-ui-react": "^0.70.0",
+    "styled-components": "^2.1.1"
   },
   "devDependencies": {
     "react-scripts": "1.0.10"

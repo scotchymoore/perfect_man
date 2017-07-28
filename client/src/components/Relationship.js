@@ -6,6 +6,9 @@ import { Header, Button, Segment, Form, Grid, Icon, List } from 'semantic-ui-rea
 import RelationForm from './RelationForm'
 import { deleteRelationship } from '../actions/relationActions'
 import backgroundImage from '../assets/black-diamond-plate.jpg';
+import '../styles/fonts.css';
+import styled from 'styled-components';
+
 
 const styles = {
   main: {
@@ -23,6 +26,16 @@ const styles = {
     marginTop: '0px',
   },
 }
+
+const head = styled.h1`
+font-family: 'Bangers', cursive !important;
+ color: orange !important;
+ font-size: 500% !important;
+ padding: 10px !important;
+ border-color: "orange" !important;
+ `;
+
+
 class Relationship extends Component {
   burnItWithFire =(id) => {
     let clearRelationship = {}
@@ -46,7 +59,7 @@ class Relationship extends Component {
     return(
       <Segment basic style={styles.main}>
         <Segment inverted>
-          <Header as='h1' textAlign='center' style={{color: 'orange'}}>Relationship Info</Header>
+          <Header as={head} textAlign='center'>Relationship Info</Header>
         </Segment>
       <Grid columns='equal'>
         <Grid.Row>
@@ -165,12 +178,12 @@ class Relationship extends Component {
           </Segment>
         </Grid.Column>
       </Grid.Row>
-     
+
      <Grid.Row centered>
      <Segment inverted>
      <Button onClick={ () => this.burnItWithFire(this.props.activeRelationship.id)} color='red'>Delete</Button>
-     <Link to='/relationshipForm'><Button inverted color='orange'>Edit Relationship</Button></Link>   
-    
+     <Link to='/relationshipForm'><Button inverted color='orange'>Edit Relationship</Button></Link>
+
      </Segment>
      </Grid.Row>
      </Grid>

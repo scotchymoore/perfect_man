@@ -14,7 +14,7 @@ class NavBar extends Component {
 
     if(user.id) {
       return(
-        <Menu inverted>
+        <Menu inverted fixed='top'>
         <Menu.Menu position='left'>
           <Link to='/'>
             <Image src={logo} size='small' />

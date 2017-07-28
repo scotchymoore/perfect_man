@@ -9,6 +9,8 @@ import { Card, Image } from 'semantic-ui-react'
 import backgroundImage from '../assets/black-diamond-plate.jpg';
 import _ from 'lodash';
 import capitalize  from 'capitalize';
+import '../styles/fonts.css';
+import styled from 'styled-components';
 
 const styles = {
   main: {
@@ -25,8 +27,22 @@ const styles = {
     justifyContent: 'center',
     marginTop: '0px',
   },
+  mainTable: {
+    height: '100vh',
+    width: '90vw',
+    display: 'flex',
+    overflow: 'auto',
+    margin: '10px',
+  },
 }
 
+const head = styled.h1`
+font-family: 'Bangers', cursive !important;
+ color: orange !important;
+ font-size: 500% !important;
+ padding: 10px !important;
+ border-color: "orange" !important;
+ `;
 
 
 
@@ -102,12 +118,12 @@ class Food extends Component {
     return(
       <Segment basic style={styles.main}>
         <Segment inverted>
-          <Header as='h1' style={{color: 'orange'}} textAlign='center'>Food</Header>
+          <Header as={head} textAlign='center'>Food</Header>
         </Segment>
          <Segment basic textAlign='center'>
           <FoodForm />
          </Segment>
-
+         <Segment basic style={styles.mainTable}>
           <Table celled inverted selectable sortable={true} CaseInsensitive>
             <Table.Header >
               <Table.Row>
@@ -122,6 +138,7 @@ class Food extends Component {
               { tableContent }
             </Table.Body>
           </Table>
+         </Segment>
         </Segment>
       )
     }
