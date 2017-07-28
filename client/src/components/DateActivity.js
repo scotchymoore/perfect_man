@@ -35,6 +35,13 @@ const styles = {
     overflow: 'auto',
     margin: '10px',
   },
+  popupb: {
+    border: 'solid',
+    borderColor: 'orange',
+    borderWidth: '4px',
+    padding: '20px',
+
+  }
 }
 
 const head = styled.h1`
@@ -63,19 +70,22 @@ class DateActivity extends Component {
     if (typeof(this.state.randActivity) !="undefined" && typeof(this.state.randFood) != "undefined") {
       return (
         <Modal trigger={<Button content="Random Date" icon="random" labelPosition='left' onClick={this.setRandom} />}>
-          <Modal.Description>
+          <Modal.Description style={styles.popupb} >
             <Header>Your Random Date!</Header>
+            <Modal.Content>
               <p>Location: {this.state.randActivity.location} </p>
               <p>Activity: {this.state.randActivity.activity}</p>
               <p>..and if you are hungry, try grabbing some {this.state.randFood.food_type} at {this.state.randFood.restaurant}</p>
+            </Modal.Content>
           </Modal.Description>
         </Modal>
       )
     } else {
     return(
-      <Modal trigger={<Button content="Random Date" icon="random" labelPosition='left' onClick={this.setRandom}  />}>
-        <Modal.Description>
+      <Modal trigger={<Button content="Random Date" icon="random" labelPosition='left' onClick={this.setRandom} />} >
+        <Modal.Description style={styles.popupb}>
           <Header>Your Random Date!</Header>
+            <Modal.Content>
                 <p>To use the Random Date button, you must store the following:
                   <ul>
                     <li>Date Location</li>
@@ -83,6 +93,7 @@ class DateActivity extends Component {
                     <li>Favorite food at a restaurant</li>
                   </ul>
                 </p>
+            </Modal.Content>
         </Modal.Description>
       </Modal>
       )}
