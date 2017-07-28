@@ -94,6 +94,7 @@ class BucketList extends Component {
             href={`https://www.google.com/search?q=${cleanedActivity}+${cleanedLocation}`}
             target="_blank"
             rel="noreferrer noopener"
+            style={{color: 'orange'}}
           >
             {bucket_list_item}
           </a>

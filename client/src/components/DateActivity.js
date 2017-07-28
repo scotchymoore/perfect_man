@@ -129,6 +129,7 @@ class DateActivity extends Component {
             < a
               href={`https://www.google.com/search?q=${cleanedActivity}+${cleanedLocation}`}
               target="_blank" rel="noreferrer noopener"
+              style={{color: 'orange'}}
             >
             {activity}
             </a>
