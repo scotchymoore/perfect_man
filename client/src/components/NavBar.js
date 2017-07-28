@@ -8,7 +8,13 @@ import '../styles/navbar.css'
 import logo from '../assets/logo.jpg';
 
 class NavBar extends Component {
-
+  logEmOut = () => {
+    const { dispatch, history } = this.props;
+    const clearActiveRelationship = {}
+    debugger
+    dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: clearActiveRelationship} );
+    dispatch(handleLogout(history));
+  }
   rightNavs = () => {
     const { user, dispatch, history, relationshipId } = this.props;
 
@@ -44,13 +50,13 @@ class NavBar extends Component {
               </Menu.Item>
               <Menu.Item
                 name='Logout'
-                onClick={() => dispatch(handleLogout(history))}
+                onClick={() => {this.logEmOut()} }
               />
             </Menu.Menu>
           :
           <Menu.Item
             name='Logout'
-            onClick={() => dispatch(handleLogout(history))}
+            onClick={ () => {this.logEmOut()} }
           />
           }
         </Menu>
