@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addRelationship } from '../actions/relationActions';
 import { editRelationship } from '../actions/relationActions';
-import { Button, Form, Input, Radio, Select, TextArea, Label, Segment, Grid } from 'semantic-ui-react';
+import { Button, Form, Header, Input, Radio, Select, TextArea, Label, Segment, Grid } from 'semantic-ui-react';
 import backgroundImage from '../assets/black-diamond-plate.jpg';
 
 
@@ -26,6 +26,7 @@ const styles = {
     width: '50vw',
     backgroundColor: 'black',
     padding: '30px',
+    webkitTransform: 'translateY(25em)'
   },
 }
 
@@ -141,9 +142,7 @@ class RelationForm extends React.Component {
   render() {
     return(
       <Segment inverted style={styles.main}>
-      <Grid centered >
-        <Grid.Column stretched>
-           <Form inverted style={styles.mainForm}>
+              <Form inverted centered style={styles.mainForm}>
               <Form.Field>
                 <label style={{color: 'white'}}>Name</label>
                 <input
@@ -293,8 +292,7 @@ class RelationForm extends React.Component {
               />
               <Button inverted color='orange' onClick={this.handleSubmit} type='submit'>Submit</Button>
             </Form>
-          </Grid.Column>
-        </Grid>
+          
       </Segment>
     );
   }
