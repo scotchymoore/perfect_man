@@ -92,7 +92,7 @@ class Food extends Component {
       let cleanedLocation = location.split().join('%20')
       return(
         <Table.Row key={i} >
-          <Table.Cell >
+          <Table.Cell  >
             <a
               href={`https://www.google.com/search?q=${cleanedActivity}+${cleanedLocation}`}
               target="_blank"
@@ -102,9 +102,9 @@ class Food extends Component {
               {restaurant}
             </a>
           </Table.Cell>
-          <Table.Cell >{location}</Table.Cell>
-          <Table.Cell >{food_type}</Table.Cell>
-          <Table.Cell textAlign='right'>
+          <Table.Cell  >{location}</Table.Cell>
+          <Table.Cell  >{food_type}</Table.Cell>
+          <Table.Cell textAlign='right' >
             <Button
               onClick={ () => this.props.dispatch(deleteFood(this.props.relationshipID, id))}
               basic
@@ -128,10 +128,10 @@ class Food extends Component {
           <Table celled inverted selectable sortable={true} CaseInsensitive>
             <Table.Header >
               <Table.Row>
-                <Table.HeaderCell sorted={column === 'restaurant' ? direction : null} onClick={this.handleSort('restaurant')}>Restaurant</Table.HeaderCell>
-                <Table.HeaderCell sorted={column === 'location' ? direction : null} onClick={this.handleSort('location')}>Location</Table.HeaderCell>
-                <Table.HeaderCell sorted={column === 'food_type' ? direction : null} onClick={this.handleSort('food_type')}>Food Type</Table.HeaderCell>
-                <Table.HeaderCell textAlign='right'>Remove</Table.HeaderCell>
+                <Table.HeaderCell  sorted={column === 'restaurant' ? direction : null} onClick={this.handleSort('restaurant')}>Restaurant</Table.HeaderCell>
+                <Table.HeaderCell  sorted={column === 'location' ? direction : null} onClick={this.handleSort('location')}>Location</Table.HeaderCell>
+                <Table.HeaderCell  sorted={column === 'food_type' ? direction : null} onClick={this.handleSort('food_type')}>Food Type</Table.HeaderCell>
+                <Table.HeaderCell  textAlign='right'>Remove</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
 
