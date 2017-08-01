@@ -61,9 +61,9 @@ class Relationship extends Component {
         <Segment inverted>
           <Header as={head} textAlign='center'>Relationship Info</Header>
         </Segment>
-      <Grid columns='equal'>
-        <Grid.Row>
-         <Grid.Column>
+      <Grid centered stackable='true' >
+        <Grid.Row stretched='true'>
+         <Grid.Column width={6} >
            <Segment inverted style={{color: 'orange'}}>
               <Header as='h2'>
                 <Icon name='id card outline'/>
@@ -91,7 +91,7 @@ class Relationship extends Component {
               </List>
            </Segment>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column width={6} >
             <Segment inverted style={{color: 'orange'}}>
                 <Header as='h2'>
                 <Icon name='female' />
@@ -122,11 +122,11 @@ class Relationship extends Component {
                 </List.Item>
               </List>
             </Segment>
-        </Grid.Column>
-      </Grid.Row>
-      <Grid.Row>
-        <Grid.Column>
-          <Segment inverted style={{color: 'orange'}}>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row stretched='true'>
+          <Grid.Column width={6} >
+            <Segment inverted style={{color: 'orange'}}>
               <Header as='h2'>
                 <Icon name='calendar' />
                   <Header.Content>
@@ -149,7 +149,7 @@ class Relationship extends Component {
               </List>
           </Segment>
         </Grid.Column>
-        <Grid.Column>
+        <Grid.Column width={6} >
           <Segment inverted style={{color: 'orange'}}>
               <Header as='h2'>
                 <Icon name='home' />
