@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Header, Button, Segment, Form, Table } from 'semantic-ui-react';
+import { Header, Button, Segment, Container, Form, Table } from 'semantic-ui-react';
 import FoodForm from './FoodForm';
 import RelationshipSelect from './RelationshipSelect';
 import { deleteFood } from '../actions/food';
@@ -52,6 +52,8 @@ class Food extends Component {
     column: null,
     data: [],
     direction: null,
+    isVertical: true,
+    isDesktop: true,
   }
 
   componentWillReceiveProps(nextProps) {
@@ -59,8 +61,44 @@ class Food extends Component {
   }
 
   componentDidMount() {
-    this.setState({ data: this.props.foods })
+    this.setState({ data: this.props.foods });
+     window.addEventListener('resize', this.screenChange);
   }
+
+  dropHeader = (screenHeight) => {
+    if (screenHeight > '700' ) {
+      return (
+        <Segment inverted>
+           <Header as={head} textAlign='center'>Food</Header> 
+        </Segment>
+      )
+    } else {
+      {}
+    }
+  }
+
+  renderForm = (screenHeight) => {
+    if (screenHeight > '400' ) {
+        return (
+          <FoodForm />
+        )
+      } else {
+        return (
+         {}
+        )
+      }
+  }
+  
+  screenChange = () => {
+    console.log('hit this');
+    if(window.screen.height > 700) {
+      this.setState({ isDesktop: true, isVertical: true });
+    } else if(window.screen.height > 400) {
+      this.setState({ isDesktop: false, isVertical: true });
+    } else if (window.screen.height < 400) {
+      this.setState({ isDesktop: false, isVertical: false })
+    }
+  };
 
   handleSort = clickedColumn => () => {
     const { column, data, direction } = this.state
@@ -118,11 +156,9 @@ class Food extends Component {
     })
     return(
       <Segment basic style={styles.main}>
-        <Segment inverted>
-          <Header as={head} textAlign='center'>Food</Header>
-        </Segment>
+        { this.state.isDesktop ? this.dropHeader(window.screen.height) : null }
          <Segment basic textAlign='center'>
-          <FoodForm />
+           { this.state.isVertical ? this.renderForm(window.screen.height) : <p style={{color: 'white'}}>Please turn your device vertical to add items.</p> }
          </Segment>
          <Segment basic style={styles.mainTable}>
           <Table celled inverted selectable sortable={true} CaseInsensitive>
