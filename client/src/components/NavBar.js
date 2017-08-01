@@ -17,9 +17,7 @@ class NavBar extends Component {
   }
 
   determineSize = (height) => {
-    console.log(height)
     if (height < 700) {
-      console.log('mobile')
       return this.smallNavs();
     } else {
       return this.rightNavs();
