@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 import '../styles/navbar.css'
 import logo from '../assets/logo.jpg';
 
+
 class NavBar extends Component {
   logEmOut = () => {
     const { dispatch, history } = this.props;
@@ -20,7 +21,7 @@ class NavBar extends Component {
 
     if(user.id) {
       return(
-        <Menu inverted fixed='top'>
+        <Menu  inverted fixed='top'>
           <Menu.Menu position='left'>
             <Link to='/'>
               <Image src={logo} size='small' />
