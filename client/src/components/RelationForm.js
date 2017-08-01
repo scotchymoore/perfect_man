@@ -23,10 +23,11 @@ const styles = {
     overflow: 'auto',
   },
   mainForm: {
-    width: '50vw',
+    width: '80%',
+    display: 'flex',
     backgroundColor: 'black',
     padding: '30px',
-    webkitTransform: 'translateY(25em)'
+    overflow: 'auto',
   },
 }
 
@@ -142,157 +143,192 @@ class RelationForm extends React.Component {
   render() {
     return(
       <Segment inverted style={styles.main}>
-              <Form inverted centered style={styles.mainForm}>
-              <Form.Field>
-                <label style={{color: 'white'}}>Name</label>
-                <input
-                  placeholder='Her Name'
-                  name='name'
-                  value={this.state.name}
-                  onChange={this.handleChange}
+        <Form inverted centered style={styles.mainForm}>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field required='true'>
+                  <label style={{color: 'white'}}>Name</label>
+                  <input
+                    placeholder='Her Name'
+                    name='name'
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>    
+                <Form.Field>
+                  <label style={{color: 'white'}}>Birthday</label>
+                  <input
+                    type='date'
+                    placeholder='Her Birthday'
+                    name='dob'
+                    value={this.state.dob}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field>
+                  <label style={{color: 'white'}}>Birth Location</label>
+                  <input
+                    placeholder='Birth Location'
+                    name='pob'
+                    value={this.state.pob}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field>
+                  <label style={{color: 'white'}}>Favorite Flowers</label>
+                  <input
+                    placeholder='Her Flowers'
+                    name='flower'
+                    value={this.state.flower}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field>
+                  <label style={{color: 'white'}}>Anniversary</label>
+                  <input
+                    type='date'
+                    placeholder='Your Anniversary'
+                    name='annv'
+                    value={this.state.annv}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field>
+                  <label style={{color: 'white'}}>Day of First Date</label>
+                  <input
+                    type='date'
+                    placeholder='Day/Mo/Year'
+                    name='first_date'
+                    value={this.state.first_date}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field>
+                  <label style={{color: 'white'}}>Street Address</label>
+                  <input
+                    placeholder='Street Address'
+                    name='street'
+                    value={this.state.street}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field>
+                  <label style={{color: 'white'}}>City</label>
+                  <input
+                    placeholder='City'
+                    name='city'
+                    value={this.state.city}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field>
+                  <label style={{color: 'white'}}>State</label>
+                  <input
+                    placeholder='State'
+                    name='state'
+                    value={this.state.state}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field>
+                  <label style={{color: 'white'}}>Zip Code</label>
+                  <input
+                    placeholder='Zip Code'
+                    name='zip'
+                    value={this.state.zip}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field>
+                  <label style={{color: 'white'}}>Other Information</label>
+                  <input
+                    placeholder='Other'
+                    name='misc'
+                    value={this.state.misc}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field>
+                  <label style={{color: 'white'}}>Height</label>
+                  <input
+                    placeholder='Heigth'
+                    name='height'
+                    value = {this.state.height}
+                    onChange ={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field>
+                  <label>Bust Size</label>
+                  <input
+                    placeholder='Bust Size'
+                    name='bust_size'
+                    value={this.state.bust_size}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field
+                  control={Select}
+                  label ='Shirt Size'
+                  name='top_size'
+                  options={topOptions}
+                  placeholder='Shirt Size'
+                  value = {this.state.top_size}
+                  onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
                 />
-              </Form.Field>
-              <Form.Field>
-                <label style={{color: 'white'}}>Birthday</label>
-                <input
-                  type='date'
-                  placeholder='Her Birthday'
-                  name='dob'
-                  value={this.state.dob}
-                  onChange={this.handleChange}
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field
+                  control={Select}
+                  label='Waist Size'
+                  name='bottom_size'
+                  options={bottomOptions}
+                  placeholder='Waist Size'
+                  value = {this.state.bottom_size}
+                  onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
                 />
-              </Form.Field>
-              <Form.Field>
-                <label style={{color: 'white'}}>Birth Location</label>
-                <input
-                  placeholder='Birth Location'
-                  name='pob'
-                  value={this.state.pob}
-                  onChange={this.handleChange}
+              </Grid.Column>
+              <Grid.Column mobile={16} computer={5}>
+                <Form.Field
+                  control={Select}
+                  label='Shoe Size'
+                  name='shoe_size'
+                  options={shoeOptions}
+                  placeholder='Shoe Size'
+                  value = {this.state.shoe_size}
+                  onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
                 />
-              </Form.Field>
-              <Form.Field>
-                <label style={{color: 'white'}}>Favorite Flowers</label>
-                <input
-                  placeholder='Her Flowers'
-                  name='flower'
-                  value={this.state.flower}
-                  onChange={this.handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label style={{color: 'white'}}>Anniversary</label>
-                <input
-                  type='date'
-                  placeholder='Your Anniversary'
-                  name='annv'
-                  value={this.state.annv}
-                  onChange={this.handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label style={{color: 'white'}}>Day of First Date</label>
-                <input
-                  type='date'
-                  placeholder='Day/Mo/Year'
-                  name='first_date'
-                  value={this.state.first_date}
-                  onChange={this.handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label style={{color: 'white'}}>Street Address</label>
-                <input
-                  placeholder='Street Address'
-                  name='street'
-                  value={this.state.street}
-                  onChange={this.handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label style={{color: 'white'}}>City</label>
-                <input
-                  placeholder='City'
-                  name='city'
-                  value={this.state.city}
-                  onChange={this.handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label style={{color: 'white'}}>State</label>
-                <input
-                  placeholder='State'
-                  name='state'
-                  value={this.state.state}
-                  onChange={this.handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label style={{color: 'white'}}>Zip Code</label>
-                <input
-                  placeholder='Zip Code'
-                  name='zip'
-                  value={this.state.zip}
-                  onChange={this.handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label style={{color: 'white'}}>Other Information</label>
-                <input
-                  placeholder='Other'
-                  name='misc'
-                  value={this.state.misc}
-                  onChange={this.handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label style={{color: 'white'}}>Height</label>
-                <input
-                  placeholder='Heigth'
-                  name='height'
-                  value = {this.state.height}
-                  onChange ={this.handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label>Bust Size</label>
-                <input
-                  placeholder='Bust Size'
-                  name='bust_size'
-                  value={this.state.bust_size}
-                  onChange={this.handleChange}
-                />
-              </Form.Field>
-              <Form.Field
-                control={Select}
-                label ='Shirt Size'
-                name='top_size'
-                options={topOptions}
-                placeholder='Shirt Size'
-                value = {this.state.top_size}
-                onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
-              />
-              <Form.Field
-                control={Select}
-                label='Waist Size'
-                name='bottom_size'
-                options={bottomOptions}
-                placeholder='Waist Size'
-                value = {this.state.bottom_size}
-                onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
-              />
-              <Form.Field
-                control={Select}
-                label='Shoe Size'
-                name='shoe_size'
-                options={shoeOptions}
-                placeholder='Shoe Size'
-                value = {this.state.shoe_size}
-                onChange ={ (e, data) => this.setState({ [data.name]: data.value }) }
-              />
-              <Button inverted color='orange' onClick={this.handleSubmit} type='submit'>Submit</Button>
-            </Form>
-          
+                <Button inverted color='orange' onClick={this.handleSubmit} type='submit'>Submit</Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Form>        
       </Segment>
     );
   }
