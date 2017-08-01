@@ -12,9 +12,18 @@ class NavBar extends Component {
   logEmOut = () => {
     const { dispatch, history } = this.props;
     const clearActiveRelationship = {}
-    debugger
     dispatch({ type: 'SET_ACTIVE_RELATIONSHIP', relationship: clearActiveRelationship} );
     dispatch(handleLogout(history));
+  }
+
+  determineSize = (height) => {
+    console.log(height)
+    if (height < 700) {
+      console.log('mobile')
+      return this.smallNavs();
+    } else {
+      return this.rightNavs();
+    }
   }
   rightNavs = () => {
     const { user, dispatch, history, relationshipId } = this.props;
@@ -73,11 +82,61 @@ class NavBar extends Component {
     }
   }
 
+  smallNavs = () => {
+    const { user, dispatch, history, relationshipId } = this.props;
+
+    if(user.id) {
+      return(
+        <Dropdown item text='Menu'>
+        <Dropdown.Menu>
+        <Link to='/'>
+        <Dropdown.Item style={{color: 'black'}}>
+        Home
+        </Dropdown.Item>
+        </Link>
+        <Link to={`/relationship/${this.props.relationshipId}`}>
+        <Dropdown.Item style={{color: 'black'}}>
+        Relationship Info
+        </Dropdown.Item>
+        </Link>
+        <Link to="/food">
+        <Dropdown.Item style={{color: 'black'}}>
+        Foods
+        </Dropdown.Item>
+        </Link>
+        <Link to="/bucketList">
+        <Dropdown.Item style={{color: 'black'}} >
+        Bucket Lists
+        </Dropdown.Item>
+        </Link>
+        <Link to="/dateActivity">
+        <Dropdown.Item style={{color: 'black'}} >
+        Date Activities
+        </Dropdown.Item>
+        </Link>
+        <Dropdown.Item style={{color: 'black'}} onClick={ () => {this.logEmOut()}}>
+        Logout
+        </Dropdown.Item>
+        </Dropdown.Menu>
+        </Dropdown>
+      )
+  } else {
+    return(
+      <Menu.Menu position='left'>
+        <Link to='/HomeIndex'>
+          <Image src={logo} size='small' />
+        </Link>
+      </Menu.Menu>
+    );
+  }
+}
+
+
   render() {
     return (
       <Segment inverted className='zero-margin'>
         <Menu inverted pointing secondary>
-          { this.rightNavs() }
+          { this.determineSize(window.screen.height) }
         </Menu>
       </Segment>
     )
@@ -85,17 +144,10 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.user,
-           relationshipId: state.activeRelationship.id }
+  return {
+    user: state.user,
+    relationshipId: state.activeRelationship.id
+  }
 }
 
 export default withRouter(connect(mapStateToProps)(NavBar));
-
-// <Dropdown item text='Categories'>
-//   <Dropdown.Menu>
-//     <Link to={`/relationship/${this.props.relationshipId}`}><Dropdown.Item style={{color: 'black'}}>Relationship Info</Dropdown.Item></Link>
-//     <Link to="/food"><Dropdown.Item style={{color: 'black'}}>Foods</Dropdown.Item></Link>
-//     <Link to="/bucketList"><Dropdown.Item style={{color: 'black'}}>Bucket Lists</Dropdown.Item></Link>
-//     <Link to="/dateActivity"><Dropdown.Item style={{color: 'black'}}>Date Activities</Dropdown.Item></Link>
-//   </Dropdown.Menu>
-// </Dropdown>
