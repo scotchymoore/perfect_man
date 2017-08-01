@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Header, Button, Segment, Form, Table } from 'semantic-ui-react';
+import { Header, Button, Segment, Form, Container, Table } from 'semantic-ui-react';
 import BucketForm from './BucketForm';
 import RelationshipSelect from './RelationshipSelect';
 import { deleteBucketList } from '../actions/bucketList';
@@ -44,21 +44,62 @@ font-family: 'Bangers', cursive !important;
  border-color: "orange" !important;
  `;
 
+
 class BucketList extends Component {
 
   state = {
     column: null,
     data: [],
     direction: null,
+    isVertical: true,
+    isDesktop: true,
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ data: nextProps.bucketLists})
+    this.setState({ data: nextProps.bucketLists});
   }
 
   componentDidMount() {
-    this.setState({ data: this.props.bucketLists })
+    this.setState({ data: this.props.bucketLists });
+    window.addEventListener('resize', this.screenChange)
   }
+  
+  dropHeader = (screenHeight) => {
+    if (screenHeight > '700' ) {
+      return (
+        <Segment inverted>
+          <Header as={head} textAlign='center'>Bucket List</Header>
+        </Segment>
+      )
+    } else {
+      {}
+    }
+  }
+
+  renderForm = (screenHeight) => {
+    if (screenHeight > '400' ) {
+        return (
+          <BucketForm />
+        )
+      } else {
+        return (
+          <Container style={{color: 'white'}} >
+            Please turn your device vertical to add items.
+          </Container>
+        )
+      }
+  }
+  
+  screenChange = () => {
+    console.log('hit this');
+    if(window.screen.height > 700) {
+      this.setState({ isDesktop: true, isVertical: true });
+    } else if(window.screen.height > 400) {
+      this.setState({ isDesktop: false, isVertical: true });
+    } else if (window.screen.height < 400) {
+      this.setState({ isDesktop: false, isVertical: false })
+    }
+  };
 
   handleSort = clickedColumn => () => {
     const { column, data, direction } = this.state
@@ -82,38 +123,36 @@ class BucketList extends Component {
 
   render() {
 
-  const { column, data, direction } = this.state
+    const { column, data, direction } = this.state
 
-  const tableContent = _.map(data, ({ bucket_list_item, location, id }, i) => {
-    let cleanedActivity = bucket_list_item.split().join('%20')
-    let cleanedLocation = location.split().join('%20')
-    return(
-      <Table.Row key={i}>
-        <Table.Cell >
-          < a
-            href={`https://www.google.com/search?q=${cleanedActivity}+${cleanedLocation}`}
-            target="_blank"
-            rel="noreferrer noopener"
-            style={{color: 'orange'}}
-          >
-            {bucket_list_item}
-          </a>
-        </Table.Cell>
-        <Table.Cell >{location}</Table.Cell>
-        <Table.Cell textAlign='right'>
-          <Button onClick={ () => this.props.dispatch(deleteBucketList(this.props.relationshipID, id))} basic color='red'>Delete</Button>
-        </Table.Cell>
-      </Table.Row>
-    )
-  })
+    const tableContent = _.map(data, ({ bucket_list_item, location, id }, i) => {
+      let cleanedActivity = bucket_list_item.split().join('%20')
+      let cleanedLocation = location.split().join('%20')
+      return(
+        <Table.Row key={i}>
+          <Table.Cell >
+            < a
+              href={`https://www.google.com/search?q=${cleanedActivity}+${cleanedLocation}`}
+              target="_blank"
+              rel="noreferrer noopener"
+              style={{color: 'orange'}}
+            >
+              {bucket_list_item}
+            </a>
+          </Table.Cell>
+          <Table.Cell >{location}</Table.Cell>
+          <Table.Cell textAlign='right'>
+            <Button onClick={ () => this.props.dispatch(deleteBucketList(this.props.relationshipID, id))} basic color='red'>Delete</Button>
+          </Table.Cell>
+        </Table.Row>
+      )
+    })
 
     return(
       <Segment basic style={styles.main}>
-        <Segment inverted>
-          <Header as={head} textAlign='center'>Bucket List</Header>
-        </Segment>
+        { this.state.isDesktop ? this.dropHeader(window.screen.height) : null }
          <Segment basic textAlign='center'>
-          <BucketForm />
+           { this.state.isVertical ? this.renderForm(window.screen.height) : <p style={{color: 'white'}}>Please turn your device vertical to add items.</p> }
          </Segment>
          <Segment basic style={styles.mainTable}>
           <Table celled inverted selectable sortable={true} CaseInsensitive>

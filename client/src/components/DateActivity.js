@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setFlash } from '../actions/flash';
-import { Header, Modal, Button, Segment, Form, Table } from 'semantic-ui-react';
+import { Header, Modal, Button, Segment, Container, Form, Table } from 'semantic-ui-react';
 import DateActivityForm from './DateActivityForm'
 import RelationshipSelect from './RelationshipSelect';
 import { deleteDateActivity } from '../actions/dateActivity';
@@ -58,7 +58,46 @@ class DateActivity extends Component {
             randFood: '',
             column: null,
             data: [],
-            direction: null, }
+            direction: null, 
+            isVertical: true,
+            isDesktop: true, }
+
+  dropHeader = (screenHeight) => {
+    if (screenHeight > '700' ) {
+      return (
+       <Segment inverted>
+          <Header as={head} textAlign='center'>Date Activities</Header>
+        </Segment>
+      )
+    } else {
+      {}
+    }
+  }
+
+  renderForm = (screenHeight) => {
+    if (screenHeight > '400' ) {
+        return (
+          <DateActivityForm />
+        )
+      } else {
+        return (
+          <Container style={{color: 'white'}} >
+            Please turn your device vertical to add items.
+          </Container>
+        )
+      }
+  }
+
+  screenChange = () => {
+    console.log('hit this');
+    if(window.screen.height > 700) {
+      this.setState({ isDesktop: true, isVertical: true });
+    } else if(window.screen.height > 400) {
+      this.setState({ isDesktop: false, isVertical: true });
+    } else if (window.screen.height < 400) {
+      this.setState({ isDesktop: false, isVertical: false })
+    }
+  };
 
   setRandom = () => {
     this.setState({ randActivity: this.props.dateActivities[Math.floor(Math.random() * this.props.dateActivities.length)] })
@@ -104,7 +143,8 @@ class DateActivity extends Component {
   }
 
   componentDidMount() {
-    this.setState({ data: this.props.dateActivities })
+    this.setState({ data: this.props.dateActivities });
+    window.addEventListener('resize', this.screenChange);
   }
 
   handleSort = clickedColumn => () => {
@@ -159,11 +199,13 @@ class DateActivity extends Component {
 
     return(
       <Segment basic style={styles.main}>
-        <Segment inverted>
+         { this.state.isDesktop ? this.dropHeader(window.screen.height) : null }
+        {/* <Segment inverted>
           <Header as={head} textAlign='center'>Date Activities</Header>
-        </Segment>
+        </Segment> */}
           <Segment basic  textAlign='center'>
-            <DateActivityForm />
+            { this.state.isVertical ? this.renderForm(window.screen.height) : <p style={{color: 'white'}}>Please turn your device vertical to add items.</p> }
+            {/* <DateActivityForm /> */}
           {this.randomDate()}
           </Segment>
           <Segment basic style={styles.mainTable}>
