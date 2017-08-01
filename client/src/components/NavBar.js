@@ -83,7 +83,8 @@ class NavBar extends Component {
   smallNavs = () => {
     const { user, dispatch, history, relationshipId } = this.props;
 
-    if(user.id) {
+    if(user.id && typeof(relationshipId) != "undefined") {
+      console.log(relationshipId)
       return(
         <Dropdown item text='Menu'>
         <Dropdown.Menu>
@@ -118,8 +119,18 @@ class NavBar extends Component {
         </Dropdown.Menu>
         </Dropdown>
       )
-  } else {
+  } else if (user.id){
     return(
+       <Dropdown item text='Menu'>
+        <Dropdown.Menu>
+          <Dropdown.Item style={{color: 'black'}} onClick={ () => {this.logEmOut()}}>
+        Logout
+        </Dropdown.Item>
+        </Dropdown.Menu>
+        </Dropdown>
+    )} else {
+      return(
+
       <Menu.Menu position='left'>
         <Link to='/HomeIndex'>
           <Image src={logo} size='small' />
