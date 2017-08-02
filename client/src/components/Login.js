@@ -60,7 +60,7 @@ class Login extends Component {
             />
           </Form.Field>
           <Form.Field>
-            <label style={{color:'black'}}>Email</label>
+            <label style={{color:'black'}}>Password</label>
             <input
               required
               id='password'
